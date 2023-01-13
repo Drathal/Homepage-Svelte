@@ -39,6 +39,7 @@
   .gradient {
     /*  border: 5px solid yellow; */
     position: relative;
+    margin: 0 auto;
     display: block;
     border-radius: 50%;
     width: 35em;
@@ -120,6 +121,30 @@
 
   img {
     position: absolute;
+  }
+
+  .p1,
+  .p2,
+  .p3 {
+    animation: float 10s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0% {
+      transform: translate(3%, 0%) rotate(0deg);
+    }
+    25% {
+      transform: translate(0%, 5%) rotate(2deg);
+    }
+    50% {
+      transform: translate(-2%, 0%) rotate(0deg);
+    }
+    75% {
+      transform: translate(0%, -5%) rotate(-2deg);
+    }
+    100% {
+      transform: translate(3%, 0%) rotate(0deg);
+    }
   }
 
   .p1 {

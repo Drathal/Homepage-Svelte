@@ -18,7 +18,6 @@
     canvas = <HTMLCanvasElement>document.getElementById('starfield');
     ctx = canvas.getContext('2d');
 
-    // Set the canvas dimensions to match the window
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight + 200;
 
@@ -31,9 +30,9 @@
   }
 
   function createStars(): void {
-    createStarLayer(120, 1, 1, 1, 1, '#1f2f3e', 0.5, 0);
-    createStarLayer(80, 1, 2, 0.3, 0.8, '#282578', 1, 1);
-    createStarLayer(40, 1, 2, 0.2, 1, '#866c44', 1.5, 2);
+    createStarLayer(250, 1, 1, 1, 1, '#1f2f3e', 0.5, 0);
+    createStarLayer(10, 1, 2, 0.3, 0.8, '#282578', 1, 1);
+    createStarLayer(80, 1, 2, 0.2, 1, '#866c44', 1.5, 2);
   }
 
   function createStarLayer(
