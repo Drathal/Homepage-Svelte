@@ -2,11 +2,12 @@
   import planet1 from '$lib/assets/about/planet1.png';
   import planet2 from '$lib/assets/about/planet2.png';
   import planet3 from '$lib/assets/about/planet3.png';
-
-  import Starfield from '../lib/components/Starfield.svelte';
 </script>
 
-<Starfield />
+<svelte:head>
+  <title>Home</title>
+</svelte:head>
+
 <section>
   <div class="gradient">
     <img class="p1" src={planet1} alt="Planet" />
@@ -25,25 +26,43 @@
     padding: 0;
     background: transparent;
     box-shadow: none;
-    /* border: 5px solid pink; */
+  }
+
+  h1 {
+    padding: 0;
+    margin: 0;
+    color: #d2b07e;
+    font-weight: 700;
+    font-size: 2.5em;
+    text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
+  }
+
+  p {
+    padding-top: 0.1 em;
+    color: #59eafa;
+    font-family: 'Courier New', Courier, monospace;
+    text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
   }
 
   .content {
     text-align: center;
-    padding-top: 15em;
-    /* border: 5px solid red; */
+    padding-top: 14em;
     margin: 0 auto;
     width: 30em;
   }
 
   .gradient {
-    /*  border: 5px solid yellow; */
     position: relative;
     margin: 0 auto;
     display: block;
     border-radius: 50%;
     width: 35em;
     height: 35em;
+    box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset,
+      rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset,
+      rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px,
+      rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px,
+      rgba(0, 0, 0, 0.09) 0px 32px 16px;
     background: transparent
       radial-gradient(
         circle,
@@ -113,12 +132,6 @@
       );
   }
 
-  h1 {
-    padding: 0;
-    margin: 0;
-    color: #d2b07e;
-  }
-
   img {
     position: absolute;
   }
@@ -127,6 +140,8 @@
   .p2,
   .p3 {
     animation: float 10s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
   }
 
   @keyframes float {
