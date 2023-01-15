@@ -12,27 +12,49 @@
 
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D | null;
-  let stars: Array<Array<Star>> = [[], [], []];
+  let stars: Star[][] = [];
+
+  function debounce<F extends (...args: any[]) => void>(func: F, wait: number): F {
+    let timeout: any;
+    return <F>function (this: any, ...args: any[]) {
+      clearTimeout(timeout);
+      timeout = setTimeout(() => func.apply(this, args), wait);
+    };
+  }
 
   function init() {
-    canvas = <HTMLCanvasElement>document.getElementById('starfield');
-    ctx = canvas.getContext('2d');
+    if (!ctx) {
+      canvas = <HTMLCanvasElement>document.getElementById('starfield');
+      ctx = canvas.getContext('2d');
+      canvas.style.opacity = '0';
+    }
 
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight + 200;
+    canvas.style.opacity = '0';
+    setTimeout(() => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    createStars();
-    animateStars();
+      createStars();
+      animateStars();
+
+      setTimeout(() => {
+        canvas.style.opacity = '1';
+      }, 300);
+    }, 300);
   }
+
+  let debouncedInit = debounce(init, 250);
 
   function random(min: number, max: number): number {
     return Math.floor(Math.random() * (max - min + 1) + min);
   }
 
   function createStars(): void {
-    createStarLayer(250, 1, 1, 1, 1, '#1f2f3e', 0.5, 0);
-    createStarLayer(10, 1, 2, 0.3, 0.8, '#282578', 1, 1);
-    createStarLayer(80, 1, 2, 0.2, 1, '#866c44', 1.5, 2);
+    stars = [];
+    createStarLayer(250, 1, 1, 1, 1, '#1f2f3e', 0.5);
+    createStarLayer(10, 1, 2, 0.3, 0.8, '#282578', 1);
+    createStarLayer(80, 1, 2, 0.2, 1, '#866c44', 1.5);
   }
 
   function createStarLayer(
@@ -42,11 +64,11 @@
     minOpacity: number,
     maxOpacity: number,
     color: string,
-    speed: number,
-    layer: number
+    speed: number
   ) {
+    const line = [];
     for (let i = 0; i < numOfStars; i++) {
-      stars[layer].push({
+      line.push({
         x: random(0, canvas.width),
         y: random(0, canvas.height),
         radius: random(minRadius, maxRadius),
@@ -55,10 +77,12 @@
         color: color
       });
     }
+    stars.push(line);
   }
 
   function animateStars(): void {
     if (!ctx) return;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     for (let k = 0; k < stars.length; k++) {
@@ -81,10 +105,16 @@
 
   onMount(() => {
     init();
+
+    window.addEventListener('resize', debouncedInit);
+
     const interval = setInterval(() => {
       requestAnimationFrame(animateStars);
     }, 50);
-    return () => clearInterval(interval);
+    return () => {
+      window.removeEventListener('resize', debouncedInit);
+      clearInterval(interval);
+    };
   });
 </script>
 
@@ -95,12 +125,14 @@
     position: absolute;
     top: 0;
     left: 0;
-
     right: 0;
+    bottom: 0;
     z-index: -1;
+    object-fit: cover;
+    transition: opacity 0.25s;
   }
 
-  test {
-    color: #282578;
+  :global(body, html) {
+    overflow-x: hidden;
   }
 </style>
