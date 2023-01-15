@@ -40,6 +40,7 @@
   p {
     padding-top: 0.1 em;
     color: #59eafa;
+    display: block;
     font-family: 'Courier New', Courier, monospace;
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
   }
@@ -186,5 +187,22 @@
   .p3 {
     top: 20em;
     left: 23em;
+  }
+
+  @media (max-width: 577px) {
+    .gradient {
+      max-width: 400px;
+      font-size: 13px;
+    }
+
+    .content > p {
+      max-width: 250px;
+      margin: 0 auto;
+    }
+
+    .p3 {
+      top: 20em;
+      left: 21em;
+    }
   }
 </style>

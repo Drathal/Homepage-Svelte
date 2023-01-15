@@ -1,5 +1,6 @@
 <script>
   import '@picocss/pico/css/pico.classless.css';
+  import '../lib/assets/picofix.css';
   import Nav from '../lib/components/Nav.svelte';
   import Fonts from '../lib/components/Fonts.svelte';
   import Starfield from '../lib/components/Starfield.svelte';

@@ -25,6 +25,16 @@
   }
 
   nav {
+    padding: 0 !important;
+  }
+
+  @media (max-width: 577px) {
+    nav {
+      padding: 0 1em !important;
+    }
+  }
+
+  :global(header) {
     background-color: rgba(0, 0, 0, 0.4);
   }
 </style>
