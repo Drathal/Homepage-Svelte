@@ -2,11 +2,11 @@
   interface project {
     name: string;
     subtitle: string;
-    description: string;
-    url: string;
-    tags: string[];
+    description?: string;
+    url?: string;
+    tags?: string[];
     year: string;
-    image: string;
+    image?: string;
   }
 
   type projects = project[];
@@ -21,11 +21,15 @@
         <p class="year">{project.year}</p>
         <h2>{project.name}</h2>
         <h3>{project.subtitle}</h3>
-        <p class="description">{project.description}</p>
+        {#if project.description}
+          <p class="description">{project.description}</p>
+        {/if}
         <p class="tags">
-          {#each project.tags as tag}
-            <span>{tag}</span>
-          {/each}
+          {#if project.tags}
+            {#each project.tags as tag}
+              <span>{tag}</span>
+            {/each}
+          {/if}
         </p>
       </div>
       <div class="divider">
@@ -38,11 +42,15 @@
         </span>
         <span class="connector" />
       </div>
-      <div class="image">
-        <a href={project.url}>
-          <img src={project.image} alt="project thumbnail" />
-        </a>
-      </div>
+      {#if project.image}
+        <div class="image">
+          <a href={project.url}>
+            <img src={project.image} alt="project thumbnail" />
+          </a>
+        </div>
+      {:else}
+        <div class="noimage" />
+      {/if}
     </li>
   {/each}
 </ul>
@@ -70,6 +78,8 @@
 
   .article {
     flex: 1;
+    min-height: 9em;
+    margin: 0 0 2em 0;
   }
 
   .divider {
@@ -104,13 +114,17 @@
 
   .image {
     flex: 1;
-    margin: 1em 0 0 0;
+    margin: 1em 0 2em 0;
     max-height: 13em;
     overflow: hidden;
     display: flex;
     border: 1px solid var(--secondary);
     border-radius: 0.5em;
     background-color: rgba(0, 0, 0, 0.2);
+  }
+
+  .noimage {
+    flex: 1;
   }
 
   .image a {
