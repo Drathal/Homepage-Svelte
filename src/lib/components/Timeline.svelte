@@ -11,7 +11,7 @@
 
   type projects = project[];
 
-  export const projects: projects = [];
+  export let projects: projects = [];
 </script>
 
 <ul class="timeline">
