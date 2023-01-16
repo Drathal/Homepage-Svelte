@@ -33,6 +33,4 @@
     In addition to my technical skills, I pride myself on my ability to communicate effectively and
     work collaboratively with clients and team members.
   </p>
-
-  <a rel="noreferrer noopener" href="/">back</a>
 </main>
