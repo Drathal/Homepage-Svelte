@@ -52,9 +52,9 @@
 
   function createStars(): void {
     stars = [];
-    createStarLayer(250, 1, 1, 1, 1, '#1f2f3e', 0.5);
-    createStarLayer(10, 1, 2, 0.3, 0.8, '#282578', 1);
-    createStarLayer(80, 1, 2, 0.2, 1, '#866c44', 1.5);
+    createStarLayer(canvas.width * 0.2, 1, 1, 1, 1, '#1f2f3e', 0.5);
+    createStarLayer(canvas.width * 0.1, 1, 2, 0.3, 0.8, '#282578', 1);
+    createStarLayer(canvas.width * 0.03, 1, 2, 0.2, 1, '#866c44', 1.5);
   }
 
   function createStarLayer(
