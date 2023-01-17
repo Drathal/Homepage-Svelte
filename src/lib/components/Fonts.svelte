@@ -9,7 +9,6 @@
   }
 
   :root {
-    --font-family: 'GlacialIndifference-Regular', system-ui, -apple-system, sans-serif;
-    --primary: #f4511e;
+    --font-family: 'GlacialIndifference-Regular', system-ui, -apple-system, sans-serif !important;
   }
 </style>

@@ -14,6 +14,7 @@
 
   a {
     text-decoration: none;
+    color: var(--secondary);
   }
 
   a:hover {

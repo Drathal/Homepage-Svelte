@@ -19,10 +19,20 @@
     <li>
       <div class="article">
         <p class="year">{project.year}</p>
-        <h2>{project.name}</h2>
-        <h3>{project.subtitle}</h3>
-        {#if project.description}
-          <p class="description">{project.description}</p>
+        {#if project.url}
+          <a href={project.url}>
+            <h3>{project.name}</h3>
+            <h4>{project.subtitle}</h4>
+            {#if project.description}
+              <p class="description">{project.description}</p>
+            {/if}
+          </a>
+        {:else}
+          <h3>{project.name}</h3>
+          <h4>{project.subtitle}</h4>
+          {#if project.description}
+            <p class="description">{project.description}</p>
+          {/if}
         {/if}
         <p class="tags">
           {#if project.tags}
@@ -56,9 +66,19 @@
 </ul>
 
 <style lang="css">
+  .timeline .article a p {
+    color: #bdbdbd;
+  }
+
+  .timeline .article a {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
   .timeline {
     padding: 0;
     margin: 0;
+    perspective: 500em;
   }
 
   .timeline > li {
@@ -69,6 +89,17 @@
     margin: 0;
     display: flex;
     text-align: right;
+
+    transition: transform 0.3s ease-in-out;
+    transform: perspective(1200px) rotateY(0);
+  }
+
+  .timeline > li:hover {
+    transform: perspective(1200px) rotateY(20deg);
+  }
+
+  .timeline > li:nth-child(even):hover {
+    transform: perspective(1200px) rotateY(20deg);
   }
 
   .timeline > li:nth-child(even) {
@@ -102,10 +133,14 @@
     width: 1.7em;
   }
 
+  .divider .icon svg {
+    margin: 0.2em;
+  }
+
   .divider .connector {
     width: 2px;
     flex-grow: 1;
-    background-color: var(--secondary);
+    background-color: var(--form-element-border-color);
     display: block;
     flex: 1;
     margin: 0.5em 0;
@@ -118,9 +153,10 @@
     max-height: 13em;
     overflow: hidden;
     display: flex;
-    border: 1px solid var(--secondary);
+    border: 1px solid var(--form-element-border-color);
     border-radius: 0.5em;
     background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
   }
 
   .noimage {
@@ -146,13 +182,14 @@
     margin: 0.5em 0;
   }
 
-  h2 {
+  h3 {
     color: var(--primary);
     margin: 0;
     padding: 0;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
   }
 
-  h3 {
+  h4 {
     color: var(--secondary);
     font-size: 1em;
     margin: 0;
@@ -164,14 +201,15 @@
   }
 
   .tags span {
-    background-color: var(--primary);
+    background-color: var(--ins-color);
     font-size: 0.9em;
     color: white;
     padding: 0.5em;
-    border-radius: 0.5em;
+    border-radius: 0.6em;
     margin: 0.25em;
     display: inline-block;
     line-height: 0.6em;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
   }
 
   @media (max-width: 577px) {
@@ -183,6 +221,14 @@
       flex-direction: column-reverse !important;
       margin-bottom: 2em;
       text-align: left;
+    }
+
+    .timeline > li:hover {
+      transform: perspective(0) rotateY(0);
+    }
+
+    .timeline > li:nth-child(even):hover {
+      transform: perspective(0) rotateY(0);
     }
   }
 

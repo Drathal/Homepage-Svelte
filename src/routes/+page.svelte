@@ -15,7 +15,7 @@
     <img class="p3" src={planet3} alt="Planet" />
     <div class="content">
       <h1>Markus Dethlefsen</h1>
-      <p>Learn, Unlearn, Relearn. Just keep moving...</p>
+      <p>Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...</p>
     </div>
   </div>
 </section>
@@ -31,7 +31,7 @@
   h1 {
     padding: 0;
     margin: 0;
-    color: #d2b07e;
+    color: var(--primary);
     font-weight: 700;
     font-size: 2.5em;
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
@@ -39,7 +39,7 @@
 
   p {
     padding-top: 0.1 em;
-    color: #59eafa;
+    color: var(--secondary);
     display: block;
     font-family: 'Courier New', Courier, monospace;
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
@@ -63,8 +63,8 @@
     background: transparent
       radial-gradient(
         circle,
-        #121863 0%,
-        #1f1d55ee 9%,
+        #143851 0%,
+        #112c40 9%,
 
         transparent 30%,
         #36221c 30.1%,
