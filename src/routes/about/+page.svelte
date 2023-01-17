@@ -13,7 +13,7 @@
 
   <p>
     I am a seasoned web engineer with a passion for creating beautiful and intuitive web
-    experiences. With over several years of experience, I have developed a wide range of skills and
+    experiences. With over {inYears} years of experience, I have developed a wide range of skills and
     expertise in web development, including proficiency in JavaScript/Typescript, HTML, CSS, Node,
     Docker, Kubernetes, and microservices.
   </p>
