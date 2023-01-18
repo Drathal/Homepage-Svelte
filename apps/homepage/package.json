@@ -1,5 +1,5 @@
 {
-  "name": "homepage-svelte",
+  "name": "homepage",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -38,8 +38,5 @@
   "type": "module",
   "dependencies": {
     "@picocss/pico": "^1.5.6"
-  },
-  "engines": {
-    "node": ">=18.0.0"
   }
 }
