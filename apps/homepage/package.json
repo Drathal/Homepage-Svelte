@@ -37,6 +37,7 @@
   },
   "type": "module",
   "dependencies": {
+    "@drathal/components": "workspace:^0.0.1",
     "@picocss/pico": "^1.5.6"
   }
 }
