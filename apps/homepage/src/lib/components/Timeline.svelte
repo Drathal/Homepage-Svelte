@@ -20,7 +20,7 @@
       <div class="article">
         <p class="year">{project.year}</p>
         {#if project.url}
-          <a href={project.url}>
+          <a target="_blank" rel="noopener noreferrer" href={project.url}>
             <h3>{project.name}</h3>
             <h4>{project.subtitle}</h4>
             {#if project.description}
@@ -54,7 +54,7 @@
       </div>
       {#if project.image}
         <div class="image">
-          <a href={project.url}>
+          <a href={project.url} target="_blank" rel="noopener noreferrer">
             <img src={project.image} alt="project thumbnail" />
           </a>
         </div>
