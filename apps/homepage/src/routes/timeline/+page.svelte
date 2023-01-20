@@ -58,7 +58,7 @@
         'In the Days where Frontend was not a Big part of development, i often redesigned new Layouts by just replacing the CSS Part of an Application. Well ... good that this times are over :D',
       year: '2013',
       image: efsredesign,
-      url: 'projects/efs_redesign',
+      url: 'https://projects.markus-dethlefsen.dev/efs_redesign/',
       tags: ['html', 'css']
     },
     {
@@ -68,7 +68,7 @@
         'In this Project i build a responsive Layout for the Questback EFS System that adapts, all Question types, to all Screen sizes.',
       year: '2013',
       image: adaptivesurvey,
-      url: 'projects/adaptive_survey_questback',
+      url: 'https://projects.markus-dethlefsen.dev/adaptive_survey_questback/',
       tags: ['html', 'css']
     }
   ];
