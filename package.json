@@ -1,18 +1,18 @@
 {
-  "name": "homepage-svelte",
-  "version": "0.0.1",
-  "private": true,
+  "name": "@drathal/svelte",
+  "version": "1.0.0",
+  "author": "Markus Dethlefsen",
+  "license": "MIT",
   "scripts": {
-    "prepare": "svelte-kit sync",
-    "dev": "vite dev",
-    "build": "nx exec -- vite build",
-    "preview": "vite preview",
-    "test": "nx exec -- playwright test",
-    "check": "nx exec -- svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
-    "check:watch": "nx exec -- svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
-    "test:unit": "nx exec -- vitest",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write ."
+    "dev": "pnpm --filter homepage dev",
+    "build": "pnpm --filter homepage build",
+    "preview": "pnpm --filter homepage preview",
+    "test": "pnpm --filter homepage test",
+    "check": "pnpm --filter homepage check",
+    "check:watch": "pnpm --filter homepage check:watch",
+    "test:unit": "pnpm --filter homepage test:unit",
+    "lint": "pnpm --filter homepage lint",
+    "format": "pnpm --filter homepage format"
   },
   "devDependencies": {
     "@playwright/test": "^1.29.2",
@@ -33,18 +33,6 @@
     "tslib": "^2.4.1",
     "typescript": "^4.9.4",
     "vite": "^4.0.4",
-    "vitest": "^0.25.8",
-    "nx": "15.5.1",
-    "@nrwl/nx-cloud": "latest"
-  },
-  "type": "module",
-  "dependencies": {
-    "@picocss/pico": "^1.5.6"
-  },
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "nx": {
-    "targets": {}
+    "vitest": "^0.25.8"
   }
 }
