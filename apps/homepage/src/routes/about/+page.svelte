@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { Button } from '@drathal/components';
-
   const startDate: Date = new Date(2004, 2, 20);
   const ageInMilliseconds = Date.now() - startDate.getTime();
   const inYears = Math.round(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365);
@@ -12,8 +10,6 @@
 
 <main>
   <h2>About Me</h2>
-
-  <Button />
 
   <p>
     I am a seasoned web engineer with a passion for creating beautiful and intuitive web
