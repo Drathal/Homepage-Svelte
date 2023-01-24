@@ -4,8 +4,20 @@
   import portfolio from '$lib/assets/projects/portfolio.png';
   import efsredesign from '$lib/assets/projects/efs_redesign.jpg';
   import adaptivesurvey from '$lib/assets/projects/adaptive_survey_questback.jpg';
+  import aboutme from '$lib/assets/projects/about_me.jpg';
+  import slime from '$lib/assets/projects/beslimed.jpg';
+  import jobtro from '$lib/assets/projects/jobtro.jpg';
 
   const projects = [
+    {
+      name: 'Portfolio rewrite',
+      subtitle: 'Portfolio Website in SveltKit',
+      description: 'My Portfolio Page on Github. Still WIP, have to add more Projects and Content',
+      year: '2023',
+      image: portfolio,
+      url: 'https://github.com/Drathal/Homepage-Svelte',
+      tags: ['svelte', 'typescript', 'vercel', 'picocss', 'pnpm']
+    },
     {
       name: 'SMAVA',
       subtitle: 'Senior Fullstack Engineer',
@@ -70,6 +82,70 @@
       image: adaptivesurvey,
       url: 'https://projects.markus-dethlefsen.dev/adaptive_survey_questback/',
       tags: ['html', 'css']
+    },
+    {
+      name: 'Html Presenter - Questback',
+      subtitle: 'Markdown 2 Html Presentation in PHP',
+      description:
+        "I build a presentation Engine that converts markdown files to HTML Presentations. At this time i held many Techtalks and wanted something 'nice' to present my Slides.",
+      year: '2011',
+      image: aboutme,
+      url: 'https://projects.markus-dethlefsen.dev/about_me/',
+      tags: ['html', 'css', 'php', 'javascript', 'markdown']
+    },
+    {
+      name: 'BeSlimed - MooTools Game',
+      subtitle: 'Fun private Project',
+      description:
+        'Private Project to see if i can build a simple Game thats fast enough, without using Canvas',
+      year: '2008',
+      image: slime,
+      url: 'https://projects.markus-dethlefsen.dev/beslimed/',
+      tags: ['html', 'css', 'php', 'markdown']
+    },
+    {
+      name: 'Canvas Demo - Globalpark',
+      subtitle: '3D and 2D Canvas',
+      description: 'A little Demo to learn more about Canvas Programming.',
+      year: '2007',
+      image: jobtro,
+      url: 'https://projects.markus-dethlefsen.dev/jobtro/',
+      tags: ['html', 'css', 'canvas', 'javascript']
+    },
+    {
+      name: 'Globalpark / Questback',
+      subtitle: 'Senior Software Developer',
+      year: '2002'
+    },
+    {
+      name: 'CPM-O',
+      subtitle: 'Lotus Notes Entwickler',
+      year: '2001'
+    },
+    {
+      name: 'Via One GmbH',
+      subtitle: 'PHP Entwickler',
+      year: '2000'
+    },
+    {
+      name: 'Druckerei Enger',
+      subtitle: 'Satz Layout Druckvorstufe',
+      year: '1999'
+    },
+    {
+      name: 'Reemers EDV',
+      subtitle: 'Buchsetzer',
+      year: '1997'
+    },
+    {
+      name: 'Reemers EDV',
+      subtitle: 'Buchsetzer',
+      year: '1997'
+    },
+    {
+      name: 'CopyService',
+      subtitle: 'Satz / Layout',
+      year: '1994'
     }
   ];
 </script>

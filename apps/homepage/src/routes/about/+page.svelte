@@ -1,5 +1,5 @@
 <script lang="ts">
-  const startDate: Date = new Date(2004, 2, 20);
+  const startDate: Date = new Date(1997, 2, 20);
   const ageInMilliseconds = Date.now() - startDate.getTime();
   const inYears = Math.round(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365);
 </script>
