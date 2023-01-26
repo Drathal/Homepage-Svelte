@@ -138,11 +138,6 @@
       year: '1997'
     },
     {
-      name: 'Reemers EDV',
-      subtitle: 'Buchsetzer',
-      year: '1997'
-    },
-    {
       name: 'CopyService',
       subtitle: 'Satz / Layout',
       year: '1994'
