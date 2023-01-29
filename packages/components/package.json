@@ -3,7 +3,7 @@
 	"version": "0.0.1",
 	"private": false,
 	"type": "module",
-	"main": "src/lib/index.js",
+	"main": "src/lib/index.ts",
 	"scripts": {
 		"dev": "vite dev",
 		"build": "svelte-kit sync && svelte-package",
