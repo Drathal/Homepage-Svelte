@@ -16,7 +16,7 @@
     "format": "prettier --plugin-search-dir . --write ."
   },
   "dependencies": {
-    "@drathal/components": "workspace:^0.0.1",
+    "@drathal/components": "workspace:*",
     "@picocss/pico": "^1.5.6"
   }
 }

@@ -5,7 +5,7 @@
   import '../lib/assets/global.css';
   import '../lib/assets/gradient.css';
   import Nav from '../lib/components/Nav.svelte';
-  import Starfield from '../lib/components/Starfield.svelte';
+  import { Starfield } from '@drathal/components';
 </script>
 
 <header>

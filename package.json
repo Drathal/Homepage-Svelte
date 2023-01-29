@@ -4,15 +4,15 @@
   "author": "Markus Dethlefsen",
   "license": "MIT",
   "scripts": {
-    "dev": "pnpm --filter homepage dev",
-    "build": "pnpm --filter homepage build",
+    "dev": "pnpm --parallel dev",
+    "build": "pnpm --parallel build",
     "preview": "pnpm --filter homepage preview",
-    "test": "pnpm --filter homepage test",
-    "check": "pnpm --filter homepage check",
-    "check:watch": "pnpm --filter homepage check:watch",
-    "test:unit": "pnpm --filter homepage test:unit",
-    "lint": "pnpm --filter homepage lint",
-    "format": "pnpm --filter homepage format"
+    "test": "pnpm --parallel  test",
+    "check": "pnpm --parallel  check",
+    "check:watch": "pnpm --parallel  check:watch",
+    "test:unit": "pnpm --parallel  test:unit",
+    "lint": "pnpm --parallel  lint",
+    "format": "pnpm --parallel format"
   },
   "devDependencies": {
     "@playwright/test": "^1.29.2",

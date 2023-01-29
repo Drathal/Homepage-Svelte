@@ -13,6 +13,7 @@
   let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D | null;
   let stars: Star[][] = [];
+  export let weight = [0.2, 0.1, 0.03];
 
   function debounce<F extends (...args: any[]) => void>(func: F, wait: number): F {
     let timeout: any;
@@ -52,9 +53,9 @@
 
   function createStars(): void {
     stars = [];
-    createStarLayer(canvas.width * 0.2, 1, 1, 1, 1, '#1f2f3e', 0.5);
-    createStarLayer(canvas.width * 0.1, 1, 2, 0.3, 0.8, '#282578', 1);
-    createStarLayer(canvas.width * 0.03, 1, 2, 0.2, 1, '#866c44', 1.5);
+    createStarLayer(canvas.width * weight[0], 1, 1, 1, 1, '#1f2f3e', 0.5);
+    createStarLayer(canvas.width * weight[1], 1, 2, 0.3, 0.8, '#282578', 1);
+    createStarLayer(canvas.width * weight[2], 1, 2, 0.2, 1, '#866c44', 1.5);
   }
 
   function createStarLayer(

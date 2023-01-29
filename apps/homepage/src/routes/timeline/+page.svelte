@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Timeline from '$lib/components/Timeline.svelte';
+  import { Timeline } from '@drathal/components';
   import vueform from '$lib/assets/projects/vue_form.png';
   import portfolio from '$lib/assets/projects/portfolio.png';
   import efsredesign from '$lib/assets/projects/efs_redesign.jpg';
