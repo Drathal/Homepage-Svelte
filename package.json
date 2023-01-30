@@ -3,6 +3,11 @@
   "version": "1.0.0",
   "author": "Markus Dethlefsen",
   "license": "MIT",
+  "packageManager": "pnpm@7.26.2",
+  "workspaces": [
+		"apps/**",
+		"packages/**"
+	],
   "scripts": {
     "dev": "pnpm --parallel dev",
     "build": "pnpm --parallel build",
