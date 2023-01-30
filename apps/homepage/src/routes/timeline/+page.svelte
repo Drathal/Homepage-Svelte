@@ -1,12 +1,12 @@
 <script lang="ts">
   import { Timeline } from '@drathal/components';
-  import vueform from '$lib/assets/projects/vue_form.png';
-  import portfolio from '$lib/assets/projects/portfolio.png';
-  import efsredesign from '$lib/assets/projects/efs_redesign.jpg';
-  import adaptivesurvey from '$lib/assets/projects/adaptive_survey_questback.jpg';
-  import aboutme from '$lib/assets/projects/about_me.jpg';
-  import slime from '$lib/assets/projects/beslimed.jpg';
-  import jobtro from '$lib/assets/projects/jobtro.jpg';
+  import img_vueform from '$lib/assets/projects/vue_form.png';
+  import img_portfolio from '$lib/assets/projects/portfolio.png';
+  import img_efsredesign from '$lib/assets/projects/efs_redesign.jpg';
+  import img_adaptivesurvey from '$lib/assets/projects/adaptive_survey_questback.jpg';
+  import img_aboutme from '$lib/assets/projects/about_me.jpg';
+  import img_slime from '$lib/assets/projects/beslimed.jpg';
+  import img_jobtro from '$lib/assets/projects/jobtro.jpg';
 
   const projects = [
     {
@@ -14,7 +14,7 @@
       subtitle: 'Portfolio Website in SveltKit',
       description: 'My Portfolio Page on Github. Still WIP, have to add more Projects and Content',
       year: '2023',
-      image: portfolio,
+      image: img_portfolio,
       url: 'https://github.com/Drathal/Homepage-Svelte',
       tags: ['svelte', 'typescript', 'vercel', 'picocss', 'pnpm']
     },
@@ -29,7 +29,7 @@
       subtitle: 'Composition API',
       description: 'Learn Vue 3 and the Composition API by building a form',
       year: '2021',
-      image: vueform,
+      image: img_vueform,
       url: 'https://github.com/Drathal/formplayground-vue',
       tags: ['vve', 'typescript', 'axios', 'vite', 'jest', 'testing-library/vue']
     },
@@ -39,7 +39,7 @@
       description:
         'My Portfolio Page on Github. This Project is... well still in progress :) At the moment you can just see old Stuff.',
       year: '2021',
-      image: portfolio,
+      image: img_portfolio,
       url: 'https://github.com/Drathal/portfolio',
       tags: ['next.js', 'typescript', 'netlify', 'react', 'react-markdown', 'material-ui']
     },
@@ -69,7 +69,7 @@
       description:
         'In the Days where Frontend was not a Big part of development, i often redesigned new Layouts by just replacing the CSS Part of an Application. Well ... good that this times are over :D',
       year: '2013',
-      image: efsredesign,
+      image: img_efsredesign,
       url: 'https://projects.markus-dethlefsen.dev/efs_redesign/',
       tags: ['html', 'css']
     },
@@ -79,7 +79,7 @@
       description:
         'In this Project i build a responsive Layout for the Questback EFS System that adapts, all Question types, to all Screen sizes.',
       year: '2013',
-      image: adaptivesurvey,
+      image: img_adaptivesurvey,
       url: 'https://projects.markus-dethlefsen.dev/adaptive_survey_questback/',
       tags: ['html', 'css']
     },
@@ -89,7 +89,7 @@
       description:
         "I build a presentation Engine that converts markdown files to HTML Presentations. At this time i held many Techtalks and wanted something 'nice' to present my Slides.",
       year: '2011',
-      image: aboutme,
+      image: img_aboutme,
       url: 'https://projects.markus-dethlefsen.dev/about_me/',
       tags: ['html', 'css', 'php', 'javascript', 'markdown']
     },
@@ -99,7 +99,7 @@
       description:
         'Private Project to see if i can build a simple Game thats fast enough, without using Canvas',
       year: '2008',
-      image: slime,
+      image: img_slime,
       url: 'https://projects.markus-dethlefsen.dev/beslimed/',
       tags: ['html', 'css', 'php', 'markdown']
     },
@@ -108,7 +108,7 @@
       subtitle: '3D and 2D Canvas',
       description: 'A little Demo to learn more about Canvas Programming.',
       year: '2007',
-      image: jobtro,
+      image: img_jobtro,
       url: 'https://projects.markus-dethlefsen.dev/jobtro/',
       tags: ['html', 'css', 'canvas', 'javascript']
     },
