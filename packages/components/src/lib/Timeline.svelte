@@ -9,12 +9,23 @@
     image?: string;
   }
 
+  $: cssVarStyles = Object.entries(colors)
+    .map(([key, value]) => `--${key}:${value}`)
+    .join(';');
+
   type projects = project[];
 
+  export let colors = {
+    // primary: '#f4ed2a',
+    // secondary: '#FF5555',
+    // color: '#AAAAAA',
+    // 'background-color': '#ff00ff',
+    // 'ins-color': '#00ffff'
+  };
   export let projects: projects = [];
 </script>
 
-<ul class="timeline">
+<ul class="timeline" style={cssVarStyles}>
   {#each projects as project}
     <li>
       <div class="article">
@@ -67,7 +78,7 @@
 
 <style lang="css">
   .timeline .article a p {
-    color: #bdbdbd;
+    color: var(--color);
   }
 
   .timeline .article a {

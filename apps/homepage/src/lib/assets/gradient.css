@@ -1,9 +1,9 @@
 :root {
-  --primary: #b94a2c !important;
-  --secondary: #1e90ff !important;
-  --ins-color: #015703 !important;
-  --color: #bdbdbd !important;
-  --background-color: #090a0f !important;
+  --primary: #b94a2c;
+  --secondary: #1e90ff;
+  --ins-color: #015703;
+  --color: #bdbdbd;
+  --background-color: #090a0f;
 }
 
 body:before {
