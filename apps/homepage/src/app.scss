@@ -1,9 +1,14 @@
+@font-face {
+  font-family: 'GlacialIndifference-Regular';
+  src: url('/fonts/GlacialIndifference-Regular.eot');
+  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
+    url('/fonts/GlacialIndifference-Regular.woff') format('woff');
+  font-display: swap;
+  font-weight: 1px;
+}
+
 :root {
-  --primary: #b94a2c;
-  --secondary: #1e90ff;
-  --ins-color: #015703;
-  --color: #bdbdbd;
-  --background-color: #090a0f;
+  --font-family: 'GlacialIndifference-Regular', system-ui, -apple-system, sans-serif !important;
 }
 
 body:before {

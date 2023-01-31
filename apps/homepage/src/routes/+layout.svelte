@@ -1,9 +1,10 @@
 <script>
   import { page } from '$app/stores';
-  import '@picocss/pico/css/pico.classless.css';
-  import '../lib/assets/picofix.css';
-  import '../lib/assets/global.css';
-  import '../lib/assets/gradient.css';
+  // import '@picocss/pico/css/pico.classless.css';
+  // import '../lib/assets/picofix.css';
+  import '../app.scss';
+  import '../app.postcss';
+
   import Nav from '../lib/components/Nav.svelte';
   import { Starfield } from '@drathal/components';
 </script>

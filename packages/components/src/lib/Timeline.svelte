@@ -25,24 +25,24 @@
   export let projects: projects = [];
 </script>
 
-<ul class="timeline" style={cssVarStyles}>
+<ul style={cssVarStyles}>
   {#each projects as project}
     <li>
-      <div class="article">
+      <article>
         <p class="year">{project.year}</p>
         {#if project.url}
           <a target="_blank" rel="noopener noreferrer" href={project.url}>
             <h3>{project.name}</h3>
             <h4>{project.subtitle}</h4>
             {#if project.description}
-              <p class="description">{project.description}</p>
+              <p>{project.description}</p>
             {/if}
           </a>
         {:else}
           <h3>{project.name}</h3>
           <h4>{project.subtitle}</h4>
           {#if project.description}
-            <p class="description">{project.description}</p>
+            <p>{project.description}</p>
           {/if}
         {/if}
         <p class="tags">
@@ -52,7 +52,7 @@
             {/each}
           {/if}
         </p>
-      </div>
+      </article>
       <div class="divider">
         <span class="icon">
           <svg focusable="false" viewBox="0 0 24 24" aria-hidden="true"
@@ -64,11 +64,11 @@
         <span class="connector" />
       </div>
       {#if project.image}
-        <div class="image">
+        <figure class="image">
           <a href={project.url} target="_blank" rel="noopener noreferrer">
             <img src={project.image} alt="project thumbnail" />
           </a>
-        </div>
+        </figure>
       {:else}
         <div class="noimage" />
       {/if}
@@ -76,175 +76,180 @@
   {/each}
 </ul>
 
-<style lang="css">
-  .timeline .article a p {
-    color: var(--color);
-  }
-
-  .timeline .article a {
-    text-decoration: none;
-    cursor: pointer;
-  }
-
-  .timeline {
-    padding: 0;
+<style lang="scss">
+  ul {
+    padding: 0 0.8rem 0 0;
     margin: 0;
     perspective: 500em;
-  }
 
-  .timeline > li {
-    list-style-image: initial;
-    position: relative;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    text-align: right;
+    h3 {
+      color: var(--primary);
+      margin: 0;
+      padding: 0;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
+    }
 
-    transition: transform 0.3s ease-in-out;
-    transform: perspective(1200px) rotateY(0);
-  }
+    h4 {
+      color: var(--secondary);
+      font-size: 1em;
+      margin: 0;
+      padding: 0;
+    }
 
-  .timeline > li:hover {
-    transform: perspective(1200px) rotateY(20deg);
-  }
+    p {
+      color: var(--color);
+      margin: 2em 0;
 
-  .timeline > li:nth-child(even):hover {
-    transform: perspective(1200px) rotateY(20deg);
-  }
+      &.year {
+        font-size: 0.8em;
+        margin: 0.5em 0;
+      }
+    }
 
-  .timeline > li:nth-child(even) {
-    flex-direction: row-reverse;
-    text-align: left;
-  }
+    li {
+      list-style-image: initial;
+      position: relative;
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: flex;
+      text-align: right;
+      transition: transform 0.3s ease-in-out;
+      transform: perspective(1200px) rotateY(0);
 
-  .article {
-    flex: 1;
-    min-height: 9em;
-    margin: 0 0 2em 0;
-  }
+      &:hover {
+        transform: perspective(1200px) rotateY(20deg);
+      }
 
-  .divider {
-    flex: 0;
+      &:nth-child(even):hover {
+        transform: perspective(1200px) rotateY(20deg);
+      }
 
-    min-height: 100%;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    margin: 0 1em;
-  }
+      &:nth-child(even) {
+        flex-direction: row-reverse;
+        text-align: left;
+      }
+    }
 
-  .divider .icon {
-    background-color: var(--primary);
-    display: block;
-    border-radius: 50%;
-    flex: 0;
-    width: 100%;
-    height: 1.7em;
-    width: 1.7em;
-  }
+    article {
+      flex: 1;
+      min-height: 9em;
+      margin: 0 0 2em 0;
+      padding: 0;
+      background-color: transparent;
+      box-shadow: none;
 
-  .divider .icon svg {
-    margin: 0.2em;
-  }
+      a {
+        text-decoration: none;
+        cursor: pointer;
+        --color: var(--color);
+        color: var(--color);
 
-  .divider .connector {
-    width: 2px;
-    flex-grow: 1;
-    background-color: var(--form-element-border-color);
-    display: block;
-    flex: 1;
-    margin: 0.5em 0;
-    opacity: 0.5;
-  }
+        & > p {
+          color: var(--color);
+        }
+      }
+    }
 
-  .image {
-    flex: 1;
-    margin: 1em 0 2em 0;
-    max-height: 13em;
-    overflow: hidden;
-    display: flex;
-    border: 1px solid var(--form-element-border-color);
-    border-radius: 0.5em;
-    background-color: rgba(0, 0, 0, 0.2);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
-  }
+    .divider {
+      flex: 0;
+      min-height: 100%;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      margin: 0 1em;
 
-  .noimage {
-    flex: 1;
-  }
+      .icon {
+        background-color: var(--primary);
+        display: block;
+        border-radius: 50%;
+        flex: 0;
+        width: 100%;
+        height: 1.8em;
+        width: 1.8em;
+        margin: 0;
+        padding: 0;
 
-  .image a {
-    flex: 1;
-    display: block;
-    overflow: hidden;
-    margin: 0.25em;
-    border-radius: 0.25em;
-  }
+        svg {
+          margin: 0.2em;
+        }
+      }
 
-  .image a img {
-    display: block;
-    width: 100%;
-  }
+      .connector {
+        width: 2px;
+        flex-grow: 1;
+        background-color: var(--form-element-border-color);
+        display: block;
+        flex: 1;
+        margin: 0.5em 0;
+        opacity: 0.5;
+      }
+    }
 
-  .article .year {
-    font-size: 0.8em;
-    color: #bdbdbd;
-    margin: 0.5em 0;
-  }
+    .image {
+      flex: 1;
+      margin: 1em 0 2em 0;
+      max-height: 13em;
+      overflow: hidden;
+      display: flex;
+      border: 1px solid var(--form-element-border-color);
+      border-radius: 0.5em;
+      background-color: rgba(0, 0, 0, 0.2);
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.7);
 
-  h3 {
-    color: var(--primary);
-    margin: 0;
-    padding: 0;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.6);
-  }
+      a {
+        flex: 1;
+        display: block;
+        overflow: hidden;
+        margin: 0.25em;
+        border-radius: 0.25em;
 
-  h4 {
-    color: var(--secondary);
-    font-size: 1em;
-    margin: 0;
-    padding: 0;
-  }
+        img {
+          display: block;
+          width: 100%;
+        }
+      }
+    }
 
-  .description {
-    margin: 2em 0;
-  }
+    .noimage {
+      flex: 1;
+    }
 
-  .tags span {
-    background-color: var(--ins-color);
-    font-size: 0.9em;
-    color: white;
-    padding: 0.5em;
-    border-radius: 0.6em;
-    margin: 0.25em;
-    display: inline-block;
-    line-height: 0.6em;
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    .tags span {
+      background-color: var(--ins-color);
+      font-size: 0.9em;
+      color: white;
+      padding: 0.5em;
+      border-radius: 0.6em;
+      margin: 0.25em;
+      display: inline-block;
+      line-height: 0.6em;
+      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.4);
+    }
   }
 
   @media (max-width: 577px) {
-    .divider {
+    div.divider {
       display: none;
     }
 
-    .timeline li {
+    ul li {
       flex-direction: column-reverse !important;
       margin-bottom: 2em;
       text-align: left;
     }
 
-    .timeline > li:hover {
+    ul li:hover {
       transform: perspective(0) rotateY(0);
     }
 
-    .timeline > li:nth-child(even):hover {
+    ul li:nth-child(even):hover {
       transform: perspective(0) rotateY(0);
     }
   }
 
   @media (max-width: 768px) {
-    .image {
+    figure {
       max-height: 10em;
     }
   }
