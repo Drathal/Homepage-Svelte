@@ -23,7 +23,13 @@
       {#if rightNavItems.length > 0}
         <ul>
           {#each rightNavItems as navItem}
-            <li><a href={navItem.path}>{navItem.name}</a></li>
+            <li>
+              {#if navItem.path.startsWith('http')}
+                <a href={navItem.path} target="_blank" rel="noopener noreferrer">{navItem.name}</a>
+              {:else}
+                <a href={navItem.path}>{navItem.name}</a>
+              {/if}
+            </li>
           {/each}
         </ul>
       {/if}

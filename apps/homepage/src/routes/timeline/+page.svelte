@@ -7,6 +7,7 @@
   import img_aboutme from '$lib/assets/projects/about_me.jpg';
   import img_slime from '$lib/assets/projects/beslimed.jpg';
   import img_jobtro from '$lib/assets/projects/jobtro.jpg';
+  import img_sl from '$lib/assets/projects/sl.png';
 
   const projects = [
     {
@@ -52,6 +53,14 @@
       name: 'Lokalportal',
       subtitle: 'Senior Software Developer',
       year: '2018'
+    },
+    {
+      name: 'Stylelounge Webpage',
+      subtitle: 'Modernize Web Architecture',
+      year: '2017',
+      description: 'Fullstack Webpage build with a reactive microservice architecture.',
+      image: img_sl,
+      tags: ['react', 'typescript', 'php', 'node.js', 'elastic-search']
     },
     {
       name: 'Stylelounge',

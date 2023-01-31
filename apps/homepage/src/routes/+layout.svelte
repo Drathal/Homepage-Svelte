@@ -21,6 +21,10 @@
       path: '/timeline'
     },
     {
+      name: 'github',
+      path: 'https://github.com/drathal'
+    },
+    {
       name: 'impressum',
       path: '/impressum'
     }
