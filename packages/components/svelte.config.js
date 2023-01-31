@@ -11,7 +11,7 @@ const config = {
     preprocess({
       postcss: true,
       scss: {
-        prependData: '@use "src/variables.scss" as *;'
+        rependData: '@use "./src/lib/variables.scss" as *;'
       }
     })
   ],

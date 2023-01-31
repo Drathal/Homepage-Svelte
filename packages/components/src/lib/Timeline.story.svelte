@@ -29,20 +29,4 @@
 
 <Hst.Story>
   <Timeline {projects} />
-  <div class="test">Test</div>
 </Hst.Story>
-
-<style lang="css">
-  :global(:root) {
-    --primary: #b94a2c;
-    --secondary: #1e90ff;
-    --ins-color: #015703;
-    --color: #bdbdbd;
-    --background-color: #090a0f;
-    --form-element-border-color: #ff00ff;
-  }
-  .test {
-    color: red;
-    display: none;
-  }
-</style>

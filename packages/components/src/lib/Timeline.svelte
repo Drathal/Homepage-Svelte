@@ -15,13 +15,7 @@
 
   type projects = project[];
 
-  export let colors = {
-    // primary: '#f4ed2a',
-    // secondary: '#FF5555',
-    // color: '#AAAAAA',
-    // 'background-color': '#ff00ff',
-    // 'ins-color': '#00ffff'
-  };
+  export let colors = {};
   export let projects: projects = [];
 </script>
 
@@ -103,6 +97,7 @@
       &.year {
         font-size: 0.8em;
         margin: 0.5em 0;
+        color: var(--primary-inverse);
       }
     }
 
@@ -160,7 +155,8 @@
       margin: 0 1em;
 
       .icon {
-        background-color: var(--primary);
+        background-color: var(--highlight-color);
+        color: var(--primary-inverse);
         display: block;
         border-radius: 50%;
         flex: 0;
@@ -217,8 +213,8 @@
 
     .tags span {
       background-color: var(--ins-color);
-      font-size: 0.9em;
-      color: white;
+      font-size: 0.8em;
+      color: var(--primary-inverse);
       padding: 0.5em;
       border-radius: 0.6em;
       margin: 0.25em;

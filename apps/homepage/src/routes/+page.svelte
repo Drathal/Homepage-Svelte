@@ -39,7 +39,7 @@
 
   p {
     padding-top: 0.1 em;
-    color: var(--secondary);
+    color: var(--highlight-color);
     display: block;
     font-family: 'Courier New', Courier, monospace;
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;

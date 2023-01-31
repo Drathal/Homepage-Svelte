@@ -1,8 +1,8 @@
-<script>
-  import { page } from '$app/stores';
-  import '../app.scss';
+<script lang="ts">
+  import './layout.scss';
+  import type { Hst } from '@histoire/plugin-svelte';
 
-  import { Starfield, Nav } from '@drathal/components';
+  import Nav from './Nav.svelte';
 
   const leftNavItems = [
     {
@@ -25,17 +25,10 @@
       path: '/impressum'
     }
   ];
+
+  export let Hst: Hst;
 </script>
 
-<header>
+<Hst.Story>
   <Nav {leftNavItems} {rightNavItems} />
-</header>
-<main>
-  <Starfield />
-  <slot />
-</main>
-<footer>
-  {#if $page.route.id !== '/'}
-    <a href="/">back</a>
-  {/if}
-</footer>
+</Hst.Story>

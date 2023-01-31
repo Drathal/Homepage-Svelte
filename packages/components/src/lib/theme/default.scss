@@ -1,0 +1,27 @@
+/**
+ * Theme: default
+ */
+
+@import '@picocss/pico/scss/variables';
+
+@import 'default/colors';
+@import 'default/styles';
+@import 'default/light';
+@import 'default/dark';
+
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    @include dark;
+  }
+}
+
+[data-theme='dark'] {
+  @include dark;
+}
+
+progress,
+[type='checkbox'],
+[type='radio'],
+[type='range'] {
+  accent-color: var(--primary);
+}
