@@ -1,3 +1,3 @@
 # Homepage-svelte
 
-My personal homepage as monorepo
+My personal homepage as a monorepo
