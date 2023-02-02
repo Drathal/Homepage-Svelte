@@ -1,5 +1,5 @@
 <script>
-  import '../lib/variables.scss';
+  import '../app.postcss';
   import '../lib/layout.scss';
 </script>
 
