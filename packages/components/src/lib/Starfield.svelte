@@ -1,6 +1,49 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
+  let canvas: any;
+  let ctx: CanvasRenderingContext2D | null | false;
+  let width: number = 150;
+  let height: number = 150;
+  let stars: Star[][] = [];
+  let show = false;
+  let animates = false;
+  let frame: any;
+  let animationStyle = '';
+  let showHandler: any;
+
+  export let starsConfig = [
+    {
+      amount: 0.5,
+      minRadius: 1,
+      maxRadius: 1,
+      minOpacity: 0.1,
+      maxOpacity: 1,
+      color: '#153066',
+      speed: 0.5
+    },
+    {
+      amount: 0.15,
+      minRadius: 1,
+      maxRadius: 2,
+      minOpacity: 0.7,
+      maxOpacity: 1,
+      color: '#14409f',
+      speed: 0.75
+    },
+    {
+      amount: 0.05,
+      minRadius: 1,
+      maxRadius: 2,
+      minOpacity: 0.6,
+      maxOpacity: 1,
+      color: '#0d55f2',
+      speed: 1
+    }
+  ];
+
+  $: sizeStyle = `width: ${width}px; height: ${height}px; `;
+
   interface Star {
     x: number;
     y: number;
@@ -10,55 +53,48 @@
     color: string;
   }
 
-  let canvas: HTMLCanvasElement;
-  let ctx: CanvasRenderingContext2D | null;
-  let stars: Star[][] = [];
-  export let weight = [0.2, 0.1, 0.03];
-
-  function debounce<F extends (...args: any[]) => void>(func: F, wait: number): F {
-    let timeout: any;
-    return <F>function (this: any, ...args: any[]) {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => func.apply(this, args), wait);
-    };
+  interface FadeParams {
+    duration?: number;
+    direction?: 'in' | 'out';
   }
 
-  function init() {
-    if (!ctx) {
-      canvas = <HTMLCanvasElement>document.getElementById('starfield');
-      ctx = canvas.getContext('2d');
-      canvas.style.opacity = '0';
-    }
+  onMount(() => {
+    startStarAnimation();
+    return () => cancelAnimationFrame(frame);
+  });
 
-    canvas.style.opacity = '0';
-    setTimeout(() => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+  const random = (min: number, max: number): number => Math.random() * (max - min) + min;
 
-      createStars();
-      animateStars();
+  const startStarAnimation = () => {
+    ctx = canvas && canvas.getContext('2d');
+    width = Math.ceil(window.innerWidth);
+    height = Math.ceil(window.innerHeight);
+    createStars();
+    frame = requestAnimationFrame(animateStars);
+    show = true;
+  };
 
-      setTimeout(() => {
-        canvas.style.opacity = '1';
-      }, 300);
-    }, 300);
-  }
+  const stopStarAnimation = () => {
+    cancelAnimationFrame(frame);
+    show = false;
+  };
 
-  let debouncedInit = debounce(init, 250);
-
-  function random(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1) + min);
-  }
-
-  function createStars(): void {
+  const createStars = () => {
     stars = [];
-    createStarLayer(canvas.width * weight[0], 1, 1, 1, 1, '#1f2f3e', 0.5);
-    createStarLayer(canvas.width * weight[1], 1, 2, 0.3, 0.8, '#282578', 1);
-    createStarLayer(canvas.width * weight[2], 1, 2, 0.2, 1, '#866c44', 1.5);
-  }
+    starsConfig.forEach((conf) => {
+      createStarLayer(
+        conf.amount * width,
+        conf.minRadius,
+        conf.maxRadius,
+        conf.minOpacity,
+        conf.maxOpacity,
+        conf.color,
+        conf.speed
+      );
+    });
+  };
 
-  function createStarLayer(
+  const createStarLayer = (
     numOfStars: number,
     minRadius: number,
     maxRadius: number,
@@ -66,62 +102,90 @@
     maxOpacity: number,
     color: string,
     speed: number
-  ) {
+  ) => {
     const line = [];
-    for (let i = 0; i < numOfStars; i++) {
+    for (let i = 0; i < Math.ceil(numOfStars); i++) {
       line.push({
-        x: random(0, canvas.width),
-        y: random(0, canvas.height),
+        x: random(0, width),
+        y: random(0, height),
         radius: random(minRadius, maxRadius),
         opacity: random(minOpacity, maxOpacity),
-        speed: speed,
-        color: color
+        speed,
+        color
       });
     }
     stars.push(line);
-  }
+  };
 
-  function animateStars(): void {
+  const animateStars = (): void => {
     if (!ctx) return;
-
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    frame = requestAnimationFrame(animateStars);
+    ctx.clearRect(0, 0, width, height);
 
     for (let k = 0; k < stars.length; k++) {
       for (let i = 0; i < stars[k].length; i++) {
         let s = stars[k][i];
 
+        ctx.globalAlpha = s.opacity;
         ctx.beginPath();
         ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
         ctx.fillStyle = s.color;
         ctx.fill();
+        ctx.closePath();
+        ctx.globalAlpha = 1;
 
         s.x -= s.speed;
 
         if (s.x < 0) {
-          s.x = canvas.width;
+          s.x = width;
         }
       }
     }
-  }
+  };
 
-  onMount(() => {
-    init();
+  const handleResize = () => {
+    if (!show) return;
+    if (animates) return;
+    clearTimeout(showHandler);
+    stopStarAnimation();
+    showHandler = setTimeout(startStarAnimation, 1000);
+  };
 
-    window.addEventListener('resize', debouncedInit);
+  const animationStart = () => {
+    animates = true;
+    const style = getComputedStyle(canvas);
+    animationStyle = style.animation;
+  };
 
-    const interval = setInterval(() => {
-      requestAnimationFrame(animateStars);
-    }, 50);
-    return () => {
-      window.removeEventListener('resize', debouncedInit);
-      clearInterval(interval);
-    };
-  });
+  const animationEnd = () => {
+    animates = false;
+
+    const style = getComputedStyle(canvas);
+
+    if (show === false) {
+      canvas.style.opacity = '0';
+    } else {
+      canvas.style.opacity = '1';
+    }
+  };
 </script>
 
-<canvas id="starfield" />
+<canvas
+  bind:this={canvas}
+  on:animationstart={animationStart}
+  on:animationend={animationEnd}
+  {width}
+  {height}
+  class={show === true ? 'show' : 'hide'}
+  style={sizeStyle}
+/>
 
-<style lang="css">
+<svelte:window on:resize|passive={handleResize} />
+
+<style lang="scss">
+  :global(body, html) {
+    overflow-x: hidden;
+  }
   canvas {
     position: fixed;
     top: 0;
@@ -130,10 +194,31 @@
     bottom: 0;
     z-index: -1;
     object-fit: cover;
-    transition: opacity 0.25s;
   }
 
-  :global(body, html) {
-    overflow-x: hidden;
+  .show {
+    animation: show 0.5s ease-in-out;
+  }
+
+  .hide {
+    animation: hide 0.5s ease-in-out;
+  }
+
+  @keyframes show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes hide {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
   }
 </style>
