@@ -20,7 +20,7 @@
       minOpacity: 0.1,
       maxOpacity: 1,
       color: '#153066',
-      speed: 0.5
+      speed: 0.25
     },
     {
       amount: 0.15,
@@ -29,7 +29,7 @@
       minOpacity: 0.7,
       maxOpacity: 1,
       color: '#14409f',
-      speed: 0.75
+      speed: 0.3
     },
     {
       amount: 0.05,
@@ -38,7 +38,7 @@
       minOpacity: 0.6,
       maxOpacity: 1,
       color: '#0d55f2',
-      speed: 1
+      speed: 0.5
     }
   ];
 
