@@ -31,9 +31,9 @@
 //@import '@picocss/pico/scss/components/card'; // article
 //@import '@picocss/pico/scss/components/modal'; // dialog
 //@import '@picocss/pico/scss/components/nav'; // nav  (has css bug?)
+@import 'theme/pico-nav.scss'; // pico nav without RTL
 //@import '@picocss/pico/scss/components/progress'; // progress
 //@import '@picocss/pico/scss/components/dropdown'; // dropdown
-
 // Utilities
 //@import '@picocss/pico/scss/utilities/loading'; // aria-busy=true
 //@import '@picocss/pico/scss/utilities/tooltip'; // data-tooltip
