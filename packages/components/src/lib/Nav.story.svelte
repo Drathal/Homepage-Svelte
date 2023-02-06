@@ -1,5 +1,4 @@
 <script lang="ts">
-  import './layout.scss';
   import type { Hst } from '@histoire/plugin-svelte';
 
   import Nav from './Nav.svelte';
