@@ -2,7 +2,6 @@
   import type { Hst } from '@histoire/plugin-svelte';
   import { isCollecting } from 'histoire/client';
   import { onMount } from 'svelte';
-  // import Starfield from './Starfield.svelte';
 
   export let starsConfig = [
     {
