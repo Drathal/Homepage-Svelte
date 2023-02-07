@@ -1,6 +1,8 @@
 <script lang="ts">
   import type { Hst } from '@histoire/plugin-svelte';
-  import Starfield from './Starfield.svelte';
+  import { isCollecting } from 'histoire/client';
+  import { onMount } from 'svelte';
+  // import Starfield from './Starfield.svelte';
 
   export let starsConfig = [
     {
@@ -32,9 +34,16 @@
     }
   ];
 
+  // Loading Component Dynamically because of Histoire dont know canvas on collecting stories
+  let Starfield: any;
+  onMount(async () => {
+    if (isCollecting()) return;
+    Starfield = (await import('./Starfield.svelte')).default;
+  });
+
   export let Hst: Hst;
 </script>
 
 <Hst.Story>
-  <Starfield {starsConfig} />
+  <svelte:component this={Starfield} {starsConfig} />
 </Hst.Story>
