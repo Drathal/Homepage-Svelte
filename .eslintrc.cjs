@@ -10,7 +10,6 @@ module.exports = {
     'plugin:prettier/recommended'
   ],
   plugins: ['@typescript-eslint'],
-  ignorePatterns: ['src/lib/i18n/*.ts'],
   overrides: [
     {
       files: ['**/*.svelte'],
