@@ -1,4 +1,6 @@
 <script lang="ts">
+  import { page } from '$app/stores';
+
   export let leftNavItems = [
     {
       name: 'home',
@@ -7,6 +9,7 @@
   ];
 
   export let rightNavItems: typeof leftNavItems = [];
+  export let currentRoute: string | null;
 </script>
 
 <div class="navbar">
@@ -15,7 +18,15 @@
       {#if leftNavItems.length > 0}
         <ul>
           {#each leftNavItems as navItem}
-            <li><a href={navItem.path}>{navItem.name}</a></li>
+            <li>
+              <a
+                href={navItem.path}
+                target={navItem.path.startsWith('http') ? '_blank' : undefined}
+                rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
+                role={navItem.path === currentRoute ? 'button' : undefined}
+                >{navItem.name}
+              </a>
+            </li>
           {/each}
         </ul>
       {/if}
@@ -24,11 +35,13 @@
         <ul>
           {#each rightNavItems as navItem}
             <li>
-              {#if navItem.path.startsWith('http')}
-                <a href={navItem.path} target="_blank" rel="noopener noreferrer">{navItem.name}</a>
-              {:else}
-                <a href={navItem.path}>{navItem.name}</a>
-              {/if}
+              <a
+                href={navItem.path}
+                target={navItem.path.startsWith('http') ? '_blank' : undefined}
+                rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
+                role={navItem.path === currentRoute ? 'button' : undefined}
+                >{navItem.name}
+              </a>
             </li>
           {/each}
         </ul>

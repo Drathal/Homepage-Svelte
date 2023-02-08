@@ -32,7 +32,7 @@
 </script>
 
 <header>
-  <Nav {leftNavItems} {rightNavItems} />
+  <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id} />
 </header>
 <main>
   <Starfield />

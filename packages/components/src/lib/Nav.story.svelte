@@ -6,22 +6,26 @@
   const leftNavItems = [
     {
       name: 'home',
-      path: '/'
+      path: '#home'
     }
   ];
 
   const rightNavItems = [
     {
       name: 'about',
-      path: '/about'
+      path: '#about'
     },
     {
       name: 'timeline',
-      path: '/timeline'
+      path: '#timeline'
     },
     {
       name: 'impressum',
-      path: '/impressum'
+      path: '#impressum'
+    },
+    {
+      name: 'external',
+      path: 'http://example.com'
     }
   ];
 
@@ -29,5 +33,5 @@
 </script>
 
 <Hst.Story>
-  <Nav {leftNavItems} {rightNavItems} />
+  <Nav {leftNavItems} {rightNavItems} currentRoute="#about" />
 </Hst.Story>
