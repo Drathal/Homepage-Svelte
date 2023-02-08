@@ -3,14 +3,14 @@
 
   import Nav from './Nav.svelte';
 
-  const leftNavItems = [
+  let leftNavItems = [
     {
       name: 'home',
       path: '#home'
     }
   ];
 
-  const rightNavItems = [
+  let rightNavItems = [
     {
       name: 'about',
       path: '#about'
@@ -29,9 +29,16 @@
     }
   ];
 
+  export let currentRoute: string = '#about';
   export let Hst: Hst;
 </script>
 
 <Hst.Story>
-  <Nav {leftNavItems} {rightNavItems} currentRoute="#about" />
+  <Nav {leftNavItems} {rightNavItems} {currentRoute} />
+
+  <svelte:fragment slot="controls">
+    <Hst.Text bind:value={currentRoute} title="currentRoute" />
+    <Hst.Json bind:value={leftNavItems} title="leftNavItems" />
+    <Hst.Json bind:value={rightNavItems} title="rightNavItems" />
+  </svelte:fragment>
 </Hst.Story>
