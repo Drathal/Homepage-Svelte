@@ -5,7 +5,6 @@
 <main>
   <h2>Impressum</h2>
   <p>Name: Markus Dethlefsen</p>
-  <p>Address: ...</p>
 
   <h2>Contact</h2>
   <p>

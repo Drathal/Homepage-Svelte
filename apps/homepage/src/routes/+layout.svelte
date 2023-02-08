@@ -21,12 +21,12 @@
       path: '/timeline'
     },
     {
-      name: 'github',
-      path: 'https://github.com/drathal'
+      name: 'imprint',
+      path: '/imprint'
     },
     {
-      name: 'impressum',
-      path: '/impressum'
+      name: 'github',
+      path: 'https://github.com/drathal'
     }
   ];
 </script>

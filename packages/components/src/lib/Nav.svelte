@@ -1,4 +1,5 @@
 <script lang="ts">
+  import Icon from './Icon.svelte';
   export let leftNavItems = [
     {
       name: 'home',
@@ -39,6 +40,9 @@
                 rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
                 role={navItem.path === currentRoute ? 'button' : undefined}
                 >{navItem.name}
+                {#if navItem.path.startsWith('http')}
+                  <span><Icon name="extern" /></span>
+                {/if}
               </a>
             </li>
           {/each}
@@ -51,5 +55,15 @@
 <style lang="scss">
   .navbar {
     background-color: rgba(0, 0, 0, 0.3);
+  }
+
+  a {
+    white-space: nowrap;
+  }
+
+  [role='button'] {
+    border: none;
+    background-color: var(--primary-focus);
+    font-size: 1em;
   }
 </style>
