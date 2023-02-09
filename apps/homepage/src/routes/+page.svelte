@@ -1,4 +1,5 @@
 <script lang="ts">
+  import { Typer } from '@drathal/components';
   import planet1 from '$lib/assets/about/planet1.png';
   import planet2 from '$lib/assets/about/planet2.png';
   import planet3 from '$lib/assets/about/planet3.png';
@@ -15,7 +16,7 @@
     <img class="p3" src={planet3} alt="Planet" />
     <div class="content">
       <h1>Markus Dethlefsen</h1>
-      <p>Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...</p>
+      <p><Typer>&nbsp;Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...</Typer></p>
     </div>
   </div>
 </section>
@@ -39,10 +40,12 @@
 
   p {
     padding-top: 0.1 em;
+    padding-left: 1.5em;
     color: var(--highlight-color);
     display: block;
     font-family: 'Courier New', Courier, monospace;
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
+    text-align: left;
   }
 
   .content {

@@ -23,6 +23,7 @@
                 target={navItem.path.startsWith('http') ? '_blank' : undefined}
                 rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
                 role={navItem.path === currentRoute ? 'button' : undefined}
+                aria-current={navItem.path === currentRoute ? 'page' : undefined}
                 >{navItem.name}
               </a>
             </li>
@@ -39,6 +40,7 @@
                 target={navItem.path.startsWith('http') ? '_blank' : undefined}
                 rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
                 role={navItem.path === currentRoute ? 'button' : undefined}
+                aria-current={navItem.path === currentRoute ? 'page' : undefined}
                 >{navItem.name}
                 {#if navItem.path.startsWith('http')}
                   <span><Icon name="extern" /></span>
@@ -61,7 +63,7 @@
     white-space: nowrap;
   }
 
-  [role='button'] {
+  [role='button'][aria-current='page'] {
     border: none;
     background-color: var(--primary-focus);
     font-size: 1em;
