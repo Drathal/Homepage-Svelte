@@ -10,23 +10,86 @@
 </svelte:head>
 
 <section>
-  <div class="gradient">
-    <img class="p1" src={planet1} alt="Planet" />
-    <img class="p2" src={planet2} alt="Planet" />
-    <img class="p3" src={planet3} alt="Planet" />
-    <div class="content">
-      <h1>Markus Dethlefsen</h1>
-      <p><Typer>&nbsp;Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...</Typer></p>
+  <div class="bgWrapper">
+    <div class="bgContainer">
+      <div class="gradient">
+        <img class="pl1" src={planet1} alt="Planet" />
+        <img class="pl2" src={planet2} alt="Planet" />
+        <img class="pl3" src={planet3} alt="Planet" />
+      </div>
     </div>
+  </div>
+  <div class="content">
+    <h1>Markus Dethlefsen</h1>
+    <p><Typer>&nbsp;Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...&nbsp;</Typer></p>
   </div>
 </section>
 
-<style lang="css">
+<style lang="scss">
   section {
+    min-height: 40em;
+    font-size: 16px;
+  }
+  .bgWrapper {
+    position: relative;
     margin: 0;
     padding: 0;
-    background: transparent;
-    box-shadow: none;
+
+    height: 1px;
+    z-index: -1;
+
+    .bgContainer {
+      position: relative;
+      width: 1px;
+      margin: 0 auto;
+    }
+  }
+
+  .content {
+    margin: 15em auto;
+    text-align: center;
+
+    p {
+      text-align: left;
+      padding: 0;
+      margin: 0 auto;
+      max-width: 20em;
+      color: var(--highlight-color);
+      text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
+    }
+  }
+
+  .pl1 {
+    position: absolute;
+    top: 7em;
+    left: 10em;
+    width: 7em;
+    height: 7em;
+    animation: float1 10s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
+  }
+
+  .pl2 {
+    position: absolute;
+    top: 23em;
+    left: 7em;
+    width: 5em;
+    height: 5em;
+    animation: float2 10s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
+  }
+
+  .pl3 {
+    position: absolute;
+    top: 22em;
+    left: 25em;
+    width: 9em;
+    height: 9em;
+    animation: float3 10s ease-in-out infinite;
+    border-radius: 50%;
+    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
   }
 
   h1 {
@@ -38,29 +101,14 @@
     text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
   }
 
-  p {
-    padding: 0.1em 0 0 1.5em;
-    color: var(--highlight-color);
-    display: block;
-    font-family: 'Courier New', Courier, monospace;
-    text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
-    text-align: left;
-  }
-
-  .content {
-    text-align: center;
-    padding-top: 14em;
-    margin: 0 auto;
-  }
-
   .gradient {
-    margin: 0 auto;
-    position: relative;
-    display: block;
-    border-radius: 50%;
-    width: 35em;
-    height: 35em;
+    position: absolute;
+    top: 0;
+    left: -20em;
+    min-height: 40em;
+    min-width: 40em;
 
+    border-radius: 50%;
     background: transparent
       radial-gradient(
         circle,
@@ -130,39 +178,36 @@
       );
   }
 
-  img {
-    position: absolute;
+  @media (min-width: 768px) {
+    section {
+      font-size: 18px;
+    }
   }
 
-  .p1,
-  .p2,
-  .p3 {
-    animation: float 10s ease-in-out infinite;
-    border-radius: 50%;
-    box-shadow: rgba(0, 0, 0, 0.56) 0px 22px 30px 4px;
+  @keyframes float1 {
+    0% {
+      transform: translate(0%, 3%) rotate(0deg);
+    }
+    25% {
+      transform: translate(0%, 5%) rotate(-3deg);
+    }
+    50% {
+      transform: translate(-3%, 0%) rotate(0deg);
+    }
+    75% {
+      transform: translate(0%, -4%) rotate(-3deg);
+    }
+    100% {
+      transform: translate(0%, 3%) rotate(0deg);
+    }
   }
 
-  .p1 {
-    width: 7em;
-    height: 7em;
-  }
-
-  .p2 {
-    width: 5em;
-    height: 5em;
-  }
-
-  .p3 {
-    width: 9em;
-    height: 9em;
-  }
-
-  @keyframes float {
+  @keyframes float2 {
     0% {
       transform: translate(3%, 0%) rotate(0deg);
     }
     25% {
-      transform: translate(0%, 5%) rotate(2deg);
+      transform: translate(0%, 5%) rotate(-4deg);
     }
     50% {
       transform: translate(-2%, 0%) rotate(0deg);
@@ -175,79 +220,21 @@
     }
   }
 
-  .p1 {
-    top: 5em;
-    left: 6em;
-  }
-
-  .p2 {
-    top: 22em;
-    left: 5em;
-  }
-
-  .p3 {
-    top: 20em;
-    left: 23em;
-  }
-
-  @media (max-width: 767px) {
-    :global(main) {
-      max-width: 100%;
+  @keyframes float3 {
+    0% {
+      transform: translate(2%, 0%) rotate(0deg);
     }
-
-    .gradient {
-      width: 45em;
-      height: 45em;
-      font-size: 12px;
+    25% {
+      transform: translate(1%, 5%) rotate(4deg);
     }
-
-    .content {
-      padding-top: 14em;
-      font-size: 15px;
+    50% {
+      transform: translate(0%, -2%) rotate(0deg);
     }
-
-    .p1 {
-      top: 5em;
-      left: 6em;
+    75% {
+      transform: translate(1%, -2%) rotate(-3deg);
     }
-
-    .p2 {
-      top: 28em;
-      left: 5em;
-    }
-
-    .p3 {
-      top: 27em;
-      left: 29em;
-    }
-  }
-
-  @media (max-width: 577px) {
-    .gradient {
-      width: 35em;
-      height: 35em;
-      font-size: 10px;
-    }
-
-    .content {
-      padding-top: 10em;
-      font-size: 13px;
-    }
-
-    .content > p {
-      font-size: 12.5px;
-      width: 100%;
-      padding: 0;
-    }
-
-    .p2 {
-      top: 22em;
-      left: 5em;
-    }
-
-    .p3 {
-      top: 22em;
-      left: 22em;
+    100% {
+      transform: translate(2%, 0%) rotate(0deg);
     }
   }
 </style>
