@@ -39,8 +39,7 @@
   }
 
   p {
-    padding-top: 0.1 em;
-    padding-left: 1.5em;
+    padding: 0.1em 0 0 1.5em;
     color: var(--highlight-color);
     display: block;
     font-family: 'Courier New', Courier, monospace;
@@ -56,8 +55,8 @@
   }
 
   .gradient {
-    position: relative;
     margin: 0 auto;
+    position: relative;
     display: block;
     border-radius: 50%;
     width: 35em;
@@ -192,15 +191,23 @@
     left: 23em;
   }
 
+  @media (max-width: 767px) {
+    :global(main) {
+      max-width: 100%;
+    }
+  }
+
   @media (max-width: 577px) {
     .gradient {
-      max-width: 400px;
       font-size: 13px;
     }
 
+    .content {
+      width: 35em;
+    }
     .content > p {
-      max-width: 250px;
-      margin: 0 auto;
+      width: 100%;
+      padding: 0 0 0 0.5em;
     }
 
     .p3 {
