@@ -1,5 +1,7 @@
 <script lang="ts">
   import Icon from './Icon.svelte';
+  import NavLink from './NavLink.svelte';
+
   export let leftNavItems = [
     {
       name: 'home',
@@ -8,7 +10,7 @@
   ];
 
   export let rightNavItems: typeof leftNavItems = [];
-  export let currentRoute: string | null;
+  export let currentRoute: string;
 </script>
 
 <div class="navbar">
@@ -18,14 +20,7 @@
         <ul>
           {#each leftNavItems as navItem}
             <li>
-              <a
-                href={navItem.path}
-                target={navItem.path.startsWith('http') ? '_blank' : undefined}
-                rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
-                role={navItem.path === currentRoute ? 'button' : undefined}
-                aria-current={navItem.path === currentRoute ? 'page' : undefined}
-                >{navItem.name}
-              </a>
+              <NavLink path={navItem.path} name={navItem.name} {currentRoute} />
             </li>
           {/each}
         </ul>
@@ -35,17 +30,7 @@
         <ul>
           {#each rightNavItems as navItem}
             <li>
-              <a
-                href={navItem.path}
-                target={navItem.path.startsWith('http') ? '_blank' : undefined}
-                rel={navItem.path.startsWith('http') ? 'noopener noreferrer' : undefined}
-                role={navItem.path === currentRoute ? 'button' : undefined}
-                aria-current={navItem.path === currentRoute ? 'page' : undefined}
-                >{navItem.name}
-                {#if navItem.path.startsWith('http')}
-                  <span><Icon name="extern" /></span>
-                {/if}
-              </a>
+              <NavLink path={navItem.path} name={navItem.name} {currentRoute} />
             </li>
           {/each}
         </ul>

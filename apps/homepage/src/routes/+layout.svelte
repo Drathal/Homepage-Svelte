@@ -6,7 +6,7 @@
 
   const leftNavItems = [
     {
-      name: 'home',
+      name: '$home',
       path: '/'
     }
   ];
