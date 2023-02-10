@@ -156,9 +156,10 @@
         color: var(--primary-inverse);
         flex: 0;
         margin: 0;
-        padding: 0 0.24em;
+        padding: 0.2em 0.2em 0.1em 0.2em;
         border-radius: 50%;
         font-size: 23px;
+        line-height: 1em;
       }
 
       .connector {
