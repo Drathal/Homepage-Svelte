@@ -51,7 +51,6 @@
     text-align: center;
     padding-top: 14em;
     margin: 0 auto;
-    width: 30em;
   }
 
   .gradient {
@@ -195,24 +194,60 @@
     :global(main) {
       max-width: 100%;
     }
+
+    .gradient {
+      width: 45em;
+      height: 45em;
+      font-size: 12px;
+    }
+
+    .content {
+      padding-top: 14em;
+      font-size: 15px;
+    }
+
+    .p1 {
+      top: 5em;
+      left: 6em;
+    }
+
+    .p2 {
+      top: 28em;
+      left: 5em;
+    }
+
+    .p3 {
+      top: 27em;
+      left: 29em;
+    }
   }
 
   @media (max-width: 577px) {
     .gradient {
-      font-size: 13px;
+      width: 35em;
+      height: 35em;
+      font-size: 10px;
     }
 
     .content {
-      width: 35em;
+      padding-top: 10em;
+      font-size: 13px;
     }
+
     .content > p {
+      font-size: 12.5px;
       width: 100%;
-      padding: 0 0 0 0.5em;
+      padding: 0;
+    }
+
+    .p2 {
+      top: 22em;
+      left: 5em;
     }
 
     .p3 {
-      top: 20em;
-      left: 21em;
+      top: 22em;
+      left: 22em;
     }
   }
 </style>
