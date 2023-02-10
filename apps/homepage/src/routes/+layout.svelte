@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import '../app.scss';
 
-  import { Starfield, Nav } from '@drathal/components';
+  import { Starfield, Nav, ScrollToTop } from '@drathal/components';
 
   const leftNavItems = [
     {
@@ -43,3 +43,4 @@
     <a href="/">back</a>
   {/if}
 </footer>
+<ScrollToTop />

@@ -25,3 +25,7 @@ progress,
 [type='range'] {
   accent-color: var(--primary);
 }
+
+html {
+  scroll-behavior: smooth;
+}
