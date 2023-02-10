@@ -224,6 +224,11 @@
     }
   }
 
+  @media (max-width: 768px) {
+    figure.image {
+      max-height: 9em;
+    }
+  }
   @media (max-width: 577px) {
     div.divider {
       display: none;
@@ -242,11 +247,9 @@
     ul li:nth-child(even):hover {
       transform: perspective(0) rotateY(0);
     }
-  }
 
-  @media (max-width: 768px) {
-    figure {
-      max-height: 10em;
+    figure.image {
+      max-height: 14em;
     }
   }
 </style>
