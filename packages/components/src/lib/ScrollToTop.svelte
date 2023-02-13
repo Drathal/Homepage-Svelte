@@ -1,5 +1,6 @@
 <script>
   import Icon from './Icon.svelte';
+
   export let showOnPx = 150;
   let hidden = true;
 
