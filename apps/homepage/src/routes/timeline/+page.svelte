@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Timeline } from '@drathal/components';
+  import { Timeline, Section } from '@drathal/components';
   import img_vueform from '$lib/assets/projects/vue_form.png';
   import img_portfolio from '$lib/assets/projects/portfolio.png';
   import img_efsredesign from '$lib/assets/projects/efs_redesign.jpg';
@@ -158,6 +158,8 @@
   <title>Timeline</title>
 </svelte:head>
 
-<h2 class="name">Timeline</h2>
+<Section>
+  <h2 class="name">Timeline</h2>
 
-<Timeline {projects} />
+  <Timeline {projects} />
+</Section>

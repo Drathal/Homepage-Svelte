@@ -1,19 +1,24 @@
+<script lang="ts">
+  import { Section } from '@drathal/components';
+</script>
+
 <svelte:head>
   <title>Impressum</title>
 </svelte:head>
 
-<main>
+<Section>
   <h2>Impressum</h2>
-  <p>Name: Markus Dethlefsen</p>
-
-  <h2>Contact</h2>
   <p>
-    Email: <span class="email"
+    Name: Markus Dethlefsen<br />
+    Email:
+    <span class="email"
       >ed.<!-- abc@def -->ne<span class="spam">ahulty</span>sfelhted-<span class="spam">ahulty</span
       >sukram@o<!-- @def -->iloft<span class="spam">ahulty</span>rop</span
     >
   </p>
+</Section>
 
+<section>
   <p>
     This is a private website and all views and opinions expressed on this website are mine and do
     not represent those of my employer or any other organization. The information provided on this
@@ -31,7 +36,7 @@
     Privacy Policy: This website does not collect or store any personal data. We do not use cookies
     or any other tracking technologies.
   </p>
-</main>
+</section>
 
 <style type="css">
   .spam {

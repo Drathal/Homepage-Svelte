@@ -34,10 +34,12 @@
 <header>
   <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id || ''} />
 </header>
+
 <main>
   <Starfield />
   <slot />
 </main>
+
 <footer>
   {#if $page.route.id !== '/'}
     <a href="/">back</a>

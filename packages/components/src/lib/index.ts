@@ -4,3 +4,4 @@ export { default as Nav } from './Nav.svelte';
 export { default as Typer } from './Typer.svelte';
 export { default as Icon } from './Icon.svelte';
 export { default as ScrollToTop } from './ScrollToTop.svelte';
+export { default as Section } from './Section.svelte';
