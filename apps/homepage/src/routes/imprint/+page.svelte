@@ -7,7 +7,7 @@
 </svelte:head>
 
 <Section>
-  <h2>Impressum</h2>
+  <h2>Imprint</h2>
   <p>
     Name: Markus Dethlefsen<br />
     Email:

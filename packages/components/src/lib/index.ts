@@ -5,3 +5,4 @@ export { default as Typer } from './Typer.svelte';
 export { default as Icon } from './Icon.svelte';
 export { default as ScrollToTop } from './ScrollToTop.svelte';
 export { default as Section } from './Section.svelte';
+export { default as GitHubCorner } from './GitHubCorner.svelte';

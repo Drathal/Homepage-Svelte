@@ -43,14 +43,4 @@
   .navbar {
     background-color: rgba(0, 0, 0, 0.3);
   }
-
-  a {
-    white-space: nowrap;
-  }
-
-  [role='button'][aria-current='page'] {
-    border: none;
-    background-color: var(--primary-focus);
-    font-size: 1em;
-  }
 </style>
