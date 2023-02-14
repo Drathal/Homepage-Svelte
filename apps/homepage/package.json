@@ -6,7 +6,9 @@
   "scripts": {
     "prepare": "svelte-kit sync",
     "dev": "vite dev",
-    "build": "vite build",
+    "build": "vite build; npm run build:clear; npm run build:copy",
+    "build:clear":"find ../../.vercel -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel/output/static/*",
+    "build:copy":"cp -a .vercel/* ../../.vercel",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
