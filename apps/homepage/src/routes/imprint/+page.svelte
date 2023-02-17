@@ -38,7 +38,7 @@
   </p>
 </section>
 
-<style type="css">
+<style type="scss">
   .spam {
     display: none;
   }

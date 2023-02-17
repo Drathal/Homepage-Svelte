@@ -1,9 +1,9 @@
 <script lang="ts">
-  import Icon from './Icon.svelte';
+  import Icon from '../Icon/Icon.svelte';
 
-  export let path: string;
+  export let path: string = '';
   export let name: string;
-  export let currentRoute: string;
+  export let currentRoute: string | null | undefined = '';
 
   let title: string;
   $: title = name.startsWith('$')

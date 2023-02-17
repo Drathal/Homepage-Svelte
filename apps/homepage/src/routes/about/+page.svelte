@@ -38,9 +38,3 @@
     work collaboratively with clients and team members.
   </p>
 </Section>
-
-<style lang="scss">
-  b {
-    color: var(--highlight-color);
-  }
-</style>

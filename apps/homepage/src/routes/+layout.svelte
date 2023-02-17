@@ -2,7 +2,7 @@
   import { page } from '$app/stores';
   import '../app.scss';
 
-  import { Starfield, Nav, ScrollToTop, GitHubCorner } from '@drathal/components';
+  import { Starfield, Nav, ScrollToTop } from '@drathal/components';
 
   const leftNavItems = [
     {
@@ -32,10 +32,8 @@
 </script>
 
 <header>
-  <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id || ''} />
+  <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id} />
 </header>
-
-<GitHubCorner />
 
 <main>
   <Starfield />
@@ -48,9 +46,3 @@
   {/if}
 </footer>
 <ScrollToTop />
-
-<style lang="scss">
-  footer {
-    height: 3em;
-  }
-</style>

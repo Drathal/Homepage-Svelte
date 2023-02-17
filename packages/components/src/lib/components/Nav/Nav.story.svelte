@@ -22,10 +22,6 @@
     {
       name: 'impressum',
       path: '#impressum'
-    },
-    {
-      name: 'external',
-      path: 'http://example.com'
     }
   ];
 
@@ -36,9 +32,17 @@
 <Hst.Story>
   <Nav {leftNavItems} {rightNavItems} {currentRoute} />
 
+  <div class="spacer" />
+
   <svelte:fragment slot="controls">
     <Hst.Text bind:value={currentRoute} title="currentRoute" />
     <Hst.Json bind:value={leftNavItems} title="leftNavItems" />
     <Hst.Json bind:value={rightNavItems} title="rightNavItems" />
   </svelte:fragment>
 </Hst.Story>
+
+<style lang="scss">
+  .spacer {
+    height: 100vh;
+  }
+</style>

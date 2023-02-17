@@ -9,7 +9,8 @@ const pathList: PathList = {
     'M12 22C6.475 22 2 17.525 2 12S6.475 2 12 2s10 4.475 10 10-4.475 10-10 10z',
     'M12 15a3 3 0 1 1 0-6 3 3 0 1 1 0 6z'
   ],
-  arrowUp: ['M12 19V5m-7 7 7-7 7 7']
+  arrowUp: ['M12 19V5m-7 7 7-7 7 7'],
+  burger: ['M3 12h18M3 6h18M3 18h18']
 };
 
 export default pathList;

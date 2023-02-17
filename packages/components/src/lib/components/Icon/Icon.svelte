@@ -1,5 +1,6 @@
 <script context="module">
   import pathsByName from './icons/pathList';
+
   export const iconOptions = Object.keys(pathsByName);
   export const directions = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
 </script>
@@ -13,7 +14,7 @@
 </script>
 
 <svg
-  class="c"
+  class="icon"
   viewBox="0 0 24 24"
   fill-rule="evenodd"
   clip-rule="evenodd"
@@ -24,8 +25,8 @@
   {/each}
 </svg>
 
-<style>
-  .c {
+<style lang="scss">
+  .icon {
     width: 1em;
     height: 1em;
     fill: none;

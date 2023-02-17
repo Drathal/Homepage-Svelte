@@ -1,0 +1,7 @@
+@font-face {
+  font-family: 'GlacialIndifference-Regular';
+  src: url('./theme/fonts/GlacialIndifference-Regular.eot');
+  src: url('./theme/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
+    url('./theme/fonts/GlacialIndifference-Regular.woff') format('woff');
+  font-display: swap;
+}

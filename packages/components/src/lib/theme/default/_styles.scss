@@ -1,18 +1,9 @@
 // Commons Styles
-@font-face {
-  font-family: 'GlacialIndifference-Regular';
-  src: url('/fonts/GlacialIndifference-Regular.eot');
-  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
-    url('/fonts/GlacialIndifference-Regular.woff') format('woff');
-  font-display: swap;
-  font-weight: 1px;
-}
 
 :root {
   // Typography
-  --font-family: 'GlacialIndifference-Regular', system-ui, -apple-system, 'Segoe UI', 'Roboto',
-    'Ubuntu', 'Cantarell', 'Noto Sans', sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-    'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-family: system-ui, -apple-system, 'Segoe UI', 'Roboto', 'Ubuntu', 'Cantarell', 'Noto Sans',
+    sans-serif;
   --line-height: 1.5;
   --font-weight: 400;
   --font-size: 16px;
@@ -246,8 +237,7 @@ code,
 kbd,
 samp {
   --font-family: 'Menlo', 'Consolas', 'Roboto Mono', 'Ubuntu Monospace', 'Noto Mono', 'Oxygen Mono',
-    'Liberation Mono', monospace, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
+    'Liberation Mono', monospace;
 }
 
 kbd {

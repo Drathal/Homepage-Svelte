@@ -1,1 +1,2 @@
-import './lib/layout.scss';
+import './lib/theme/layout.scss';
+import './lib/font-histoire.css';

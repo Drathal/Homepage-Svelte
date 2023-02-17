@@ -1,0 +1,8 @@
+/* the font files have to be in static/fonts */
+@font-face {
+  font-family: 'GlacialIndifference-Regular';
+  src: url('/fonts/GlacialIndifference-Regular.eot');
+  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
+    url('/fonts/GlacialIndifference-Regular.woff') format('woff');
+  font-display: swap;
+}

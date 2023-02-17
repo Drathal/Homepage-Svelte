@@ -2,15 +2,12 @@
   export let href = 'https://github.com/Drathal';
   export let fill = 'rgba(0,0,0,0.3)';
   export let color = 'rgba(255,255,255,0.4)';
-  export let size = '70';
   export let label = 'My GitHub Page';
 </script>
 
 <!-- Github Corner from https://tholman.com/github-corners -->
 <a {href} class="github-corner" aria-label={label} target="_blank" rel="noopener noreferrer">
   <svg
-    width={size}
-    height={size}
     viewBox="0 0 250 250"
     style="fill:{fill}; color:{color}; position: absolute; top: 0; border: 0; right: 0;"
     aria-hidden="true"
@@ -29,7 +26,7 @@
   </svg>
 </a>
 
-<style>
+<style lang="scss">
   .github-corner:hover .tail {
     animation: wave 600ms ease-in-out;
   }
@@ -47,5 +44,10 @@
     80% {
       transform: rotate(10deg);
     }
+  }
+
+  svg {
+    height: 3.5em;
+    width: 3.5em;
   }
 </style>
