@@ -1,9 +1,14 @@
 <script lang="ts">
-  import { page } from '$app/stores';
-  import { Section } from '@drathal/components';
+  import { page } from '$app/stores'
+  import { Section } from '@drathal/components'
+  import type { BlogPost } from '$lib/posts'
 
-  export let data: any;
+  export let data: { posts: BlogPost[] }
 </script>
+
+<svelte:head>
+  <title>Blog</title>
+</svelte:head>
 
 <Section>
   <h1>Blog</h1>
