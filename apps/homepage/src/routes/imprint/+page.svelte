@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Section } from '@drathal/components';
+  import { Section } from '@drathal/components'
 </script>
 
 <svelte:head>
@@ -16,9 +16,7 @@
       >sukram@o<!-- @def -->iloft<span class="spam">ahulty</span>rop</span
     >
   </p>
-</Section>
 
-<section>
   <p>
     This is a private website and all views and opinions expressed on this website are mine and do
     not represent those of my employer or any other organization. The information provided on this
@@ -36,7 +34,7 @@
     Privacy Policy: This website does not collect or store any personal data. We do not use cookies
     or any other tracking technologies.
   </p>
-</section>
+</Section>
 
 <style type="scss">
   .spam {

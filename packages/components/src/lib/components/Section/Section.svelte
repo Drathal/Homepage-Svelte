@@ -23,5 +23,6 @@
 
   section {
     position: relative;
+    transition: ease all 0.5s;
   }
 </style>
