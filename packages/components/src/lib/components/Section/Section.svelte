@@ -12,7 +12,7 @@
     content: '';
     display: block;
     position: absolute;
-    top: 2.5em;
+    top: 2.1em;
     left: -40%;
     width: 90%;
     height: 2px;

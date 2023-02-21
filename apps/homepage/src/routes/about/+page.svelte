@@ -1,9 +1,9 @@
 <script lang="ts">
-  import { Section } from '@drathal/components';
+  import { Section } from '@drathal/components'
 
-  const startDate: Date = new Date(1997, 2, 20);
-  const ageInMilliseconds = Date.now() - startDate.getTime();
-  const inYears = Math.round(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365);
+  const startDate: Date = new Date(1997, 2, 20)
+  const ageInMilliseconds = Date.now() - startDate.getTime()
+  const inYears = Math.round(ageInMilliseconds / 1000 / 60 / 60 / 24 / 365)
 </script>
 
 <svelte:head>
@@ -11,7 +11,7 @@
 </svelte:head>
 
 <Section>
-  <h2>About Me</h2>
+  <h1>About Me</h1>
 
   <p>
     I am a seasoned web engineer with a passion for creating beautiful and intuitive web

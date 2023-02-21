@@ -1,13 +1,13 @@
 <script lang="ts">
-  import { Timeline, Section } from '@drathal/components';
-  import img_vueform from '$lib/assets/projects/vue_form.png';
-  import img_portfolio from '$lib/assets/projects/portfolio.png';
-  import img_efsredesign from '$lib/assets/projects/efs_redesign.jpg';
-  import img_adaptivesurvey from '$lib/assets/projects/adaptive_survey_questback.jpg';
-  import img_aboutme from '$lib/assets/projects/about_me.jpg';
-  import img_slime from '$lib/assets/projects/beslimed.jpg';
-  import img_jobtro from '$lib/assets/projects/jobtro.jpg';
-  import img_sl from '$lib/assets/projects/sl.png';
+  import { Timeline, Section } from '@drathal/components'
+  import img_vueform from '$lib/assets/projects/vue_form.png'
+  import img_portfolio from '$lib/assets/projects/portfolio.png'
+  import img_efsredesign from '$lib/assets/projects/efs_redesign.jpg'
+  import img_adaptivesurvey from '$lib/assets/projects/adaptive_survey_questback.jpg'
+  import img_aboutme from '$lib/assets/projects/about_me.jpg'
+  import img_slime from '$lib/assets/projects/beslimed.jpg'
+  import img_jobtro from '$lib/assets/projects/jobtro.jpg'
+  import img_sl from '$lib/assets/projects/sl.png'
 
   const projects = [
     {
@@ -151,7 +151,7 @@
       subtitle: 'Satz / Layout',
       year: '1994'
     }
-  ];
+  ]
 </script>
 
 <svelte:head>
@@ -159,7 +159,7 @@
 </svelte:head>
 
 <Section>
-  <h2 class="name">Timeline</h2>
+  <h1 class="name">Timeline</h1>
 
   <Timeline {projects} />
 </Section>

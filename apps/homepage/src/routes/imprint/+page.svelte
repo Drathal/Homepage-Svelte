@@ -3,11 +3,11 @@
 </script>
 
 <svelte:head>
-  <title>Impressum</title>
+  <title>Imprint</title>
 </svelte:head>
 
 <Section>
-  <h2>Imprint</h2>
+  <h1>Imprint</h1>
   <p>
     Name: Markus Dethlefsen<br />
     Email:
