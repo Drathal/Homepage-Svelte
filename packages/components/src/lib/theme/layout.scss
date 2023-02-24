@@ -25,7 +25,7 @@
 
 // Components
 //@import '@picocss/pico/scss/components/accordion'; // details, summary
-//@import '@picocss/pico/scss/components/card'; // article
+@import '@picocss/pico/scss/components/card'; // article
 //@import '@picocss/pico/scss/components/modal'; // dialog
 //@import '@picocss/pico/scss/components/nav'; // nav  (has css bug?)
 @import './pico-nav.scss'; // pico nav without RTL
@@ -36,31 +36,3 @@
 //@import '@picocss/pico/scss/utilities/tooltip'; // data-tooltip
 @import '@picocss/pico/scss/utilities/accessibility'; // -ms-touch-action, aria-*
 //@import '@picocss/pico/scss/utilities/reduce-motion'; // prefers-reduced-motion
-
-section,
-footer {
-  @extend .container;
-}
-
-main {
-  padding-top: 1rem;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  margin-bottom: 0.5em !important;
-}
-
-h1 {
-  line-height: 1.25em;
-  font-size: 1.75em;
-}
-
-b,
-strong {
-  color: var(--highlight-color);
-}

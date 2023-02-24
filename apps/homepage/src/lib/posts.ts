@@ -6,6 +6,7 @@ export interface BlogPost {
   description: string
   published: boolean
   content?: any
+  tags: string[]
 }
 
 interface Metadata {
@@ -19,8 +20,9 @@ export const getPosts = async (): Promise<BlogPost[]> => {
     Object.keys(mdModules).map(async (path) => {
       const slug = await path.split('/').at(-1)?.replace('.md', '')
       const { metadata } = (await mdModules[path]()) as Metadata
-      const { datePublished, dateUpdated, title, description, published } = metadata
+      const { datePublished, dateUpdated, title, description, published, tags } = metadata
       return {
+        tags,
         slug,
         datePublished,
         dateUpdated,
@@ -41,7 +43,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
 export const getPostBySlug = async (slug: string): Promise<BlogPost> => {
   const post = await import(`$routes/blog/${slug}.md`)
 
-  const { datePublished, dateUpdated, title, description, published } = post.metadata
+  const { datePublished, dateUpdated, title, description, published, tags } = post.metadata
   const content = post.default
 
   return {
@@ -51,6 +53,7 @@ export const getPostBySlug = async (slug: string): Promise<BlogPost> => {
     title,
     description,
     published,
-    slug
+    slug,
+    tags
   }
 }

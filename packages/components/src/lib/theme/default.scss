@@ -42,8 +42,36 @@ b {
   color: var(--highlight-color);
 }
 
-footer {
+.body-wrapper > footer {
   height: 3em;
+}
+
+section,
+.body-wrapper > footer {
+  @extend .container;
+}
+
+main {
+  padding-top: 1rem;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0.5em !important;
+}
+
+h1 {
+  line-height: 1.25em;
+  font-size: 1.75em;
+}
+
+b,
+strong {
+  color: var(--highlight-color);
 }
 
 body {

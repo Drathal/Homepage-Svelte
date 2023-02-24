@@ -204,7 +204,7 @@
 
     .tags span {
       background-color: var(--ins-color);
-      font-size: 0.8em;
+      font-size: 0.9em;
       color: var(--primary-inverse);
       padding: 0.5em;
       border-radius: 0.6em;

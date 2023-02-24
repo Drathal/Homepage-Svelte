@@ -3,7 +3,8 @@ published: true
 datePublished: 2023-02-01
 dateUpdated: 2023-02-01
 title: A Short Guide to Svelte Stores
-description: none
+description: A short guide to Svelte stores. The guide provides step-by-step instructions on creating a store in Svelte.
+tags: [typescript, svelte]
 ---
 
 # A Short Guide to Svelte Stores

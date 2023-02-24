@@ -3,7 +3,8 @@ published: true
 datePublished: 2023-02-21
 dateUpdated: 2023-02-21
 title: Building a Click Outside Function in Svelte with TypeScript
-description: none
+description: A tutorial on building a clickOutside function in Svelte with TypeScript, which detects when a user clicks outside a specific element. The post provides step-by-step instructions and an example of using the function in a Svelte component to create a dropdown menu that closes when a user clicks outside of it.
+tags: [typescript, svelte]
 ---
 
 # Building a Click Outside Function in Svelte with TypeScript
