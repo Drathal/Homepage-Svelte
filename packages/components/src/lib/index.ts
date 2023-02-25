@@ -7,3 +7,4 @@ export { default as Icon } from './components/Icon/Icon.svelte';
 export { default as ScrollToTop } from './components/ScrollToTop/ScrollToTop.svelte';
 export { default as Section } from './components/Section/Section.svelte';
 export { default as GitHubCorner } from './components/GitHubCorner/GitHubCorner.svelte';
+export { default as BlogCard } from './components/BlogCard/BlogCard.svelte';

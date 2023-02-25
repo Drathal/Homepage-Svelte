@@ -3,7 +3,7 @@ published: true
 datePublished: 2023-02-21
 dateUpdated: 2023-02-21
 title: Building a Click Outside Function in Svelte with TypeScript
-description: A tutorial on building a clickOutside function in Svelte with TypeScript, which detects when a user clicks outside a specific element. The post provides step-by-step instructions and an example of using the function in a Svelte component to create a dropdown menu that closes when a user clicks outside of it.
+description: A tutorial on building a clickOutside function in Svelte with TypeScript, which detects when a user clicks outside a specific element.
 tags: [typescript, svelte]
 ---
 
@@ -18,15 +18,15 @@ In this tutorial, we'll walk through building a clickOutside function in Svelte 
 First, let's set up the clickOutside function. This function will take a single parameter, node, which is the element that we want to detect clicks outside of.
 
 ```typescript
-import type { Action } from 'svelte/action'
+import type { Action } from 'svelte/action';
 
 interface Attributes {
-  'on:clickOutside'?: (event: CustomEvent) => void
+  'on:clickOutside'?: (event: CustomEvent) => void;
 }
 
 export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
   // TODO: Implement the clickOutside function
-}
+};
 ```
 
 ## Step 2: Add a click event listener to the document
@@ -34,15 +34,15 @@ export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
 Next, we'll add a click event listener to the document. This will allow us to detect when the user clicks anywhere on the page.
 
 ```typescript
-import type { Action } from 'svelte/action'
+import type { Action } from 'svelte/action';
 
 export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
   const handleClick = (event: MouseEvent) => {
     // TODO: Implement the handleClick function
-  }
+  };
 
-  document.addEventListener('click', handleClick, true)
-}
+  document.addEventListener('click', handleClick, true);
+};
 ```
 
 ## Step 3: Check if the click is outside of the specified element
@@ -50,23 +50,23 @@ export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
 In the handleClick function, we need to check if the user clicked outside of the node element. We can do this by checking if the event target is a descendant of node.
 
 ```typescript
-import type { Action } from 'svelte/action'
+import type { Action } from 'svelte/action';
 
 export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
   const handleClick = (event: MouseEvent) => {
     if (!node || node.contains(event.target as HTMLElement) || event.defaultPrevented) {
-      return
+      return;
     }
 
     const clickOutsideEvent = new CustomEvent('clickOutside', {
       detail: 'Detects a click outside of an element'
-    })
+    });
 
-    node.dispatchEvent(clickOutsideEvent)
-  }
+    node.dispatchEvent(clickOutsideEvent);
+  };
 
-  document.addEventListener('click', handleClick, true)
-}
+  document.addEventListener('click', handleClick, true);
+};
 ```
 
 ## Step 4: Clean up the event listener when the component is destroyed
@@ -74,29 +74,29 @@ export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
 Finally, we need to clean up the click event listener when the component that uses the clickOutside function is destroyed. We can do this by returning a function from the clickOutside function that removes the event listener.
 
 ```typescript
-import type { Action } from 'svelte/action'
+import type { Action } from 'svelte/action';
 
 export const clickOutside: Action<HTMLElement, any, Attributes> = (node) => {
   const handleClick = (event: MouseEvent) => {
     if (!node || node.contains(event.target as HTMLElement) || event.defaultPrevented) {
-      return
+      return;
     }
 
     const clickOutsideEvent = new CustomEvent('clickOutside', {
       detail: 'Detects a click outside of an element'
-    })
+    });
 
-    node.dispatchEvent(clickOutsideEvent)
-  }
+    node.dispatchEvent(clickOutsideEvent);
+  };
 
-  document.addEventListener('click', handleClick, true)
+  document.addEventListener('click', handleClick, true);
 
   return {
     destroy() {
-      document.removeEventListener('click', handleClick, true)
+      document.removeEventListener('click', handleClick, true);
     }
-  }
-}
+  };
+};
 ```
 
 ## Step 5: Use the clickOutside function in a Svelte component
@@ -105,12 +105,12 @@ Now that we've built the clickOutside function, we can use it in a Svelte compon
 
 ```svelte
 <script lang="ts">
-  import { clickOutside } from './clickOutside.ts'
+  import { clickOutside } from './clickOutside.ts';
 
-  let isDropdownOpen = false
+  let isDropdownOpen = false;
 
   function toggleDropdown() {
-    isDropdownOpen = !isDropdownOpen
+    isDropdownOpen = !isDropdownOpen;
   }
 </script>
 
