@@ -121,6 +121,16 @@
     }
   }
 
+  @media (min-width: breakpoint('sm')) {
+    .wrapper {
+      article {
+        &:last-child {
+          max-width: none;
+        }
+      }
+    }
+  }
+
   a {
     text-decoration: none;
   }
