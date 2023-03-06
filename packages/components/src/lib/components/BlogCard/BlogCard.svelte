@@ -14,8 +14,6 @@
 
   export let posts: BlogPost[] = [];
   export let routeID: string | null = '';
-
-  //
 </script>
 
 <div class="wrapper">
