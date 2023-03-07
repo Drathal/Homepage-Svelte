@@ -1,4 +1,4 @@
-{
+module.exports = {
   "useTabs": false,
   "semi": true,
   "tabWidth": 2,

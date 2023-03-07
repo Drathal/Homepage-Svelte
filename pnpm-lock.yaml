@@ -40,6 +40,35 @@ importers:
       tslib: 2.5.0
       typescript: 4.9.5
 
+  apps/forms:
+    specifiers:
+      '@drathal/components': workspace:*
+      '@sveltejs/adapter-vercel': ^2.1.1
+      '@sveltejs/kit': ^1.8.3
+      autoprefixer: ^10.4.13
+      cssnano: ^5.1.15
+      postcss: ^8.4.21
+      sass: ^1.58.3
+      svelte: ^3.55.1
+      svelte-check: ^3.0.4
+      svelte-preprocess: ^5.0.1
+      vite: ^4.1.4
+      vitest: ^0.28.5
+    dependencies:
+      '@drathal/components': link:../../packages/components
+      svelte: 3.55.1
+    devDependencies:
+      '@sveltejs/adapter-vercel': 2.1.1_@sveltejs+kit@1.8.3
+      '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.1.4
+      autoprefixer: 10.4.13_postcss@8.4.21
+      cssnano: 5.1.15_postcss@8.4.21
+      postcss: 8.4.21
+      sass: 1.58.3
+      svelte-check: 3.0.4_vstrx2rdb57v577urqmclz2c3u
+      svelte-preprocess: 5.0.1_vstrx2rdb57v577urqmclz2c3u
+      vite: 4.1.4_sass@1.58.3
+      vitest: 0.28.5_sass@1.58.3
+
   apps/homepage:
     specifiers:
       '@drathal/components': workspace:*
@@ -66,6 +95,35 @@ importers:
       autoprefixer: 10.4.13_postcss@8.4.21
       cssnano: 5.1.15_postcss@8.4.21
       front-matter: 4.0.2
+      postcss: 8.4.21
+      sass: 1.58.3
+      svelte-check: 3.0.4_vstrx2rdb57v577urqmclz2c3u
+      svelte-preprocess: 5.0.1_vstrx2rdb57v577urqmclz2c3u
+      vite: 4.1.4_sass@1.58.3
+      vitest: 0.28.5_sass@1.58.3
+
+  apps/todo:
+    specifiers:
+      '@drathal/components': workspace:*
+      '@sveltejs/adapter-vercel': ^2.1.1
+      '@sveltejs/kit': ^1.8.3
+      autoprefixer: ^10.4.13
+      cssnano: ^5.1.15
+      postcss: ^8.4.21
+      sass: ^1.58.3
+      svelte: ^3.55.1
+      svelte-check: ^3.0.4
+      svelte-preprocess: ^5.0.1
+      vite: ^4.1.4
+      vitest: ^0.28.5
+    dependencies:
+      '@drathal/components': link:../../packages/components
+      svelte: 3.55.1
+    devDependencies:
+      '@sveltejs/adapter-vercel': 2.1.1_@sveltejs+kit@1.8.3
+      '@sveltejs/kit': 1.8.3_svelte@3.55.1+vite@4.1.4
+      autoprefixer: 10.4.13_postcss@8.4.21
+      cssnano: 5.1.15_postcss@8.4.21
       postcss: 8.4.21
       sass: 1.58.3
       svelte-check: 3.0.4_vstrx2rdb57v577urqmclz2c3u
