@@ -6,7 +6,7 @@
   "packageManager": "pnpm@7.26.2",
   "workspaces": [
 		"apps/**",
-		"packages/components"
+		"packages/**"
 	],
   "scripts": {
     "dev": "pnpm --parallel dev",
