@@ -1,0 +1,9 @@
+{
+  "extends": ["../../.eslintrc.cjs"],
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "extraFileExtensions": [".svelte"],
+    "project": "apps/homepage/tsconfig.json"
+  }
+}

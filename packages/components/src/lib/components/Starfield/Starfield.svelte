@@ -1,16 +1,15 @@
 <script lang="ts">
   import { onMount } from 'svelte';
 
-  let canvas: any;
+  let canvas: HTMLCanvasElement;
   let ctx: CanvasRenderingContext2D | null | false;
-  let width: number = 150;
-  let height: number = 150;
+  let width = 150;
+  let height = 150;
   let stars: Star[][] = [];
   let show = false;
   let animates = false;
-  let frame: any;
-  let animationStyle = '';
-  let showHandler: any;
+  let frame: number;
+  let showHandler: NodeJS.Timer;
 
   export let starsConfig = [
     {
@@ -53,45 +52,11 @@
     color: string;
   }
 
-  interface FadeParams {
-    duration?: number;
-    direction?: 'in' | 'out';
-  }
-
-  onMount(() => {
-    startStarAnimation();
-    return () => cancelAnimationFrame(frame);
-  });
-
   const random = (min: number, max: number): number => Math.random() * (max - min) + min;
-
-  const startStarAnimation = () => {
-    ctx = canvas && canvas.getContext('2d');
-    width = Math.ceil(window.innerWidth);
-    height = Math.ceil(window.innerHeight);
-    createStars();
-    frame = requestAnimationFrame(animateStars);
-    show = true;
-  };
 
   const stopStarAnimation = () => {
     cancelAnimationFrame(frame);
     show = false;
-  };
-
-  const createStars = () => {
-    stars = [];
-    starsConfig.forEach((conf) => {
-      createStarLayer(
-        conf.amount * width,
-        conf.minRadius,
-        conf.maxRadius,
-        conf.minOpacity,
-        conf.maxOpacity,
-        conf.color,
-        conf.speed
-      );
-    });
   };
 
   const createStarLayer = (
@@ -117,6 +82,21 @@
     stars.push(line);
   };
 
+  const createStars = () => {
+    stars = [];
+    starsConfig.forEach((conf) => {
+      createStarLayer(
+        conf.amount * width,
+        conf.minRadius,
+        conf.maxRadius,
+        conf.minOpacity,
+        conf.maxOpacity,
+        conf.color,
+        conf.speed
+      );
+    });
+  };
+
   const animateStars = (): void => {
     if (!ctx) return;
     frame = requestAnimationFrame(animateStars);
@@ -124,7 +104,7 @@
 
     for (let k = 0; k < stars.length; k++) {
       for (let i = 0; i < stars[k].length; i++) {
-        let s = stars[k][i];
+        const s = stars[k][i];
 
         ctx.globalAlpha = s.opacity;
         ctx.beginPath();
@@ -143,6 +123,15 @@
     }
   };
 
+  const startStarAnimation = () => {
+    ctx = canvas && canvas.getContext('2d');
+    width = Math.ceil(window.innerWidth);
+    height = Math.ceil(window.innerHeight);
+    createStars();
+    frame = requestAnimationFrame(animateStars);
+    show = true;
+  };
+
   const handleResize = () => {
     if (!show) return;
     if (animates) return;
@@ -153,21 +142,21 @@
 
   const animationStart = () => {
     animates = true;
-    const style = getComputedStyle(canvas);
-    animationStyle = style.animation;
   };
 
   const animationEnd = () => {
     animates = false;
-
-    const style = getComputedStyle(canvas);
-
     if (show === false) {
       canvas.style.opacity = '0';
     } else {
       canvas.style.opacity = '1';
     }
   };
+
+  onMount(() => {
+    startStarAnimation();
+    return () => cancelAnimationFrame(frame);
+  });
 </script>
 
 <canvas

@@ -29,6 +29,9 @@ module.exports = {
     es2017: true,
     node: true
   },
+  globals: {
+    NodeJS: true
+  },
   settings: {
     'import/parsers': {
       '@typescript-eslint/parser': ['.cjs', '.js', '.ts', '.svelte']
@@ -51,6 +54,7 @@ module.exports = {
     'no-param-reassign': 0,
     'import/extensions': 0,
     'import/no-extraneous-dependencies': 0,
-    'import/no-mutable-exports': 0
+    'import/no-mutable-exports': 0,
+    allowForLoopAfterthoughts: true
   }
 };
