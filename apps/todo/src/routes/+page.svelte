@@ -3,7 +3,11 @@
 </svelte:head>
 
 <section>
-  <h1>Forms</h1>
+  <h1>Login</h1>
 
-  <p><a href="/forms">Test 1</a></p>
+  <form method="POST" action="/login">
+    <input type="text" name="username" placeholder="Username" />
+    <input type="password" name="password" placeholder="Password" />
+    <button type="submit">Login</button>
+  </form>
 </section>
