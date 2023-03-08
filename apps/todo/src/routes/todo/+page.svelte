@@ -10,7 +10,7 @@
   export let data: PageData;
 
   async function addTodo(event: Event) {
-    const formElementg923 clam = event.target as HTMLFormElement;
+    const formElement = event.target as HTMLFormElement;
     const data = new FormData(formElement);
     const response = await fetch(formElement.action, {
       method: formElement.method,
