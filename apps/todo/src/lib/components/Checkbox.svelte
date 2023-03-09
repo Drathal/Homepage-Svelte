@@ -20,7 +20,6 @@
       display: none;
     }
 
-    input[type='submit'],
     button[type='submit'] {
       position: absolute;
       top: 0;
