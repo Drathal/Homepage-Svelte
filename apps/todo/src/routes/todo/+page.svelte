@@ -1,52 +1,72 @@
 <script lang="ts">
-  import type { PageData } from './$types';
+  import type { ActionData, PageData } from './$types';
+  import Checkbox from '$lib/components/Checkbox.svelte';
 
-  type Data = {
-    success: boolean;
-    errors: Record<string, string>;
-  };
-
-  let formData: Data;
+  const debug = false;
   export let data: PageData;
-
-  async function addTodo(event: Event) {
-    const formElement = event.target as HTMLFormElement;
-    const data = new FormData(formElement);
-    const response = await fetch(formElement.action, {
-      method: formElement.method,
-      body: data
-    });
-    const responeData = await response.json();
-
-    formData = responeData;
-    formElement.reset();
-  }
-  async function removeTodo(event: Event) {}
+  export let form: ActionData;
 </script>
 
-<ul>
-  {#each data.todos as todo}
-    <li>
-      <span><input type="checkbox" bind:checked={todo.completed} /></span>
-      <span class:done={todo.completed}>{todo.text}</span>
-      <span>
-        <form on:submit|preventDefault={removeTodo} method="POST">
-          <input type="hidden" name="id" value={todo.id} />
-          <button type="submit" class="delete">Remove</button>
-        </form>
-      </span>
-    </li>
-  {/each}
-</ul>
+<section>
+  <form method="POST" action="?/addTodo">
+    <input
+      type="text"
+      name="text"
+      placeholder="New todo"
+      class:error={form?.errors?.text?.message}
+    />
+    {#if form?.errors?.text?.message}
+      <p class="error-text">{form?.errors?.text?.message}</p>
+    {/if}
+    <button type="submit">Add</button>
+    <button type="submit" formaction="?/clearTodos">Clear</button>
+  </form>
 
-<form on:submit|preventDefault={addTodo} method="POST">
-  <input type="text" name="text" placeholder="New todo" />
-  <button type="submit">Add</button>
-</form>
+  {#if form?.success}
+    <p>Added todo! 🥳</p>
+  {/if}
+
+  <ul>
+    {#each data.todos as todo, i}
+      <li>
+        <span>
+          <form method="POST" action="?/toggleTodo">
+            <Checkbox checked={todo.completed} name="completed">
+              <input type="hidden" name="id" value={todo.id} />
+            </Checkbox>
+          </form>
+        </span>
+        <span class="text" class:done={todo.completed}>{todo.text}</span>
+        <span>
+          <form method="POST" action="?/removeTodo">
+            <input type="hidden" name="id" value={todo.id} />
+            <button type="submit" class="delete">❌</button>
+          </form>
+        </span>
+      </li>
+    {/each}
+  </ul>
+
+  {#if debug}
+    <p>form:</p>
+    <pre>{JSON.stringify(form, null, 2)}</pre>
+    <p>data:</p>
+    <pre>{JSON.stringify(data, null, 2)}</pre>
+  {/if}
+</section>
 
 <style lang="scss">
   .done {
     text-decoration: line-through;
+    opacity: 0.5;
+  }
+
+  .error {
+    border-color: red;
+  }
+
+  .error-text {
+    color: red;
   }
 
   form {
@@ -63,7 +83,13 @@
       align-items: center;
 
       span {
-        flex: 1;
+        &.text {
+          flex: 1;
+          margin: 0 1em;
+          overflow: hidden;
+          max-height: 1.5em;
+          line-height: 1.5em;
+        }
       }
 
       .delete {

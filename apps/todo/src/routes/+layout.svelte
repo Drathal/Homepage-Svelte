@@ -3,8 +3,6 @@
   import '../app.scss';
 </script>
 
-<header>header</header>
-
 <main>
   <slot />
 </main>

@@ -10,4 +10,6 @@
     <input type="password" name="password" placeholder="Password" />
     <button type="submit">Login</button>
   </form>
+
+  <a href="/todo">Todo</a>
 </section>

@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "svelte-kit sync",
-    "dev": "ORIGIN=http://localhost:* vite dev",
+    "dev": "ORIGIN=* vite dev",
     "build": "vite build; npm run build:clear; npm run build:copy",
     "build:clear":"find ../../.vercel_todo -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel_forms/output/static/*",
     "build:copy":"cp -a .vercel/* ../../.vercel_forms",

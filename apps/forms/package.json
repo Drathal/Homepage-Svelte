@@ -7,8 +7,8 @@
     "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "vite build; npm run build:clear; npm run build:copy",
-    "build:clear":"find ../../.vercel_forms -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel_forms/output/static/*",
-    "build:copy":"cp -a .vercel/* ../../.vercel_forms",
+    "build:clear": "find ../../.vercel_forms -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel_forms/output/static/*",
+    "build:copy": "cp -a .vercel/* ../../.vercel_forms",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -19,8 +19,9 @@
   },
   "dependencies": {
     "@drathal/components": "workspace:*",
-    "svelte": "^3.55.1"
-
+    "svelte": "^3.55.1",
+    "zod": "^3.21.4",
+    "zod-form-data": "^2.0.0"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^2.1.1",

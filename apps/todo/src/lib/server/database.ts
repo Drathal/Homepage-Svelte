@@ -1,12 +1,8 @@
-type Todo = {
-  id: number;
-  text: string;
-  completed: boolean;
-};
+import type { TodoAPI } from '$lib/todoSchema';
 
-export let todos: Todo[] = [
-  { id: Date.now(), text: 'Learn about Svelte', completed: false },
-  { id: Date.now(), text: 'Deploy my Stuff', completed: false }
+export let todos: TodoAPI[] = [
+  { id: 1, text: 'Learn about Svelte', completed: false },
+  { id: 2, text: 'Deploy my Stuff', completed: false }
 ];
 
 export function getTodos() {
@@ -14,11 +10,14 @@ export function getTodos() {
 }
 
 export function addTodo(text: string) {
-  todos = [{ id: Date.now(), text, completed: false }, ...todos];
+  const todo = { id: Date.now(), text, completed: false };
+  todos = [todo, ...todos];
+  return todo;
 }
 
 export function removeTodo(id: number) {
   todos = todos.filter((todo) => todo.id !== id);
+  return todos.find((todo) => todo.id === id);
 }
 
 export function clearTodos() {
@@ -43,6 +42,6 @@ export function toggleTodo(id: number) {
   });
 }
 
-export function setTodos(newTodos: Todo[]) {
+export function setTodos(newTodos: TodoAPI[]) {
   todos = newTodos;
 }
