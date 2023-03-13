@@ -9,14 +9,12 @@
     "sync": "pnpm --parallel prepare",
     "build": "pnpm --parallel build",
     "preview": "pnpm --filter homepage preview",
-    "test": "pnpm --parallel  test",
-    "check": "pnpm --parallel  check",
-    "check:watch": "pnpm --parallel  check:watch",
-    "test:unit": "pnpm --parallel  test:unit",
+    "test": "pnpm --parallel test",
+    "check": "pnpm --parallel check",
+    "check:watch": "pnpm --parallel check:watch",
+    "test:unit": "pnpm --parallel test:unit",
     "lint": "pnpm --parallel  lint",
-    "format": "pnpm --parallel format",
-    "l": "prettier --plugin-search-dir . --check .",
-    "e": "eslint ."
+    "format": "pnpm --parallel format"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
