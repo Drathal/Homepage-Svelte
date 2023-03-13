@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "svelte-kit sync",
+    "sync-components": "pnpm --filter components prepare",
     "dev": "ORIGIN=* vite dev",
     "build": "vite build",
     "preview": "vite preview",
