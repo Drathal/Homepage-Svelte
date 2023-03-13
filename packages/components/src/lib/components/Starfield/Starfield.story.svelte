@@ -34,6 +34,7 @@
   ];
 
   // Loading Component Dynamically because of Histoire dont know canvas on collecting stories
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   let Starfield: any;
   onMount(async () => {
     if (isCollecting()) return;

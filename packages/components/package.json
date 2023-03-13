@@ -5,6 +5,7 @@
   "type": "module",
   "main": "src/lib/index.ts",
   "scripts": {
+    "sync": "svelte-kit sync",
     "dev": "concurrently npm:dev:*",
     "dev:histoire": "histoire dev",
     "dev:svelte": "vite dev",

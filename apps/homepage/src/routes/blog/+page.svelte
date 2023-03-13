@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { page } from '$app/stores';
   import { Section, BlogCard } from '@drathal/components';
+  import { page } from '$app/stores';
   import type { BlogPost } from '$lib/posts';
 
   export let data: { posts: BlogPost[] };

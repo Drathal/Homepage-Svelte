@@ -1,43 +1,43 @@
 <script lang="ts">
-  import { onMount } from 'svelte'
+  import { onMount } from 'svelte';
 
-  import { clickOutside } from '../../actions/clickOutside'
-  import Icon from '../Icon/Icon.svelte'
-  import GitHubCorner from '../GitHubCorner/GitHubCorner.svelte'
-  import NavLink from './NavLink.svelte'
+  import { clickOutside } from '../../actions/clickOutside';
+  import Icon from '../Icon/Icon.svelte';
+  import GitHubCorner from '../GitHubCorner/GitHubCorner.svelte';
+  import NavLink from './NavLink.svelte';
 
-  export let rightNavItems: typeof leftNavItems = []
-  export let currentRoute: string | undefined | null = ''
+  export let rightNavItems: typeof leftNavItems = [];
+  export let currentRoute: string | undefined | null = '';
   export let leftNavItems = [
     {
       name: '$home',
       path: ''
     }
-  ]
+  ];
 
-  let showMobileMenu = false
-  let isMobileSize = false
+  let showMobileMenu = false;
+  let isMobileSize = false;
 
-  let mobileRightNavItems = [
+  const mobileRightNavItems = [
     ...rightNavItems,
     {
       name: 'gitHub',
       path: 'http://www.github.com/drathal'
     }
-  ]
+  ];
 
   const handleClickOutside = () => {
-    showMobileMenu = false
-  }
+    showMobileMenu = false;
+  };
 
   const handleMobileIconClick = () => {
-    showMobileMenu = !showMobileMenu
-  }
+    showMobileMenu = !showMobileMenu;
+  };
 
-  const matches = (query: string) => window.matchMedia(query).matches
-  const handleResize = () => (isMobileSize = matches('(max-width: 767px)'))
+  const matches = (query: string) => window.matchMedia(query).matches;
+  const handleResize = () => (isMobileSize = matches('(max-width: 767px)'));
 
-  onMount(handleResize)
+  onMount(handleResize);
 </script>
 
 <svelte:window on:resize|passive={handleResize} />

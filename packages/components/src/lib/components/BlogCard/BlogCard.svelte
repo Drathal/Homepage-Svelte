@@ -6,11 +6,11 @@
     title: string;
     description: string;
     published: boolean;
-    content?: any;
+    content?: unknown;
     tags: string[];
   }
 
-  let evenOdd = (i: number) => (i % 2 ? `even` : `odd`);
+  const evenOdd = (i: number) => (i % 2 ? `even` : `odd`);
 
   export let posts: BlogPost[] = [];
   export let routeID: string | null = '';

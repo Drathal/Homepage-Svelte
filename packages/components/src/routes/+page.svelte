@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Typer from '$lib/components/Typer/Typer.svelte'
+  import Typer from '$lib/components/Typer/Typer.svelte';
 </script>
 
 <h1>Welcome to your library project</h1>

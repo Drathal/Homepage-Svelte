@@ -1,9 +1,8 @@
-import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
+import type { Actions, PageServerLoad } from './$types';
 
 import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
-import { addTodoSchema, removeTodoSchema, toggleTodoSchema } from '$lib/todoSchema';
-import { handleErrors, handleSuccess } from '$lib/todoHandler';
+import { validateAddTodo, validateRemoveTodo, validateToggleTodo } from '$lib/todoSchema';
 
 export const load: PageServerLoad = async () => {
   const todos = getTodos();
@@ -13,39 +12,39 @@ export const load: PageServerLoad = async () => {
 export const actions: Actions = {
   addTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const zodData = addTodoSchema.safeParse(formData);
+    const { parsedData, errors } = validateAddTodo(formData);
 
-    if (!zodData.success) return handleErrors(zodData.error.errors);
+    if (errors) return fail(400, { success: false, form: 'addTodo', errors });
 
-    addTodo(zodData.data.text);
+    addTodo(parsedData.text);
 
-    return handleSuccess();
+    return { success: true, form: 'addTodo' };
   },
 
   removeTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const zodData = removeTodoSchema.safeParse(formData);
+    const { parsedData, errors } = validateRemoveTodo(formData);
 
-    console.dir(zodData);
+    if (errors) return fail(400, { success: false, form: 'removeTodo', errors });
 
-    if (!zodData.success) return handleErrors(zodData.error.errors);
+    removeTodo(parsedData.id);
 
-    removeTodo(zodData.data.id);
-
-    return handleSuccess();
+    return { success: true, form: 'removeTodo' };
   },
+
   clearTodos: () => {
     clearTodos();
-    return handleSuccess();
+    return { success: true };
   },
+
   toggleTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const zodData = toggleTodoSchema.safeParse(formData);
+    const { parsedData, errors } = validateToggleTodo(formData);
 
-    if (!zodData.success) return handleErrors(zodData.error.errors);
+    if (errors) return fail(400, { success: false, form: 'toggleTodo', errors });
 
-    toggleTodo(zodData.data.id);
+    toggleTodo(parsedData.id);
 
-    return handleSuccess();
+    return { success: true, form: 'toggleTodo' };
   }
 };

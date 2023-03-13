@@ -1,15 +1,15 @@
 <script>
-  import { page } from '$app/stores'
-  import '../app.scss'
+  import { page } from '$app/stores';
+  import '../app.scss';
 
-  import { Starfield, Nav, ScrollToTop } from '@drathal/components'
+  import { Starfield, Nav, ScrollToTop } from '@drathal/components';
 
   const leftNavItems = [
     {
       name: '$home',
       path: '/'
     }
-  ]
+  ];
 
   const rightNavItems = [
     {
@@ -28,7 +28,7 @@
       name: 'imprint',
       path: '/imprint'
     }
-  ]
+  ];
 </script>
 
 <Starfield />

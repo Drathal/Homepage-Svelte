@@ -1,5 +1,6 @@
 <script lang="ts">
   import Icon from '../Icon/Icon.svelte';
+
   interface project {
     name: string;
     subtitle: string;

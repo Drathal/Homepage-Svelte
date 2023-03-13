@@ -6,18 +6,25 @@ export const todoSchema = z.object({
   completed: z.boolean()
 });
 
-// completed: z.boolean()
-// completed: z.enum(['on'])
+export type TodoAPI = z.infer<typeof todoSchema>;
 
-export const addTodoSchema = todoSchema.pick({ text: true });
-export const removeTodoSchema = todoSchema.pick({ id: true });
-export const toggleTodoSchema = todoSchema.pick({ id: true });
-
-export type ErrorIssues = z.ZodIssue[];
-export type TodoAPI = z.TypeOf<typeof todoSchema>;
-export type ErrorsObject = {
-  [K in keyof TodoAPI]?: {
-    field: K;
-    message: string;
-  };
+type FormData = {
+  [k: string]: FormDataEntryValue;
 };
+
+const validationResult = <T>(result: z.SafeParseReturnType<unknown, T>) => {
+  if (!result.success) {
+    return { errors: result.error.flatten().fieldErrors };
+  }
+
+  return { parsedData: result.data };
+};
+
+export const validateAddTodo = (formData: FormData) =>
+  validationResult(todoSchema.pick({ text: true }).safeParse(formData));
+
+export const validateRemoveTodo = (formData: Partial<FormData>) =>
+  validationResult(todoSchema.pick({ id: true }).safeParse(formData));
+
+export const validateToggleTodo = (formData: Partial<FormData>) =>
+  validationResult(todoSchema.pick({ id: true }).safeParse(formData));

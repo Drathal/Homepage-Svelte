@@ -2,7 +2,7 @@
   import type { Hst } from '@histoire/plugin-svelte';
   import BlogCard from './BlogCard.svelte';
 
-  let posts = [
+  const posts = [
     {
       slug: 'first-post',
       datePublished: '2021-01-01',

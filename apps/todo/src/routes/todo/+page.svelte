@@ -2,21 +2,16 @@
   import type { ActionData, PageData } from './$types';
   import Checkbox from '$lib/components/Checkbox.svelte';
 
-  const debug = false;
+  const debug = true;
   export let data: PageData;
   export let form: ActionData;
 </script>
 
 <section>
   <form method="POST" action="?/addTodo">
-    <input
-      type="text"
-      name="text"
-      placeholder="New todo"
-      class:error={form?.errors?.text?.message}
-    />
-    {#if form?.errors?.text?.message}
-      <p class="error-text">{form?.errors?.text?.message}</p>
+    <input type="text" name="text" placeholder="New todo" class:error={form?.errors?.text} />
+    {#if form?.errors?.text}
+      <p class="error-text">{form?.errors?.text}</p>
     {/if}
     <button type="submit">Add</button>
     <button type="submit" formaction="?/clearTodos">Clear</button>
@@ -27,7 +22,7 @@
   {/if}
 
   <ul>
-    {#each data.todos as todo, i}
+    {#each data.todos as todo}
       <li>
         <span>
           <form method="POST" action="?/toggleTodo">

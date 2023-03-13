@@ -1,5 +1,4 @@
 {
-  "extends": "./.svelte-kit/tsconfig.json",
   "compilerOptions": {
     "allowJs": true,
     "checkJs": true,
@@ -10,5 +9,14 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true
-  }
+  },
+  "include": [
+    ".eslintrc.cjs",
+    ".prettierrc.cjs",
+    "./**/histoire.config.ts",
+    "./**/playwright.config.ts",
+    "./**/svelte.config.js",
+    "./**/postcss.config.cjs",
+    "./**/vite.config.js"
+  ]
 }

@@ -25,7 +25,7 @@
     }
   ];
 
-  export let currentRoute: string = '#about';
+  export let currentRoute = '#about';
   export let Hst: Hst;
 </script>
 

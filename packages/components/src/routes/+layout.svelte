@@ -1,5 +1,5 @@
 <script>
-  import '../lib/layout.scss';
+  import '$lib/layout.scss';
   import Starfield from '$lib/Starfield.svelte';
 </script>
 

@@ -1,12 +1,12 @@
 module.exports = {
-  "useTabs": false,
-  "semi": true,
-  "tabWidth": 2,
-  "singleQuote": true,
-  "trailingComma": "none",
-  "printWidth": 100,
-  "plugins": ["prettier-plugin-svelte"],
-  "pluginSearchDirs": ["."],
-  "overrides": [{ "files": "*.svelte", "options": { "parser": "svelte" } }],
-  "svelteSortOrder": "options-scripts-markup-styles"
-}
+  useTabs: false,
+  semi: true,
+  tabWidth: 2,
+  singleQuote: true,
+  trailingComma: 'none',
+  printWidth: 100,
+  plugins: ['prettier-plugin-svelte'],
+  pluginSearchDirs: ['.'],
+  overrides: [{ files: '*.svelte', options: { parser: 'svelte' } }],
+  svelteSortOrder: 'options-scripts-markup-styles'
+};

@@ -7,8 +7,8 @@
     "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "vite build; npm run build:clear; npm run build:copy",
-    "build:clear":"find ../../.vercel -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel/output/static/*",
-    "build:copy":"cp -a .vercel/* ../../.vercel",
+    "build:clear": "rm -fr ../../.vercel_homepage",
+    "build:copy": "cp -a .vercel/* ../../.vercel_homepage",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
@@ -21,7 +21,6 @@
     "@drathal/components": "workspace:*",
     "mdsvex": "^0.10.6",
     "svelte": "^3.55.1"
-
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^2.1.1",

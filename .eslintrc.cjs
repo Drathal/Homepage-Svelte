@@ -2,17 +2,16 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   extends: [
-    'eslint:recommended',
+    // 'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:svelte/recommended',
-    'airbnb-base',
-    'airbnb-typescript/base',
+    'plugin:svelte/prettier',
     'plugin:prettier/recommended'
   ],
   plugins: ['@typescript-eslint'],
   overrides: [
     {
-      files: ['**/*.svelte'],
+      files: ['*.svelte'],
       parser: 'svelte-eslint-parser',
       parserOptions: {
         parser: '@typescript-eslint/parser'
@@ -22,7 +21,8 @@ module.exports = {
   parserOptions: {
     sourceType: 'module',
     ecmaVersion: 2020,
-    extraFileExtensions: ['.svelte']
+    extraFileExtensions: ['.svelte'],
+    project: ['./tsconfig.eslint.json', 'apps/*/tsconfig.json', 'packages/*/tsconfig.json']
   },
   env: {
     browser: true,
@@ -42,19 +42,8 @@ module.exports = {
       }
     }
   },
-  env: {
-    browser: true,
-    es2017: true,
-    node: true
-  },
   rules: {
     'arrow-body-style': ['error', 'as-needed'],
-    'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }],
-    'import/prefer-default-export': 0,
-    'no-param-reassign': 0,
-    'import/extensions': 0,
-    'import/no-extraneous-dependencies': 0,
-    'import/no-mutable-exports': 0,
-    allowForLoopAfterthoughts: true
+    'prefer-arrow-callback': ['error', { allowNamedFunctions: false, allowUnboundThis: true }]
   }
 };

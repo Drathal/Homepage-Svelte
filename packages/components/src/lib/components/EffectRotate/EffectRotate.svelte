@@ -7,20 +7,15 @@
   let classNames: string[] = [];
   let clear: NodeJS.Timer;
   let line = 0;
-  export let duration: number = 4000;
-  export let animateDuration: number = 500;
-  export let delay: number = 50;
 
   function fadeIn(node: HTMLElement, { delay = 0, duration = animateDuration } = {}) {
     return {
       delay,
       duration,
-      css: (t: number) => {
-        return `
+      css: (t: number) => `
         transform: rotateX(${90 - t * 90}deg) translateY(${-1 + t}em);
         opacity: ${t};
-      `;
-      }
+      `
     };
   }
 
@@ -28,12 +23,10 @@
     return {
       delay,
       duration,
-      css: (t: number, tt: number) => {
-        return `    
+      css: (t: number, tt: number) => `    
         transform:  translateY(${tt * 0.5}em) rotateX(${tt * -88}deg);
         opacity: ${t};
-      `;
-      }
+      `
     };
   }
 
@@ -44,7 +37,7 @@
     const nodesArray = Array.from(inputNodes);
 
     nodesArray.forEach((node) => {
-      const className = node.className;
+      const { className } = node;
       classNames = [...classNames, className];
       const text = node.textContent || '';
       const characters = text.split('');
@@ -62,6 +55,10 @@
     line += 1;
     if (line >= splitedTexts.length) line = 0;
   };
+
+  export let duration = 4000;
+  export let animateDuration = 500;
+  export let delay = 50;
 </script>
 
 <span bind:this={wrapperNode} class="input">

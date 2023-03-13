@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Section } from '@drathal/components'
+  import { Section } from '@drathal/components';
 </script>
 
 <svelte:head>

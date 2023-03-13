@@ -7,7 +7,7 @@
     "prepare": "svelte-kit sync",
     "dev": "vite dev",
     "build": "vite build; npm run build:clear; npm run build:copy",
-    "build:clear": "find ../../.vercel_forms -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel_forms/output/static/*",
+    "build:clear": "rm -fr ../../.vercel_forms",
     "build:copy": "cp -a .vercel/* ../../.vercel_forms",
     "preview": "vite preview",
     "test": "playwright test",

@@ -12,7 +12,7 @@ import {
 
 describe('getTodos()', () => {
   it('should return the actual todos', () => {
-    let result = getTodos();
+    const result = getTodos();
     expect(result).toEqual(todos);
   });
 });
@@ -25,7 +25,7 @@ describe('setTodos()', () => {
       { id: 3, text: 'Walk the dog', completed: false }
     ];
     setTodos(newTodos);
-    let result = getTodos();
+    const result = getTodos();
     expect(result).toEqual(todos);
   });
 });
