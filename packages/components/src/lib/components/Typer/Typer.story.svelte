@@ -1,18 +1,10 @@
 <script lang="ts">
   import type { Hst } from '@histoire/plugin-svelte';
-  import { isCollecting } from 'histoire/client';
-  import { onMount } from 'svelte';
+  import Typer from './Typer.svelte';
 
   export let Hst: Hst;
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  let Typer: any;
-  onMount(async () => {
-    if (isCollecting()) return;
-    Typer = (await import('./Typer.svelte')).default;
-  });
 </script>
 
 <Hst.Story>
-  <svelte:component this={Typer}>Hi! <b>BOLD</b>./Type.svelte</svelte:component>
+  <Typer>Hi! <b>BOLD</b>./Type.svelte</Typer>
 </Hst.Story>
