@@ -5,16 +5,16 @@
   "license": "MIT",
   "packageManager": "pnpm@7.26.2",
   "scripts": {
-    "dev": "pnpm --parallel dev",
-    "sync": "pnpm --parallel prepare",
-    "build": "pnpm --parallel build",
+    "dev": "pnpm --parallel -r dev",
+    "sync": "pnpm --parallel -r prepare",
+    "build": "pnpm --parallel -r build",
     "preview": "pnpm --filter homepage preview",
-    "test": "pnpm --parallel test",
-    "check": "pnpm --parallel check",
-    "check:watch": "pnpm --parallel check:watch",
-    "test:unit": "pnpm --parallel test:unit",
-    "lint": "pnpm --parallel  lint",
-    "format": "pnpm --parallel format"
+    "test": "pnpm --parallel -r test",
+    "check": "pnpm --parallel -r check",
+    "check:watch": "pnpm --parallel -r check:watch",
+    "test:unit": "pnpm --parallel -r  test:unit",
+    "lint": "pnpm --parallel -r lint",
+    "format": "pnpm --parallel -r format"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.2",
