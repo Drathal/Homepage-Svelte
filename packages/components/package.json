@@ -4,6 +4,12 @@
   "private": false,
   "type": "module",
   "main": "src/lib/index.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "svelte": "./dist/index.js"
+    }
+  },
 
   "scripts": {
     "sync": "svelte-kit sync",
