@@ -6,9 +6,7 @@
   "main": "src/lib/index.ts",
   "scripts": {
     "sync": "svelte-kit sync",
-    "dev": "concurrently npm:dev:*",
-    "dev:histoire": "histoire dev",
-    "dev:svelte": "vite dev",
+    "dev": "histoire dev",
     "build": "svelte-kit sync && svelte-package",
     "prepublishOnly": "echo 'Did you mean to publish `./package/`, instead of `./`?' && exit 1",
     "test": "playwright test",
