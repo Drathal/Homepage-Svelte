@@ -20,6 +20,7 @@
   "devDependencies": {
     "@histoire/plugin-svelte": "^0.15.8",
     "@picocss/pico": "^1.5.7",
+    "@peeky/test": "^0.14.1",
     "@playwright/test": "^1.31.2",
     "@sveltejs/adapter-auto": "^2.0.0",
     "@sveltejs/kit": "^1.11.0",
