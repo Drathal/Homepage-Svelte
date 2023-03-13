@@ -18,19 +18,19 @@
   "dependencies": {
     "@drathal/components": "workspace:*",
     "mdsvex": "^0.10.6",
-    "svelte": "^3.55.1"
+    "svelte": "^3.56.0"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^2.1.1",
-    "@sveltejs/kit": "^1.8.3",
+    "@sveltejs/adapter-vercel": "^2.3.1",
+    "@sveltejs/kit": "^1.11.0",
     "front-matter": "^4.0.2",
-    "autoprefixer": "^10.4.13",
+    "autoprefixer": "^10.4.14",
     "cssnano": "^5.1.15",
     "postcss": "^8.4.21",
-    "sass": "^1.58.3",
-    "svelte-check": "^3.0.4",
+    "sass": "^1.59.2",
+    "svelte-check": "^3.1.3",
     "svelte-preprocess": "^5.0.1",
     "vite": "^4.1.4",
-    "vitest": "^0.28.5"
+    "vitest": "^0.29.2"
   }
 }
