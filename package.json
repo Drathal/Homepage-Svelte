@@ -7,7 +7,7 @@
   "scripts": {
     "dev": "pnpm --parallel -r dev",
     "sync": "pnpm --parallel -r prepare",
-    "build": "pnpm --parallel -r build",
+    "build": "pnpm -r build",
     "preview": "pnpm --filter homepage preview",
     "test": "pnpm --parallel -r test",
     "check": "pnpm --parallel -r check",
