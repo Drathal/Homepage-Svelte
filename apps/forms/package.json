@@ -6,9 +6,7 @@
   "scripts": {
     "prepare": "svelte-kit sync",
     "dev": "vite dev",
-    "build": "vite build; npm run build:clear; npm run build:copy",
-    "build:clear": "rm -fr ../../.vercel_forms",
-    "build:copy": "cp -a .vercel/* ../../.vercel_forms",
+    "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
