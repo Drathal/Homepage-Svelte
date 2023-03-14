@@ -6,7 +6,8 @@
   "packageManager": "pnpm@7.26.2",
   "scripts": {
     "dev": "pnpm --parallel -r dev",
-    "build": "pnpm --filter components build && pnpm --filter homepage build && ls -la .vercel ** cat .vercel/project.json",
+    "build": "pnpm --filter components build && pnpm --filter homepage build && pnpm debug",
+    "debug" : "ls -la .vercel && cat .vercel/project.json",
     "preview": "pnpm --filter homepage preview",
     "test": "pnpm --parallel -r test",
     "check": "pnpm --parallel -r check",
