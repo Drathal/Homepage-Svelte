@@ -6,8 +6,9 @@
   "packageManager": "pnpm@7.26.2",
   "scripts": {
     "dev": "pnpm --parallel -r dev",
-    "build": "pnpm --filter components build && pnpm --filter homepage build && pnpm debug",
+    "build": "pnpm --filter components build && pnpm --filter homepage build && pnpm debug && pnpm debug2",
     "debug" : "find . ! -path '*node_modules*' ! -path '*projects*' ! -path '*svelte-kit*' ! -path '*.git*' ! -path '*packages*'",
+    "debug2" : "cat ./.vercel/project.json",
     "preview": "pnpm --filter homepage preview",
     "test": "pnpm --parallel -r test",
     "check": "pnpm --parallel -r check",
