@@ -6,8 +6,7 @@
   "packageManager": "pnpm@7.26.2",
   "scripts": {
     "dev": "pnpm --parallel -r dev",
-    "sync-components": "pnpm --filter components prepare",
-    "build": "pnpm -r build",
+    "build": "pnpm --filter components build && pnpm --filter homepage build",
     "preview": "pnpm --filter homepage preview",
     "test": "pnpm --parallel -r test",
     "check": "pnpm --parallel -r check",
