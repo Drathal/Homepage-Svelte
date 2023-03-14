@@ -2,19 +2,16 @@ import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
 
 import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
-import { validateAddTodo, validateRemoveTodo, validateToggleTodo } from '$lib/todoSchema';
+import { validate } from '$lib/todoSchema';
 
-export const load: PageServerLoad = async () => {
-  const todos = getTodos();
-  return { todos };
-};
+export const load: PageServerLoad = async () => ({ todos: getTodos() });
 
 export const actions: Actions = {
   addTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors } = validateAddTodo(formData);
+    const { parsedData, errors, success } = validate.addTodo(formData);
 
-    if (errors) return fail(400, { success: false, form: 'addTodo', errors });
+    if (!success) return fail(400, { success: false, form: 'addTodo', errors });
 
     addTodo(parsedData.text);
 
@@ -23,28 +20,28 @@ export const actions: Actions = {
 
   removeTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors } = validateRemoveTodo(formData);
+    const { parsedData, errors, success } = validate.removeTodo(formData);
 
-    if (errors) return fail(400, { success: false, form: 'removeTodo', errors });
+    if (!success) return fail(400, { success: false, form: 'removeTodo', errors });
 
     removeTodo(parsedData.id);
 
     return { success: true, form: 'removeTodo' };
   },
 
-  clearTodos: () => {
-    clearTodos();
-    return { success: true };
-  },
-
   toggleTodo: async ({ request }) => {
     const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors } = validateToggleTodo(formData);
+    const { parsedData, errors, success } = validate.toggleTodo(formData);
 
-    if (errors) return fail(400, { success: false, form: 'toggleTodo', errors });
+    if (!success) return fail(400, { success: false, form: 'toggleTodo', errors });
 
     toggleTodo(parsedData.id);
 
     return { success: true, form: 'toggleTodo' };
+  },
+
+  clearTodos: () => {
+    clearTodos();
+    return { success: true };
   }
 };

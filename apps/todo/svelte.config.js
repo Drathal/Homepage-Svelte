@@ -7,7 +7,10 @@ const config = {
   extensions: ['.svelte', '.md', '.svelte.md'],
   preprocess: [vitePreprocess(), mdsvex({ extensions: ['.svelte.md', '.md', '.svx'] })],
   kit: {
-    adapter: adapter({ precompress: true })
+    adapter: adapter({ precompress: true }),
+    alias: {
+      $components: 'src/lib/components'
+    }
   }
 };
 
