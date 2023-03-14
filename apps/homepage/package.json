@@ -7,7 +7,7 @@
     "prepare": "svelte-kit sync",
     "sync-components": "pnpm --filter components prepare",
     "dev": "ORIGIN=* vite dev",
-    "build": "vite build && echo ------------------------ && ls -la && cd .vercel && la -la",
+    "build": "vite build && echo ------------------------ && ls -la && cd .vercel && ls -la",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
