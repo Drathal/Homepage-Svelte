@@ -48,7 +48,7 @@ importers:
       postcss: ^8.4.21
       sass: ^1.59.2
       svelte: ^3.56.0
-      svelte-check: ^3.1.3
+      svelte-check: ^3.1.4
       svelte-preprocess: ^5.0.1
       vite: ^4.1.4
       vitest: ^0.29.2
@@ -64,7 +64,7 @@ importers:
       cssnano: 5.1.15_postcss@8.4.21
       postcss: 8.4.21
       sass: 1.59.2
-      svelte-check: 3.1.3_4xz4jmvf5yn2jlmkfuly4q7tmq
+      svelte-check: 3.1.4_4xz4jmvf5yn2jlmkfuly4q7tmq
       svelte-preprocess: 5.0.1_4xz4jmvf5yn2jlmkfuly4q7tmq
       vite: 4.1.4_sass@1.59.2
       vitest: 0.29.2_sass@1.59.2
@@ -81,7 +81,7 @@ importers:
       postcss: ^8.4.21
       sass: ^1.59.2
       svelte: ^3.56.0
-      svelte-check: ^3.1.3
+      svelte-check: ^3.1.4
       svelte-preprocess: ^5.0.1
       vite: ^4.1.4
       vitest: ^0.29.2
@@ -97,7 +97,7 @@ importers:
       front-matter: 4.0.2
       postcss: 8.4.21
       sass: 1.59.2
-      svelte-check: 3.1.3_4xz4jmvf5yn2jlmkfuly4q7tmq
+      svelte-check: 3.1.4_4xz4jmvf5yn2jlmkfuly4q7tmq
       svelte-preprocess: 5.0.1_4xz4jmvf5yn2jlmkfuly4q7tmq
       vite: 4.1.4_sass@1.59.2
       vitest: 0.29.2_sass@1.59.2
@@ -5777,6 +5777,33 @@ packages:
       sade: 1.8.1
       svelte: 3.56.0
       svelte-preprocess: 5.0.1_jaggnctj4msbyugbagfslffsiq
+      typescript: 4.9.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - coffeescript
+      - less
+      - postcss
+      - postcss-load-config
+      - pug
+      - sass
+      - stylus
+      - sugarss
+    dev: true
+
+  /svelte-check/3.1.4_4xz4jmvf5yn2jlmkfuly4q7tmq:
+    resolution: {integrity: sha512-25Lb46ZS4IK/XpBMe4IBMrtYf23V8alqBX+szXoccb7uM0D2Wqq5rMRzYBONZnFVuU1bQG3R50lyIT5eRewv2g==}
+    hasBin: true
+    peerDependencies:
+      svelte: ^3.55.0
+    dependencies:
+      '@jridgewell/trace-mapping': 0.3.17
+      chokidar: 3.5.3
+      fast-glob: 3.2.12
+      import-fresh: 3.3.0
+      picocolors: 1.0.0
+      sade: 1.8.1
+      svelte: 3.56.0
+      svelte-preprocess: 5.0.1_igsa677tvofqmdof2n6zs6qfdm
       typescript: 4.9.5
     transitivePeerDependencies:
       - '@babel/core'
