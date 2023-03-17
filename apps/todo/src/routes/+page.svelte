@@ -1,5 +1,5 @@
 <svelte:head>
-  <title>Todo | Home</title>
+  <title>Login | Todo</title>
 </svelte:head>
 
 <section>

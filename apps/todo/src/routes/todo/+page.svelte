@@ -7,6 +7,10 @@
   export let form: ActionData;
 </script>
 
+<svelte:head>
+  <title>Create | Todo</title>
+</svelte:head>
+
 <section>
   <form method="POST" action="?/addTodo">
     <input type="text" name="text" placeholder="New todo" class:error={form?.errors?.text} />

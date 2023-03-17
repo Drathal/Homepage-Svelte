@@ -1,4 +1,4 @@
-import type { TodoAPI } from '$lib/todoSchema';
+import type { TodoAPI } from '$lib/schema/todo';
 
 export let todos: TodoAPI[] = [
   { id: 1, text: 'Learn about Svelte', completed: false },

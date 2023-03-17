@@ -1,41 +1,53 @@
-import { fail } from '@sveltejs/kit';
 import type { Actions, PageServerLoad } from './$types';
+import { fail } from '@sveltejs/kit';
 
 import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
-import { validate } from '$lib/todoSchema';
+import { validate, type PartialTodoAPI } from '$lib/schema/todo';
 
 export const load: PageServerLoad = async () => ({ todos: getTodos() });
 
 export const actions: Actions = {
   addTodo: async ({ request }) => {
-    const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors, success } = validate.addTodo(formData);
+    const result = validate.addTodo(Object.fromEntries(await request.formData()));
 
-    if (!success) return fail(400, { success: false, form: 'addTodo', errors });
+    if (!result.success) {
+      return fail(400, {
+        success: false,
+        errors: result.errors as PartialTodoAPI // TODO: fix this
+      });
+    }
 
-    addTodo(parsedData.text);
+    addTodo(result.parsedData.text);
+
+    return { success: true, e: {} };
+  },
+
+  removeTodo: async ({ request }) => {
+    const result = validate.removeTodo(Object.fromEntries(await request.formData()));
+
+    if (!result.success)
+      return fail(400, {
+        success: false,
+        form: 'addTodo',
+        errors: result.errors as PartialTodoAPI
+      });
+
+    removeTodo(result.parsedData.id);
 
     return { success: true, form: 'addTodo' };
   },
 
-  removeTodo: async ({ request }) => {
-    const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors, success } = validate.removeTodo(formData);
-
-    if (!success) return fail(400, { success: false, form: 'removeTodo', errors });
-
-    removeTodo(parsedData.id);
-
-    return { success: true, form: 'removeTodo' };
-  },
-
   toggleTodo: async ({ request }) => {
-    const formData = Object.fromEntries(await request.formData());
-    const { parsedData, errors, success } = validate.toggleTodo(formData);
+    const result = validate.removeTodo(Object.fromEntries(await request.formData()));
 
-    if (!success) return fail(400, { success: false, form: 'toggleTodo', errors });
+    if (!result.success)
+      return fail(400, {
+        success: false,
+        form: 'toggleTodo',
+        errors: result.errors as PartialTodoAPI
+      });
 
-    toggleTodo(parsedData.id);
+    toggleTodo(result.parsedData.id);
 
     return { success: true, form: 'toggleTodo' };
   },
