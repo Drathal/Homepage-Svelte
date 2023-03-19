@@ -2,58 +2,65 @@ import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
 
 import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
-import { validate, type PartialTodoAPI } from '$lib/schema/todo';
+import { type PartialTodoAPI, todoSchema } from '$lib/schema/todo';
 
 export const load: PageServerLoad = async () => ({ todos: getTodos() });
 
 export const actions: Actions = {
   addTodo: async ({ request }) => {
-    const result = validate.addTodo(Object.fromEntries(await request.formData()));
+    const zodResult = todoSchema
+      .pick({ text: true })
+      .safeParse(Object.fromEntries(await request.formData()));
 
-    if (!result.success) {
+    if (!zodResult.success) {
       return fail(400, {
         success: false,
-        errors: result.errors as PartialTodoAPI // TODO: fix this
+        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        form: 'addTodo'
       });
     }
 
-    addTodo(result.parsedData.text);
+    addTodo(zodResult.data.text);
 
-    return { success: true, e: {} };
+    return { success: true, form: 'addTodo' };
   },
 
   removeTodo: async ({ request }) => {
-    const result = validate.removeTodo(Object.fromEntries(await request.formData()));
+    const zodResult = todoSchema
+      .pick({ id: true })
+      .safeParse(Object.fromEntries(await request.formData()));
 
-    if (!result.success)
+    if (!zodResult.success)
       return fail(400, {
         success: false,
-        form: 'addTodo',
-        errors: result.errors as PartialTodoAPI
+        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        form: 'removeTodo'
       });
 
-    removeTodo(result.parsedData.id);
+    removeTodo(zodResult.data.id);
 
     return { success: true, form: 'addTodo' };
   },
 
   toggleTodo: async ({ request }) => {
-    const result = validate.removeTodo(Object.fromEntries(await request.formData()));
+    const zodResult = todoSchema
+      .pick({ id: true })
+      .safeParse(Object.fromEntries(await request.formData()));
 
-    if (!result.success)
+    if (!zodResult.success)
       return fail(400, {
         success: false,
-        form: 'toggleTodo',
-        errors: result.errors as PartialTodoAPI
+        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        form: 'toggleTodo'
       });
 
-    toggleTodo(result.parsedData.id);
+    toggleTodo(zodResult.data.id);
 
     return { success: true, form: 'toggleTodo' };
   },
 
   clearTodos: () => {
     clearTodos();
-    return { success: true };
+    return { success: true, form: 'clearTodos' };
   }
 };

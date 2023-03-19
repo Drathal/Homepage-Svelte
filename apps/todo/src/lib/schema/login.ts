@@ -1,5 +1,4 @@
 import { z } from 'zod';
-import { validationResult } from '$lib/form';
 
 export const loginSchema = z.object({
   username: z.string().min(1, { message: 'Username must be at least 1 character' }),
@@ -7,11 +6,4 @@ export const loginSchema = z.object({
 });
 
 export type LoginAPI = z.infer<typeof loginSchema>;
-type PartialLoginAPI = Partial<LoginAPI>;
-
-const validateLogin = (formData: PartialLoginAPI) =>
-  validationResult<PartialLoginAPI>(loginSchema.safeParse(formData));
-
-export const validate = {
-  login: validateLogin
-};
+export type PartialLoginAPI = Partial<LoginAPI>;
