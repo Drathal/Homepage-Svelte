@@ -2,38 +2,32 @@ import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
 
 import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
-import { type PartialTodoAPI, todoSchema } from '$lib/schema/todo';
+import { validate } from '$lib/schema/todo';
 
 export const load: PageServerLoad = async () => ({ todos: getTodos() });
 
 export const actions: Actions = {
   addTodo: async ({ request }) => {
-    const zodResult = todoSchema
-      .pick({ text: true })
-      .safeParse(Object.fromEntries(await request.formData()));
+    const zodResult = validate.addTodo(await request.formData());
 
     if (!zodResult.success) {
       return fail(400, {
-        success: false,
-        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        ...zodResult,
         form: 'addTodo'
       });
     }
 
     addTodo(zodResult.data.text);
 
-    return { success: true, form: 'addTodo' };
+    return { ...zodResult, form: 'addTodo' };
   },
 
   removeTodo: async ({ request }) => {
-    const zodResult = todoSchema
-      .pick({ id: true })
-      .safeParse(Object.fromEntries(await request.formData()));
+    const zodResult = validate.removeTodo(await request.formData());
 
     if (!zodResult.success)
       return fail(400, {
-        success: false,
-        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        ...zodResult,
         form: 'removeTodo'
       });
 
@@ -43,14 +37,11 @@ export const actions: Actions = {
   },
 
   toggleTodo: async ({ request }) => {
-    const zodResult = todoSchema
-      .pick({ id: true })
-      .safeParse(Object.fromEntries(await request.formData()));
+    const zodResult = validate.toggleTodo(await request.formData());
 
     if (!zodResult.success)
       return fail(400, {
-        success: false,
-        errors: zodResult.error.flatten().fieldErrors as PartialTodoAPI,
+        ...zodResult,
         form: 'toggleTodo'
       });
 
