@@ -10,7 +10,10 @@ const pathList: PathList = {
     'M12 15a3 3 0 1 1 0-6 3 3 0 1 1 0 6z'
   ],
   arrowUp: ['M12 19V5m-7 7 7-7 7 7'],
-  burger: ['M3 12h18M3 6h18M3 18h18']
+  burger: ['M3 12h18M3 6h18M3 18h18'],
+  trash: [
+    'M3 6h18m-2 0v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2m-6 5v6m4-6v6'
+  ]
 };
 
 export default pathList;
