@@ -3,6 +3,9 @@
   import { Icon } from '@drathal/components';
   import Checkbox from '$lib/components/Checkbox.svelte';
 
+  const debug = false;
+  let showTodoForm = true;
+
   $: progressAbsolute = data.todos.filter((todo) => todo.completed).length;
   $: progress = (progressAbsolute / data.todos.length) * 100;
   $: sortedTodos = data.todos.sort((a, b) => {
@@ -12,11 +15,8 @@
     return -1;
   });
 
-  const debug = false;
-  let hideTodoForm = true;
-
   const handleShowTodoForm = () => {
-    hideTodoForm = !hideTodoForm;
+    showTodoForm = !showTodoForm;
   };
 
   export let data: PageData;
@@ -39,13 +39,15 @@
     </div>
   </div>
 
-  <form method="POST" action="?/addTodo" class:showTodo={hideTodoForm}>
-    <input type="text" name="text" placeholder="New todo" class:error={form?.errors?.text} />
-    {#if form?.errors?.text}
-      <p class="error-text">{form?.errors?.text}</p>
-    {/if}
-    <button type="submit">Add</button>
-  </form>
+  {#if showTodoForm && form?.errors}
+    <form method="POST" action="?/addTodo">
+      <input type="text" name="text" placeholder="New todo" class:error={form?.errors?.text} />
+      {#if form?.errors?.text}
+        <p class="error-text">{form?.errors?.text}</p>
+      {/if}
+      <button type="submit">Add</button>
+    </form>
+  {/if}
 
   <div class="horizontal">
     <h3>Progress</h3>
@@ -94,9 +96,6 @@
 </section>
 
 <style lang="scss">
-  .showTodo {
-    display: none;
-  }
   button {
     white-space: nowrap;
   }
