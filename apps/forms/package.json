@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "prepare": "svelte-kit sync",
-    "dev": "ORIGIN=* vite dev",
+    "dev": "vite dev",
     "build": "vite build",
     "preview": "vite preview",
     "test": "playwright test",
@@ -17,19 +17,19 @@
   },
   "dependencies": {
     "@drathal/components": "workspace:*",
-    "svelte": "^3.57.0",
+    "svelte": "^4.0.1",
     "zod": "^3.21.4"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^2.4.1",
-    "@sveltejs/kit": "^1.14.0",
+    "@sveltejs/adapter-vercel": "^3.0.1",
+    "@sveltejs/kit": "^1.21.0",
     "autoprefixer": "^10.4.14",
-    "cssnano": "^6.0.0",
-    "postcss": "^8.4.21",
-    "sass": "^1.60.0",
-    "svelte-check": "^3.1.4",
-    "svelte-preprocess": "^5.0.3",
-    "vite": "^4.2.1",
-    "vitest": "^0.29.8"
+    "cssnano": "^6.0.1",
+    "postcss": "^8.4.24",
+    "sass": "^1.63.6",
+    "svelte-check": "^3.4.4",
+    "svelte-preprocess": "^5.0.4",
+    "vite": "^4.3.9",
+    "vitest": "^0.32.2"
   }
 }

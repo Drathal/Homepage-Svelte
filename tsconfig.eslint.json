@@ -13,7 +13,6 @@
   "include": [
     ".eslintrc.cjs",
     ".prettierrc.cjs",
-    "./**/histoire.config.ts",
     "./**/playwright.config.ts",
     "./**/svelte.config.js",
     "./**/postcss.config.cjs",

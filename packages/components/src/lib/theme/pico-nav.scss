@@ -93,10 +93,14 @@ nav {
   }
 
   // Minimal support for role="button"
+  button,
   [role='button'] {
+    border: none;
     margin-right: inherit;
     margin-left: inherit;
     padding: var(--nav-link-spacing-vertical) var(--nav-link-spacing-horizontal);
+    background-color: var(--primary-focus);
+    cursor: pointer;
   }
 }
 

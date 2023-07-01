@@ -77,11 +77,10 @@
       {/if}
       {#if isMobileSize}
         <ul class="burger-icon" use:clickOutside on:clickOutside={handleClickOutside}>
-          <li
-            on:click|preventDefault|stopPropagation={handleMobileIconClick}
-            on:keydown={handleMobileIconClick}
-          >
-            <Icon name="burger" />
+          <li>
+            <button on:click|preventDefault|stopPropagation={handleMobileIconClick}>
+              <Icon name="burger" />
+            </button>
           </li>
         </ul>
       {/if}
@@ -124,8 +123,8 @@
 
       li {
         border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-        width: 100%;
-        padding-left: 2em;
+        width: 150px;
+        padding: 0;
       }
     }
   }

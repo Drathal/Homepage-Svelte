@@ -33,12 +33,16 @@
 
 <style lang="scss">
   a {
+    border: none;
     white-space: nowrap;
+    font-size: 1em;
+    width: 100%;
+    margin: 0rem;
+    padding: 0.5rem 1rem;
+    text-align: right;
   }
 
   [role='button'][aria-current='page'] {
-    border: none;
     background-color: var(--primary-focus);
-    font-size: 1em;
   }
 </style>
