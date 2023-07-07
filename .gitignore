@@ -9,6 +9,7 @@ package/
 !.env.example
 dist/
 *.log
+.aider*
 
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
