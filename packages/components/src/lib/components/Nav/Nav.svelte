@@ -6,6 +6,7 @@
   import GitHubCorner from '../GitHubCorner/GitHubCorner.svelte';
   import NavLink from './NavLink.svelte';
 
+  export let github = 'https://github.com/Drathal';
   export let rightNavItems: typeof leftNavItems = [];
   export let currentRoute: string | undefined | null = '';
   export let leftNavItems = [
@@ -22,7 +23,7 @@
     ...rightNavItems,
     {
       name: 'gitHub',
-      path: 'http://www.github.com/drathal'
+      path: github
     }
   ];
 
@@ -86,17 +87,17 @@
       {/if}
     </nav>
   </div>
+  {#if !isMobileSize}
+    <GitHubCorner href={github} />
+  {/if}
 </div>
-
-{#if !isMobileSize}
-  <GitHubCorner />
-{/if}
 
 <style lang="scss">
   @use '../../theme/variables.scss' as *;
 
   .navbar {
     background-color: rgba(0, 0, 0, 0.3);
+    position: relative;
 
     .container {
       display: block;

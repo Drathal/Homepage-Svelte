@@ -4,6 +4,8 @@
 
   import { Starfield, Nav, ScrollToTop } from '@drathal/components';
 
+  const github = 'https://github.com/Drathal';
+
   const leftNavItems = [
     {
       name: '$home',
@@ -34,7 +36,7 @@
 <Starfield />
 
 <header>
-  <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id} />
+  <Nav {leftNavItems} {rightNavItems} currentRoute={$page.route.id} {github} />
 </header>
 
 <main>
@@ -46,4 +48,5 @@
     <a href="./">back</a>
   {/if}
 </footer>
+
 <ScrollToTop />
