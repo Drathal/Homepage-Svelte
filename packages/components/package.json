@@ -7,7 +7,7 @@
   "scripts": {
     "prepare": "svelte-kit sync",
     "sync": "svelte-kit sync",
-    "dev": "vite dev",
+    "dev": "vite dev --port 6000",
     "build": "svelte-kit sync && vite build",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
