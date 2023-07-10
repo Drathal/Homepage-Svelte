@@ -8,8 +8,18 @@
   import img_slime from '$lib/assets/projects/beslimed.jpg';
   import img_jobtro from '$lib/assets/projects/jobtro.jpg';
   import img_sl from '$lib/assets/projects/sl.png';
+  import img_godot from '$lib/assets/projects/godot.png';
 
   const projects = [
+    {
+      name: 'Learning GameDev',
+      subtitle: 'Godot Engine and GDScript',
+      description: 'Learning Godot by building small games',
+      year: '2023',
+      image: img_godot,
+      url: 'https://drathal.itch.io/little-survivors',
+      tags: ['godot', 'gdscript', 'game', 'indie']
+    },
     {
       name: 'Portfolio rewrite',
       subtitle: 'Portfolio Website in SveltKit',
