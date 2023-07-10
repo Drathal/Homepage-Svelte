@@ -20,19 +20,19 @@
     "@picocss/pico": "^1.5.10",
     "@peeky/test": "^0.14.1",
     "@sveltejs/adapter-auto": "^2.1.0",
-    "@sveltejs/kit": "^1.21.0",
+    "@sveltejs/kit": "^1.22.1",
     "autoprefixer": "^10.4.14",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.25",
     "postcss-load-config": "^4.0.1",
     "sass": "^1.63.6",
-    "svelte": "^4.0.1",
-    "svelte-check": "^3.4.4",
+    "svelte": "^4.0.5",
+    "svelte-check": "^3.4.5",
     "svelte-preprocess": "^5.0.4",
-    "vite": "^4.3.9",
-    "vitest": "^0.32.2"
+    "vite": "^4.4.2",
+    "vitest": "^0.33.0"
   },
   "dependencies": {
-    "svelte": "^4.0.1",
+    "svelte": "^4.0.5",
     "typeit": "^8.7.1"
   }
 }

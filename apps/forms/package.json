@@ -17,19 +17,19 @@
   },
   "dependencies": {
     "@drathal/components": "workspace:*",
-    "svelte": "^4.0.1",
+    "svelte": "^4.0.5",
     "zod": "^3.21.4"
   },
   "devDependencies": {
     "@sveltejs/adapter-vercel": "^3.0.1",
-    "@sveltejs/kit": "^1.21.0",
+    "@sveltejs/kit": "^1.22.1",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
-    "postcss": "^8.4.24",
+    "postcss": "^8.4.25",
     "sass": "^1.63.6",
-    "svelte-check": "^3.4.4",
+    "svelte-check": "^3.4.5",
     "svelte-preprocess": "^5.0.4",
-    "vite": "^4.3.9",
-    "vitest": "^0.32.2"
+    "vite": "^4.4.2",
+    "vitest": "^0.33.0"
   }
 }
