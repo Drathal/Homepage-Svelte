@@ -2,7 +2,6 @@
   import { onMount } from 'svelte';
 
   let wrapperNode: HTMLElement;
-  let widthNode: HTMLElement;
   let clear: NodeJS.Timer;
   let line = 0;
 
@@ -63,13 +62,11 @@
       }
     }
 
-    // get max length of all lines
     let maxLength = 0;
     for (let i = 0; i < textElements.length; i++) {
       if (textElements[i].length > maxLength) maxLength = textElements[i].length;
     }
 
-    // add empty chars to all lines to make them equal length and center the text
     for (let i = 0; i < textElements.length; i++) {
       const lineElements = textElements[i];
       const diff = maxLength - lineElements.length;
