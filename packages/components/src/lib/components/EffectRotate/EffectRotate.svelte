@@ -2,15 +2,21 @@
   import { onMount } from 'svelte';
 
   let wrapperNode: HTMLElement;
-  let inputNodes: HTMLCollectionOf<HTMLParagraphElement>;
-  let splitedTexts: string[][] = [];
-  let classNames: string[] = [];
+  let widthNode: HTMLElement;
   let clear: NodeJS.Timer;
   let line = 0;
 
-  function fadeIn(node: HTMLElement, { delay = 0, duration = animateDuration } = {}) {
+  let textElements: Char[][] = [];
+
+  type Char = {
+    type: string;
+    text: string;
+    class: string;
+  };
+
+  function fadeIn(node: HTMLElement, { duration = animateDuration, index = 0 } = {}) {
     return {
-      delay,
+      delay: index * charDelay,
       duration,
       css: (t: number) => `
         transform: rotateX(${90 - t * 90}deg) translateY(${-1 + t}em);
@@ -19,9 +25,9 @@
     };
   }
 
-  function fadeOut(node: HTMLElement, { delay = 0, duration = animateDuration } = {}) {
+  function fadeOut(node: HTMLElement, { duration = animateDuration, index = 0 } = {}) {
     return {
-      delay,
+      delay: index * charDelay,
       duration,
       css: (t: number, tt: number) => `    
         transform:  translateY(${tt * 0.5}em) rotateX(${tt * -88}deg);
@@ -30,21 +36,65 @@
     };
   }
 
-  onMount(async () => {
+  onMount(() => {
     if (!window || !wrapperNode) return;
 
-    inputNodes = wrapperNode.getElementsByTagName('p');
-    const nodesArray = Array.from(inputNodes);
+    wrapperNode.style.display = 'none';
 
-    nodesArray.forEach((node) => {
-      const { className } = node;
-      classNames = [...classNames, className];
-      const text = node.textContent || '';
-      const characters = text.split('');
-      splitedTexts = [...splitedTexts, characters];
-    });
+    for (let i = 0; i < wrapperNode.childNodes.length; i++) {
+      if (wrapperNode.childNodes[i].nodeType == 1) {
+        const lineNode = wrapperNode.childNodes[i] as HTMLElement;
+        const lineElements: Char[] = [];
+        for (var j = 0; j < lineNode.childNodes.length; j++) {
+          const nodeType = lineNode.childNodes[j].nodeName;
+          const text = lineNode.childNodes[j].textContent || '';
+          const characters = text.split('');
+
+          for (var k = 0; k < characters.length; k++) {
+            lineElements.push({
+              type: nodeType.replace('#', '').toLowerCase(),
+              text: characters[k].replace(/\s/g, ' '),
+              class: lineNode.className
+            });
+          }
+        }
+
+        textElements.push(lineElements);
+      }
+    }
+
+    // get max length of all lines
+    let maxLength = 0;
+    for (let i = 0; i < textElements.length; i++) {
+      if (textElements[i].length > maxLength) maxLength = textElements[i].length;
+    }
+
+    // add empty chars to all lines to make them equal length and center the text
+    for (let i = 0; i < textElements.length; i++) {
+      const lineElements = textElements[i];
+      const diff = maxLength - lineElements.length;
+      const left = Math.floor(diff / 2);
+      const right = diff - left;
+
+      for (let j = 0; j < left; j++) {
+        lineElements.unshift({
+          type: 'empty',
+          text: ' ',
+          class: ''
+        });
+      }
+
+      for (let j = 0; j < right; j++) {
+        lineElements.push({
+          type: 'empty',
+          text: ' ',
+          class: ''
+        });
+      }
+    }
 
     clear = setInterval(onInterval, duration);
+    onInterval();
 
     return () => {
       clearInterval(clear);
@@ -53,63 +103,72 @@
 
   const onInterval = () => {
     line += 1;
-    if (line >= splitedTexts.length) line = 0;
+    if (line >= textElements.length) line = 0;
   };
 
   export let duration = 4000;
   export let animateDuration = 500;
-  export let delay = 50;
+  export let charDelay = 50;
 </script>
 
-<span bind:this={wrapperNode} class="input">
+<div class="container">
+  {#each textElements as chars, currentLine}
+    <div class="line_container line_container{currentLine}">
+      {#each chars as char, charIndex (charIndex)}
+        <div class="text_wrapper {char.type}">
+          {#if currentLine == line}
+            <span class="char" in:fadeIn={{ index: charIndex }} out:fadeOut={{ index: charIndex }}>
+              {char.text}
+            </span>
+          {/if}
+          <span class="char_x">M</span>
+        </div>
+      {/each}
+    </div>
+  {/each}
+</div>
+
+<span class="original" bind:this={wrapperNode}>
   <slot />
 </span>
 
-{#if splitedTexts.length > 0}
-  <div class="container {classNames[0]} ">
-    &nbsp;
-    {#each splitedTexts as chars, i (i)}
-      {#if i === line}
-        <div class="text_wrapper">
-          <p class={classNames[i]}>
-            {#each chars as char, ii (ii)}
-              <span in:fadeIn={{ delay: delay * ii }} out:fadeOut={{ delay: delay * ii }}>
-                {char}
-              </span>
-            {/each}
-          </p>
-        </div>
-      {/if}
-    {/each}
-  </div>
-{/if}
-
 <style lang="scss">
-  .input {
-    display: none;
-  }
-
-  p {
-    margin: 0;
-    perspective: 1000px;
-
-    span {
-      display: inline-block;
-      min-width: 0.5em;
-    }
-  }
-
   .container {
     position: relative;
-    display: inline-block;
-    overflow: hidden;
+    perspective: 1000px;
+    margin: 0;
+    padding: 0;
+  }
+  .line_container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
   }
 
   .text_wrapper {
+    display: inline-block;
+    position: relative;
+    margin: 0;
+    padding: 0;
+  }
+
+  .char {
     position: absolute;
-    left: 0;
     top: 0;
-    right: 0;
+    left: 0;
     bottom: 0;
+    right: 0;
+    display: inline-block;
+  }
+
+  .char_x {
+    opacity: 0;
+  }
+
+  .original {
+    display: none;
   }
 </style>

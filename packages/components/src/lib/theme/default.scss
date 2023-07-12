@@ -37,6 +37,8 @@ html {
   scroll-behavior: smooth;
 }
 
+.b,
+.strong,
 strong,
 b {
   color: var(--highlight-color);
@@ -69,9 +71,18 @@ h1 {
   font-size: 1.75em;
 }
 
+.b,
+.strong,
 b,
 strong {
   color: var(--highlight-color);
+  font-weight: 600;
+}
+
+.s,
+s {
+  color: var(--highlight-color);
+  text-decoration: line-through;
 }
 
 body {

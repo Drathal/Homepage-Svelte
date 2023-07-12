@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { Typer } from '@drathal/components';
+  import { EffectRotate } from '@drathal/components';
   import planet1 from '$lib/assets/about/planet1.png';
   import planet2 from '$lib/assets/about/planet2.png';
   import planet3 from '$lib/assets/about/planet3.png';
@@ -21,7 +21,15 @@
   </div>
   <div class="content">
     <h1>Markus Dethlefsen</h1>
-    <p><Typer>&nbsp;Learn, <b><u>Unlearn</u></b>, Relearn. Just keep moving...&nbsp;</Typer></p>
+    <code>
+      <EffectRotate>
+        <div>
+          <b>Learn</b>, <s>Unlearn</s>, <b>Relearn</b>. Just keep moving...
+        </div>
+        <div>My personal <b>Homepage</b></div>
+        <div>Showing some of the Things i do.</div>
+      </EffectRotate>
+    </code>
   </div>
 </section>
 
@@ -29,33 +37,53 @@
   section {
     min-height: 40em;
     font-size: 16px;
-  }
-  .bgWrapper {
-    position: relative;
-    margin: 0;
-    padding: 0;
 
-    height: 1px;
-    z-index: -1;
-
-    .bgContainer {
-      position: relative;
-      width: 1px;
-      margin: 0 auto;
+    h1 {
+      margin-bottom: 0 !important;
     }
-  }
+    .content {
+      margin: 15em auto;
+      text-align: center;
 
-  .content {
-    margin: 15em auto;
-    text-align: center;
+      code {
+        overflow: visible !important;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 32em;
+        background-color: transparent;
+        color: #ccc;
+        text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
 
-    p {
-      text-align: left;
+        font-size: 1.25rem;
+        @media (max-width: 768px) {
+          font-size: 1rem;
+        }
+
+        @media (max-width: 485px) {
+          font-size: 0.85rem;
+          max-width: 100%;
+        }
+
+        @media (max-width: 400px) {
+          display: none;
+        }
+      }
+    }
+
+    .bgWrapper {
+      position: relative;
+      margin: 0;
       padding: 0;
-      margin: 0 auto;
-      max-width: 20em;
-      color: var(--highlight-color);
-      text-shadow: rgba(0, 0, 0, 0.75) 2.4px 2.4px 3.2px;
+
+      height: 1px;
+      z-index: -1;
+
+      .bgContainer {
+        position: relative;
+        width: 1px;
+        margin: 0 auto;
+      }
     }
   }
 
@@ -176,12 +204,6 @@
 
         transparent 70%
       );
-  }
-
-  @media (min-width: 768px) {
-    section {
-      font-size: 18px;
-    }
   }
 
   @keyframes float1 {

@@ -20,6 +20,9 @@
         <li>
           <a href="/nav">Nav</a>
         </li>
+        <li>
+          <a href="/effect">Effect</a>
+        </li>
       </ul>
     </aside>
     <slot />
