@@ -5,7 +5,7 @@ export interface BlogPost {
   title: string;
   description: string;
   published: boolean;
-  content?: unknown;
+  content?: ConstructorOfATypedSvelteComponent;
   tags: string[];
 }
 

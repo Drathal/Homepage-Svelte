@@ -1,5 +1,9 @@
-
 .vercel
+**/.vercel
 .svelte-kit
+**/.svelte-kit
 dist
+**/dist
 apps/projects
+
+**/.eslintrc.cjs

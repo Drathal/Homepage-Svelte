@@ -1,6 +1,9 @@
 .vercel*
 .svelte-kit
+
 dist
 apps/projects
 *-lock.*
+
+
 

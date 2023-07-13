@@ -13,8 +13,9 @@
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write ."
+    "lint": "npm run prettier && eslint .",
+    "prettier": "prettier --plugin-search-dir . --check . --ignore-path ../../.prettierignore",
+    "format": "prettier --plugin-search-dir . --write . --ignore-path ../../.prettierignore"
   },
   "devDependencies": {
     "@picocss/pico": "^1.5.10",

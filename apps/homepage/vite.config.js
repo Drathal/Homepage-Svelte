@@ -16,6 +16,9 @@ const config = {
     fs: {
       allow: ['../../packages']
     }
+  },
+  optimizeDeps: {
+    include: ['@drathal/components']
   }
 };
 

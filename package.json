@@ -7,18 +7,17 @@
   "scripts": {
     "dev": "pnpm --parallel -r dev",
     "build": "pnpm --filter components build && pnpm --filter homepage build",
-    "debug:content": "find . ! -path '*node_modules*' ! -path '*projects*' ! -path '*svelte-kit*' ! -path '*.git*' ! -path '*packages*'",
-    "debug:project": "cat ./.vercel/project.json",
+    "build:homepage": "pnpm --filter homepage build",
     "preview": "pnpm --filter homepage preview",
     "test": "pnpm --parallel -r test",
     "check": "pnpm --parallel -r check",
     "check:watch": "pnpm --parallel -r check:watch",
     "test:unit": "pnpm --parallel -r  test:unit",
     "lint": "pnpm --parallel -r lint",
-    "format": "pnpm --parallel -r format"
+    "clean": "sh ./scripts/clean.sh"
   },
   "devDependencies": {
-    "@playwright/test": "^1.35.1",
+    "@playwright/test": "^1.36.0",
     "@typescript-eslint/eslint-plugin": "^5.61.0",
     "@typescript-eslint/parser": "^5.61.0",
     "concurrently": "^8.2.0",

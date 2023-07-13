@@ -7,16 +7,15 @@
     "prepare": "svelte-kit sync",
     "sync-components": "pnpm --filter components prepare",
     "dev": "vite dev --port 3000",
-    "build": "vite build; npm run build:clear; npm run build:copy",
-    "build:clear": "find ../../.vercel -maxdepth 5 | egrep -v \"project.json|README.txt\" | xargs rm ; rm -fr ../../.vercel/output/static/*",
-    "build:copy": "cp -a .vercel/* ../../.vercel",
+    "build": "vite build --force && sh ../../scripts/vercel.sh",
     "preview": "vite preview",
     "test": "playwright test",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "test:unit": "vitest",
-    "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write ."
+    "lint": "npm run prettier && eslint .",
+    "prettier": "prettier --plugin-search-dir . --check . --ignore-path ../../.prettierignore",
+    "format": "prettier --plugin-search-dir . --write . --ignore-path ../../.prettierignore"
   },
   "dependencies": {
     "@drathal/components": "workspace:*",
@@ -24,16 +23,16 @@
     "svelte": "^4.0.5"
   },
   "devDependencies": {
-    "@sveltejs/adapter-vercel": "^3.0.1",
-    "@sveltejs/kit": "^1.22.1",
+    "@sveltejs/adapter-vercel": "^3.0.2",
+    "@sveltejs/kit": "^1.22.3",
     "front-matter": "^4.0.2",
     "autoprefixer": "^10.4.14",
     "cssnano": "^6.0.1",
     "postcss": "^8.4.25",
     "sass": "^1.63.6",
-    "svelte-check": "^3.4.5",
+    "svelte-check": "^3.4.6",
     "svelte-preprocess": "^5.0.4",
-    "vite": "^4.4.2",
+    "vite": "^4.4.3",
     "vitest": "^0.33.0"
   }
 }
