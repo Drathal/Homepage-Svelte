@@ -20,4 +20,4 @@ jobs:
           version: 8.6.7
       - run: pnpm i
       - run: pnpm check
-      - run: pbpm lint
+      - run: pnpm lint
