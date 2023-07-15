@@ -17,20 +17,20 @@
     "clean": "sh ./scripts/clean.sh"
   },
   "devDependencies": {
-    "@playwright/test": "^1.36.0",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
+    "@playwright/test": "^1.36.1",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
     "concurrently": "^8.2.0",
-    "eslint": "^8.44.0",
+    "eslint": "^8.45.0",
     "eslint-config-airbnb-base": "^15.0.0",
-    "eslint-config-airbnb-typescript": "^17.0.0",
+    "eslint-config-airbnb-typescript": "^17.1.0",
     "eslint-config-prettier": "^8.8.0",
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-plugin-import": "^2.27.5",
-    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-prettier": "^5.0.0",
     "eslint-plugin-svelte": "^2.32.2",
-    "prettier": "^2.8.8",
-    "prettier-plugin-svelte": "^2.10.1",
+    "prettier": "^3.0.0",
+    "prettier-plugin-svelte": "git@github.com:sveltejs/prettier-plugin-svelte.git#dcc1eb40cae02c3e2996bf7131456be523dd5921",
     "tslib": "^2.6.0",
     "typescript": "^5.1.6"
   }

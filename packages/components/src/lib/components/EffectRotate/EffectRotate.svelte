@@ -28,7 +28,7 @@
     return {
       delay: index * charDelay,
       duration,
-      css: (t: number, tt: number) => `    
+      css: (t: number, tt: number) => `
         transform:  translateY(${tt * 0.5}em) rotateX(${tt * -88}deg);
         opacity: ${t};
       `

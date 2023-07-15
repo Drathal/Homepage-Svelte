@@ -69,9 +69,20 @@
         h2 {
           display: block;
           font-size: 1.5em;
-          text-shadow: -1px -1px 1px #000, -1px 1px 1px #000, 1px -1px 1px #000, 1px 1px 1px #000,
-            0 0 3px #000, 0 0 10px #000, 0 0 20px #000, 0 0 30px #000, 0 0 40px #000, 0 0 50px #000,
-            0 0 70px #000, 0 0 100px #000, 0 0 200px #000;
+          text-shadow:
+            -1px -1px 1px #000,
+            -1px 1px 1px #000,
+            1px -1px 1px #000,
+            1px 1px 1px #000,
+            0 0 3px #000,
+            0 0 10px #000,
+            0 0 20px #000,
+            0 0 30px #000,
+            0 0 40px #000,
+            0 0 50px #000,
+            0 0 70px #000,
+            0 0 100px #000,
+            0 0 200px #000;
         }
       }
     }

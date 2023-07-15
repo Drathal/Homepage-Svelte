@@ -2,7 +2,8 @@
 @font-face {
   font-family: 'GlacialIndifference-Regular';
   src: url('/fonts/GlacialIndifference-Regular.eot');
-  src: url('/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
+  src:
+    url('/fonts/GlacialIndifference-Regular.woff2') format('woff2'),
     url('/fonts/GlacialIndifference-Regular.woff') format('woff');
   font-display: swap;
 }

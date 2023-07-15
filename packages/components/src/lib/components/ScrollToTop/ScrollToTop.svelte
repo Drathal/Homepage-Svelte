@@ -41,7 +41,9 @@
 <style>
   .back-to-top {
     opacity: 0.8;
-    transition: opacity 0.5s, visibility 0.5s;
+    transition:
+      opacity 0.5s,
+      visibility 0.5s;
     position: fixed;
     z-index: 99;
     right: 20px;
