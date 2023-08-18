@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ActionData, PageData } from './$types';
-  import { Icon } from '@drathal/components';
   import Checkbox from '$lib/components/Checkbox.svelte';
 
   const debug = true;
@@ -40,7 +39,6 @@
 
     <div class="horizontal">
       <button on:click={handleShowAddTodoForm}>Add Task</button>
-      <button type="submit" formaction="?/clearTodos">Clear</button>
     </div>
   </div>
 
@@ -66,7 +64,7 @@
         {#if todo.completed == true}
           <li>
             <p>Done</p>
-
+            <button type="submit" formaction="?/clearTodos">Clear</button>
             <div class="progressBar progressDone">
               <div class="progress" style="width: {progress}%" />
               <div class="progressText">{Math.ceil(progress)}%</div>
@@ -111,7 +109,7 @@
           {/if}
           <form method="POST" action="?/removeTodo">
             <input type="hidden" name="id" value={todo.id} />
-            <button type="submit" class="delete"><Icon name="trash" /></button>
+            <button type="submit" class="delete">X</button>
           </form>
         </span>
       </li>
@@ -126,120 +124,5 @@
   {/if}
 </section>
 
-<style lang="scss">
-  button {
-    white-space: nowrap;
-  }
-  .menuBar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 1em;
-  }
-
-  .horizontal {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    > * {
-      margin-left: 0.5em;
-    }
-  }
-
-  .tag {
-    display: inline-block;
-    padding: 0.25em 0.5em;
-    border-radius: 0.75em;
-    font-size: 0.75em;
-    margin-left: 0.5em;
-    background-color: #444;
-
-    &.completed {
-      background-color: rgb(0, 184, 0);
-      color: #000000;
-    }
-  }
-
-  .progressBar {
-    position: relative;
-    height: 1em;
-    margin-bottom: 1em;
-    border-radius: 0.5em;
-    background-color: rgba(0, 0, 0, 0.4);
-
-    .progress {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      background-color: rgb(0, 184, 0);
-      border-radius: 0.5em;
-    }
-
-    .progressText {
-      position: absolute;
-      top: 0;
-      left: 0;
-      bottom: 0;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #ffffff;
-      font-size: 0.8rem;
-    }
-  }
-
-  .done {
-    text-decoration: line-through;
-    opacity: 0.5;
-  }
-
-  .error {
-    border-color: red;
-  }
-
-  .error-text {
-    color: red;
-  }
-
-  form {
-    margin: 0;
-  }
-
-  ul {
-    list-style: none;
-    padding: 0;
-
-    li {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 1rem;
-
-      border: 1px solid #666666;
-      border-radius: 6px;
-      padding: 0.5em 1em;
-
-      button {
-        &.text {
-          flex: 1;
-          margin: 0 1em;
-          overflow: hidden;
-
-          text-align: left;
-          background-color: transparent;
-          border: none;
-        }
-      }
-
-      .delete {
-        margin: 0;
-        padding: 0;
-        background: none;
-        border: none;
-      }
-    }
-  }
+<style lang="css">
 </style>

@@ -16,6 +16,7 @@
     "./**/playwright.config.ts",
     "./**/svelte.config.js",
     "./**/postcss.config.cjs",
+    "./**/tailwind.config.js",
     "./**/vite.config.js"
   ]
 }

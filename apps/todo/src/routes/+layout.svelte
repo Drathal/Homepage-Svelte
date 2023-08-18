@@ -1,6 +1,6 @@
 <script>
   import { page } from '$app/stores';
-  import '../app.scss';
+  import '../app.css';
 </script>
 
 <main>
