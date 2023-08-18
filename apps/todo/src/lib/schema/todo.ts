@@ -15,6 +15,8 @@ export type PartialTodoAPI = Partial<TodoAPI>;
 export const validate = {
   todo: (form: FormData) => validateFormData<TodoAPI>(form, todoSchema),
   addTodo: (form: FormData) => validateFormData<TodoAPI>(form, todoSchema.pick({ text: true })),
+  updateTodo: (form: FormData) =>
+    validateFormData<TodoAPI>(form, todoSchema.pick({ id: true, text: true })),
   removeTodo: (form: FormData) => validateFormData<TodoAPI>(form, todoSchema.pick({ id: true })),
   toggleTodo: (form: FormData) => validateFormData<TodoAPI>(form, todoSchema.pick({ id: true }))
 };

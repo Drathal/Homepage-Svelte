@@ -3,8 +3,9 @@
   import { Icon } from '@drathal/components';
   import Checkbox from '$lib/components/Checkbox.svelte';
 
-  const debug = false;
-  let showTodoForm = true;
+  const debug = true;
+  let showTodoForm = false;
+  let updateIndex = -1;
 
   $: progressAbsolute = data.todos.filter((todo) => todo.completed).length;
   $: progress = (progressAbsolute / data.todos.length) * 100;
@@ -15,8 +16,12 @@
     return -1;
   });
 
-  const handleShowTodoForm = () => {
+  const handleShowAddTodoForm = () => {
     showTodoForm = !showTodoForm;
+  };
+
+  const handleShowUpdateTodoForm = (index: number) => {
+    updateIndex = index;
   };
 
   export let data: PageData;
@@ -34,12 +39,13 @@
     </div>
 
     <div class="horizontal">
-      <button on:click={handleShowTodoForm}>Add Task</button>
+      <button on:click={handleShowAddTodoForm}>Add Task</button>
       <button type="submit" formaction="?/clearTodos">Clear</button>
     </div>
   </div>
 
-  {#if showTodoForm && form?.errors}
+  {#if showTodoForm || form?.errors}
+    <h3>Add Todo</h3>
     <form method="POST" action="?/addTodo">
       <input type="text" name="text" placeholder="New todo" class:error={form?.errors?.text} />
       {#if form?.errors?.text}
@@ -54,17 +60,29 @@
     <div>{progressAbsolute} / {data.todos.length}</div>
   </div>
 
-  <div class="progressBar progressDone">
-    <div class="progress" style="width: {progress}%" />
-    <div class="progressText">{Math.ceil(progress)}%</div>
-  </div>
-  <div class="progressBar progress">
-    <div class="progress" style="width: {100 - progress}%" />
-    <div class="progressText">{Math.floor(100 - progress)}%</div>
-  </div>
-
   <ul>
-    {#each sortedTodos as todo}
+    {#each sortedTodos as todo, i}
+      {#if todo.completed !== sortedTodos[i - 1]?.completed}
+        {#if todo.completed == true}
+          <li>
+            <p>Done</p>
+
+            <div class="progressBar progressDone">
+              <div class="progress" style="width: {progress}%" />
+              <div class="progressText">{Math.ceil(progress)}%</div>
+            </div>
+          </li>
+        {:else}
+          <li>
+            <p>Active</p>
+
+            <div class="progressBar progress">
+              <div class="progress" style="width: {100 - progress}%" />
+              <div class="progressText">{Math.floor(100 - progress)}%</div>
+            </div>
+          </li>
+        {/if}
+      {/if}
       <li>
         <span>
           <form method="POST" action="?/toggleTodo">
@@ -73,7 +91,20 @@
             </Checkbox>
           </form>
         </span>
-        <span class="text" class:done={todo.completed}>{todo.text}</span>
+        {#if i === updateIndex}
+          <form method="POST" action="?/updateTodo">
+            <input type="hidden" name="id" value={todo.id} />
+            <input type="text" name="text" value={todo.text} />
+            <button type="submit">Update</button>
+          </form>
+        {:else}
+          <button
+            class="text"
+            class:done={todo.completed}
+            on:click={() => handleShowUpdateTodoForm(i)}>{todo.text}</button
+          >
+        {/if}
+
         <span class="horizontal">
           {#if todo.completed}
             <span class="tag completed">completed</span>
@@ -191,13 +222,15 @@
       border-radius: 6px;
       padding: 0.5em 1em;
 
-      span {
+      button {
         &.text {
           flex: 1;
           margin: 0 1em;
           overflow: hidden;
-          max-height: 1.5em;
-          line-height: 1.5em;
+
+          text-align: left;
+          background-color: transparent;
+          border: none;
         }
       }
 

@@ -1,7 +1,14 @@
 import type { Actions, PageServerLoad } from './$types';
 import { fail } from '@sveltejs/kit';
 
-import { addTodo, clearTodos, getTodos, removeTodo, toggleTodo } from '$lib/server/database';
+import {
+  addTodo,
+  clearTodos,
+  getTodos,
+  removeTodo,
+  toggleTodo,
+  updateTodo
+} from '$lib/server/database';
 import { validate } from '$lib/schema/todo';
 
 export const load: PageServerLoad = async () => ({ todos: getTodos() });
@@ -20,6 +27,20 @@ export const actions: Actions = {
     addTodo(zodResult.data.text);
 
     return { ...zodResult, form: 'addTodo' };
+  },
+
+  updateTodo: async ({ request }) => {
+    const zodResult = validate.updateTodo(await request.formData());
+
+    if (!zodResult.success)
+      return fail(400, {
+        ...zodResult,
+        form: 'editTodo'
+      });
+
+    updateTodo(zodResult.data.id, zodResult.data.text);
+
+    return { ...zodResult, form: 'updateTodo' };
   },
 
   removeTodo: async ({ request }) => {
