@@ -21,7 +21,10 @@
           <a href="/nav">Nav</a>
         </li>
         <li>
-          <a href="/effect">Effect</a>
+          <a href="/icon">Icon</a>
+        </li>
+        <li>
+          <a href="/effect">EffectRotate</a>
         </li>
       </ul>
     </aside>

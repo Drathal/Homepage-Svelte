@@ -1,29 +1,32 @@
-<script context="module">
-  import pathsByName from './icons/pathList';
+<script context="module" lang="ts">
+  import { pathList, pathListOptions, directions, getDirectionDegree } from './icons/pathList';
 
-  export const iconOptions = Object.keys(pathsByName);
-  export const directions = ['n', 'ne', 'e', 'se', 's', 'sw', 'w', 'nw'];
+  export const iconOptions = pathListOptions;
+  export const iconDirections = directions;
 </script>
 
-<script>
-  export let name = 'extern';
+<script lang="ts">
+  import type { PathListKeys } from './icons/pathList';
+  export let name: string = '';
   export let direction = 'n';
 
-  $: paths = pathsByName[name] || [];
-  $: rotation = directions.indexOf(direction) * 45;
+  $: rotation = getDirectionDegree(direction);
+  $: typed_name = name as PathListKeys;
 </script>
 
-<svg
-  class="icon"
-  viewBox="0 0 24 24"
-  fill-rule="evenodd"
-  clip-rule="evenodd"
-  style={`transform: rotate(${rotation}deg) translateY(-0.15em)`}
->
-  {#each paths as path}
-    <path d={path} />
-  {/each}
-</svg>
+{#if name}
+  <svg
+    class="icon"
+    viewBox="0 0 24 24"
+    fill-rule="evenodd"
+    clip-rule="evenodd"
+    style={`transform: rotate(${rotation}deg) translateY(-0.15em)`}
+  >
+    {#each pathList[typed_name] as path}
+      <path d={path} />
+    {/each}
+  </svg>
+{/if}
 
 <style lang="scss">
   .icon {
