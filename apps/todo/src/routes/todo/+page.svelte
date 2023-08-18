@@ -1,6 +1,5 @@
 <script lang="ts">
   import type { ActionData, PageData } from './$types';
-  import Checkbox from '$lib/components/Checkbox.svelte';
 
   const debug = true;
   let showTodoForm = false;
@@ -20,6 +19,7 @@
   };
 
   const handleShowUpdateTodoForm = (index: number) => {
+    if (data.todos[index].completed) return;
     updateIndex = index;
   };
 
@@ -31,15 +31,36 @@
   <title>Create | Todo</title>
 </svelte:head>
 
-<section>
-  <div class="menuBar">
-    <div>
-      <h2>Todo</h2>
-    </div>
+<section class="max-w-screen-xl px-4 mx-auto lg:px-12">
+  <div
+    class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4"
+  >
+    <h1
+      class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white"
+    >
+      Todo App
+    </h1>
 
-    <div class="horizontal">
-      <button on:click={handleShowAddTodoForm}>Add Task</button>
-    </div>
+    <button
+      on:click={handleShowAddTodoForm}
+      type="button"
+      class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        class="h-3.5 w-3.5 mr-2"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        aria-hidden="true"
+      >
+        <path
+          clip-rule="evenodd"
+          fill-rule="evenodd"
+          d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
+        />
+      </svg>
+      Add Task
+    </button>
   </div>
 
   {#if showTodoForm || form?.errors}
@@ -53,42 +74,104 @@
     </form>
   {/if}
 
-  <div class="horizontal">
-    <h3>Progress</h3>
-    <div>{progressAbsolute} / {data.todos.length}</div>
+  <div
+    class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4"
+  >
+    <h3
+      class="font-bold leading-tight tracking-tight text-gray-900 text-md md:text-xl dark:text-white"
+    >
+      Progress
+    </h3>
+    <div class="text-gray-200">{progressAbsolute} / {data.todos.length}</div>
   </div>
 
   <ul>
     {#each sortedTodos as todo, i}
       {#if todo.completed !== sortedTodos[i - 1]?.completed}
         {#if todo.completed == true}
-          <li>
-            <p>Done</p>
-            <button type="submit" formaction="?/clearTodos">Clear</button>
-            <div class="progressBar progressDone">
-              <div class="progress" style="width: {progress}%" />
-              <div class="progressText">{Math.ceil(progress)}%</div>
+          <li class="mb-4">
+            <div
+              class="flex flex-col items-center justify-between py-4 space-y-3 md:flex-row md:space-y-0 md:space-x-4"
+            >
+              <h4
+                class="font-bold leading-tight tracking-tight text-gray-900 text-md md:text-xl dark:text-white"
+              >
+                Done
+              </h4>
+              <button
+                type="submit"
+                formaction="?/clearTodos"
+                class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+                >Clear</button
+              >
+            </div>
+
+            <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+              <div
+                class="bg-blue-600 text-s font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                style="width: 45%"
+              >
+                {Math.floor(100 - progress)}%
+              </div>
             </div>
           </li>
         {:else}
-          <li>
-            <p>Active</p>
+          <li class="mb-4">
+            <h4
+              class="py-4 font-bold leading-tight tracking-tight text-gray-900 text-md md:text-xl dark:text-white"
+            >
+              Active
+            </h4>
 
-            <div class="progressBar progress">
-              <div class="progress" style="width: {100 - progress}%" />
-              <div class="progressText">{Math.floor(100 - progress)}%</div>
+            <div class="w-full bg-gray-200 rounded-full dark:bg-gray-700">
+              <div
+                class="bg-blue-600 text-s font-medium text-blue-100 text-center p-0.5 leading-none rounded-full"
+                style="width: 45%"
+              >
+                {Math.floor(100 - progress)}%
+              </div>
             </div>
           </li>
         {/if}
       {/if}
-      <li>
-        <span>
-          <form method="POST" action="?/toggleTodo">
-            <Checkbox checked={todo.completed} name="completed">
-              <input type="hidden" name="id" value={todo.id} />
-            </Checkbox>
-          </form>
-        </span>
+      <li class="flex items-center justify-between p-4 mt-2 border border-gray-600 rounded-md">
+        <form method="POST" action="?/toggleTodo">
+          <input type="hidden" name="id" value={todo.id} />
+          {#if todo.completed}
+            <button
+              type="submit"
+              class="flex items-center justify-center px-1.5 py-1.5 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-3 h-3"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path
+                  d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"
+                /></svg
+              >
+            </button>
+          {:else}
+            <button
+              type="submit"
+              class="flex items-center justify-center px-1.5 py-1.5 text-sm font-medium text-gray-200 rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-white dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                class="w-3 h-3"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                aria-hidden="true"
+                ><path
+                  d="M20.285 2l-11.285 11.567-5.286-5.011-3.714 3.716 9 8.728 15-15.285z"
+                /></svg
+              >
+            </button>
+          {/if}
+        </form>
+
         {#if i === updateIndex}
           <form method="POST" action="?/updateTodo">
             <input type="hidden" name="id" value={todo.id} />
@@ -97,32 +180,46 @@
           </form>
         {:else}
           <button
-            class="text"
+            class="flex-auto mx-4 text-left {todo.completed
+              ? 'text-gray-400 line-through'
+              : 'text-gray-200'}"
             class:done={todo.completed}
-            on:click={() => handleShowUpdateTodoForm(i)}>{todo.text}</button
+            on:click={() => handleShowUpdateTodoForm(i, todo)}>{todo.text}</button
           >
         {/if}
 
-        <span class="horizontal">
-          {#if todo.completed}
-            <span class="tag completed">completed</span>
-          {/if}
-          <form method="POST" action="?/removeTodo">
-            <input type="hidden" name="id" value={todo.id} />
-            <button type="submit" class="delete">X</button>
-          </form>
-        </span>
+        {#if todo.completed}
+          <span class="px-2 mr-4 text-sm text-gray-200 rounded-full bg-lime-800">completed</span>
+        {/if}
+
+        <form method="POST" action="?/removeTodo">
+          <input type="hidden" name="id" value={todo.id} />
+          <button
+            type="submit"
+            class="flex items-center justify-center px-1.5 py-1.5 text-sm font-medium text-gray-200 rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-700 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-3 h-3"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+              aria-hidden="true"
+              ><path
+                d="M23 20.168l-8.185-8.187 8.185-8.174-2.832-2.807-8.182 8.179-8.176-8.179-2.81 2.81 8.186 8.196-8.186 8.184 2.81 2.81 8.203-8.192 8.18 8.192z"
+              /></svg
+            >
+          </button>
+        </form>
       </li>
     {/each}
   </ul>
 
   {#if debug}
-    <p>form:</p>
-    <pre>{JSON.stringify(form, null, 2)}</pre>
-    <p>data:</p>
-    <pre>{JSON.stringify(data, null, 2)}</pre>
+    <div class="text-cyan-800">
+      <p>form:</p>
+      <pre>{JSON.stringify(form, null, 2)}</pre>
+      <p>data:</p>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+    </div>
   {/if}
 </section>
-
-<style lang="css">
-</style>
