@@ -212,28 +212,27 @@
           <form
             method="POST"
             action="?/updateTodo"
-            class="flex flex-row items-start justify-between flex-auto px-4"
+            class="flex flex-row items-center justify-between flex-auto px-4"
           >
             <input type="hidden" name="id" value={todo.id} />
             <input
               type="text"
               name="text"
               value={todo.text}
-              class="flex-auto block w-full p-2 mr-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              class="flex-auto block w-full p-1 px-2 mr-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-sm focus:ring-primary-600 focus:border-primary-600 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             />
             <button
               type="submit"
-              class="flex items-center justify-center px-4 py-2 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
+              class="flex items-center justify-center px-2 py-1 text-sm font-medium text-white rounded-lg bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800"
             >
               Update
             </button>
           </form>
         {:else}
           <button
-            class="flex-auto mx-4 text-left {todo.completed
-              ? 'text-gray-400 line-through'
+            class="flex-auto mx-4 text-left p-1 {todo.completed
+              ? 'text-gray-400 line-throug cursor-default'
               : 'text-gray-200'}"
-            class:done={todo.completed}
             on:click={() => handleShowUpdateTodoForm(i)}>{todo.text}</button
           >
         {/if}
