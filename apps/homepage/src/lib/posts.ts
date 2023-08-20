@@ -37,7 +37,7 @@ export const getPosts = async (): Promise<BlogPost[]> => {
     .filter((post) => post.published)
     .sort((a, b) => new Date(a.datePublished).getTime() - new Date(b.datePublished).getTime());
 
-  return proccessedPosts;
+  return proccessedPosts.reverse();
 };
 
 export const getPostBySlug = async (slug: string): Promise<BlogPost> => {

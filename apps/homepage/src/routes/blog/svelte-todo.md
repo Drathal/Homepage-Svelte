@@ -1,135 +1,154 @@
 ---
-published: false
-datePublished: 2023-02-01
-dateUpdated: 2021-02-01
-title: Understanding Svelte Stores in a Todo App
-description: none
+published: true
+datePublished: 2023-08-20
+dateUpdated: 2023-08-20
+title: Svelte Form Actions
+description: Use Svelte Form Actions in an example Todo Application.
+tags: [typescript, svelte]
 ---
 
-# Understanding Svelte Stores in a Todo App
+# Svelte Form Actions
 
-Svelte is a popular front-end framework that offers a unique approach to state management. One of its key features is the use of reactive variables, which allow you to manage the state of your application in a simple and efficient way.
+Svelte is a powerful tool for building web applications, and one of its strengths lies in its ability to handle form actions seamlessly. In this tutorial, we'll explore how to manage form actions in Svelte, using a simple Todo App as an example.
 
-In this article, we'll be exploring the use of reactive variables in a todo app. We'll be covering the basics of reactive variables, how to create and use them, and how they can be used to build a simple todo app.
+Svelte form actions are a powerful feature that allows developers to handle form submissions directly within the Svelte component. Instead of relying on traditional methods like AJAX or fetch to send form data to the server, Svelte form actions provide a more integrated approach.
 
-## What are Svelte Reactive Variables?
 
-Reactive variables in Svelte are a way to store data that can be shared across different parts of your application. Unlike traditional state management systems, reactive variables are automatically updated whenever their value changes. This means that any part of your application that depends on a reactive variable will be updated automatically when the variable is updated.
+* The Demo can be found here: [Todo Svelte](https://todo.markus-dethlefsen.dev/)
+* You can find the whole code here: [Homepage-Svelte/apps
+/todo/](https://github.com/Drathal/Homepage-Svelte/tree/main/apps/todo)
 
-## Creating a Reactive Variable
+## Form Action Attribute
 
-Creating a reactive variable in Svelte is simple and straightforward. First, you need to import the writable function from the svelte/store module. Then, you can call the writable function, passing in an initial value, to create a new reactive variable.
+In Svelte, when you want to handle a form submission, you can use the action attribute on the form element, just like in traditional HTML. However, the difference is that in Svelte, the action attribute's value is prefixed with `?/`, followed by the action's name. For example:
 
-Here's an example of a reactive variable that holds an array of todo items:
-
-```javascript
-import { writable } from 'svelte/store';
-
-export const todos = writable([]);
+```svelte
+<form method="POST" action="?/addTodo">
+  ...
+</form>
 ```
 
-## Using a Reactive Variable
+## Setting Up the Frontend
+Let's start by examining the frontend code for our Todo App.
 
-Once you've created a reactive variable, you can use it in any component that needs to access its value. You can do this by importing the reactive variable and using it in your component's template.
+[+page.svelte](https://github.com/Drathal/Homepage-Svelte/blob/main/apps/todo/src/routes/todo/%2Bpage.svelte)
 
-Here's an example of a component that displays a list of todo items:
+### 1. State Management and Reactive Statements
+In our Svelte component (+page.svelte), we begin by importing necessary types and setting up our reactive state, at the end we also export data and form variables that come from the backend:
 
 ```javascript
-<script>
-import { todos } from './store.js';
+  import type { ActionData, PageData } from './$types';
 
-let items;
+  const debug = false;
+  let showTodoForm = false;
+  let updateIndex = -1;
 
-todos.subscribe(value => {
-  items = value;
-});
-</script>
+  $: progressAbsolute = data.todos.filter((todo) => todo.completed).length;
+  $: progress = (progressAbsolute / data.todos.length) * 100;
+  $: sortedTodos = data.todos.sort((a, b) => {
+    if (a.completed === b.completed) return 0;
+    if (a.completed) return 1;
 
+    return -1;
+  });
+
+  ...
+
+  export let data: PageData;
+  export let form: ActionData;
+
+```
+Here, we're using Svelte's reactive statements (prefixed with $:) to compute the progress of our todos.
+
+### 2. Form Handling
+We've set up two functions to handle showing the add and update todo forms, we could do it inline but i prefer to have expicit function for it:
+
+```javascript
+const handleShowAddTodoForm = () => {
+  showTodoForm = !showTodoForm;
+};
+
+const handleShowUpdateTodoForm = (index: number) => {
+  if (data.todos[index].completed) return;
+  updateIndex = index;
+};
+```
+
+### 3. Rendering the UI
+
+The UI is a mix of conditionally rendered components. I dont show the whole html here you can take a loot into it in the source. Showing / hiding the form for adding todos:
+
+```svelte
+{#if showTodoForm || form?.errors}
+  <form method="POST" action="?/addTodo">
+  ...
+  </form>
+{/if}
+```
+
+And a list of todos:
+
+```svelte
 <ul>
-  {#each items as item}
-    <li>{item}</li>
+  {#each sortedTodos as todo, i}
+  ...
   {/each}
 </ul>
 ```
 
-## Updating a Reactive Variable
+This are made with the svelte template syntax.
 
-Updating a reactive variable is just as simple as using it. You can do this by calling the set method on the reactive variable, passing in the new value.
 
-Here's an example of a component that allows you to add new todo items to the list:
+##  Request Handling
 
-```javascript
-<script>
-import { todos } from './store.js';
+Now, let's dive into the server-side logic (+page.server.ts). Inside each action method, we have access to the request object, which contains the form data. We can use this data to perform various operations like validation, database updates, etc.
 
-let newItem = '';
 
-function handleSubmit(event) {
-  todos.update(items => [...items, newItem]);
-  newItem = '';
-}
-</script>
+[+page.server.ts](https://github.com/Drathal/Homepage-Svelte/blob/main/apps/todo/src/routes/todo/%2Bpage.server.ts)
 
-<form on:submit|preventDefault={handleSubmit}>
-  <input type="text" bind:value={newItem} />
-  <button type="submit">Add Item</button>
-</form>
-```
 
-## Building a Todo App
+### 1. Loading Todos
 
-With the basics of reactive variables in mind, let's build a simple todo app. The app will have two components: a list of todo items and a form for adding new items.
-
-Here's the complete code for the todo app:
+When the page loads, we fetch all todos:
 
 ```javascript
-<!-- store.js -->
-
-import { writable } from 'svelte/store';
-
-export const todos = writable([]);
+export const load: PageServerLoad = async () => ({ todos: getTodos() });
 ```
+
+### 2. Form Actions
+
+Each form action corresponds to a function in the actions object. We also want to validate all user input, im using the Zod library for this.  For example, the addTodo action:
 
 ```javascript
-<!-- TodoList.svelte -->
-<script>
-import { todos } from './store.js';
+addTodo: async ({ request }) => {
+  const zodResult = validate.addTodo(await request.formData());
 
-let items;
+  if (!zodResult.success) {
+    return fail(400, {
+      ...zodResult,
+      form: 'addTodo'
+    });
+  }
 
-todos.subscribe(value => {
-  items = value;
-});
-</script>
-<ul>
-  {#each items as item}
-    <li>{item}</li>
-  {/each}
-</ul>
+  addTodo(zodResult.data.text);
+  return { ...zodResult, form: 'addTodo' };
+},
 ```
 
-```javascript
-<!-- AddTodo.svelte -->
-<script>
-import { todos } from './store.js';
+Here, we're:
 
-let newItem = '';
+* Validating the form data using the validate function.
+* If validation fails, we return an error.
+* If validation passes, we add the new todo and return a success response.
 
-function handleSubmit(event) {
-  todos.update(items => [...items, newItem]);
-  newItem = '';
-}
-</script>
+The other actions (**updateTodo**, **removeTodo**, **toggleTodo**, and **clearTodos**) follow a similar pattern.
 
-<form on:submit|preventDefault={handleSubmit}>
-  <input type="text" bind:value={newItem} />
-  <button type="submit">Add Item</button>
-</form>
+One of the advantages of using Svelte form actions is the seamless integration with Svelte's reactive system. For instance, if the server returns new data or an update after a form submission, we can easily update a Svelte store or local state, causing the UI to re-render with the updated data.
 
-<TodoList />
-<AddTodo />
-```
+## Conclusion
 
-In this example, we have a reactive variable todos that holds the list of todo items. The TodoList component displays the list of items, and the AddTodo component allows you to add new items to the list. When you submit the form in the AddTodo component, the new item is added to the todos reactive variable and the TodoList component is automatically updated with the new list of items.
+In this tutorial, we've explored how to handle form actions in a Svelte application. By separating frontend and server-side logic, we can create a clean and maintainable codebase. The Todo App serves as a practical example of how to implement these concepts in a real-world application.
 
-In conclusion, reactive variables are a key feature of Svelte that make it easy to manage the state of your application. By using reactive variables, you can build dynamic and responsive applications with ease. Whether you're a beginner or an experienced developer, understanding how to use reactive variables will greatly improve your ability to build web applications with Svelte.
+Whether you're building a simple todo list or a more complex application, Svelte's form actions provide a powerful way to manage user input and server interactions. Happy coding!
+
+

@@ -9,8 +9,18 @@
   import img_jobtro from '$lib/assets/projects/jobtro.jpg';
   import img_sl from '$lib/assets/projects/sl.png';
   import img_godot from '$lib/assets/projects/godot.png';
+  import img_blog from '$lib/assets/projects/blog.png';
 
   const projects = [
+    {
+      name: 'Svelte Form Actions',
+      subtitle: 'Blog post about Svelte Form actions',
+      description: 'Building a TodoApp with SvelteKit and tailwindcss',
+      year: '2023',
+      image: img_blog,
+      url: '/blog/svelte-todo',
+      tags: ['svelte', 'typescript', 'tailwindcss']
+    },
     {
       name: 'Learning GameDev',
       subtitle: 'Godot Engine and GDScript',
